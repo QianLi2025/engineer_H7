@@ -60,6 +60,7 @@ typedef struct
 {
     char id;
     unsigned char start_flag;
+	  uint8_t timeout_cnt;//失联计数
     motor_fbpara_t para;
     motor_ctrl_t cmd;
 } dmmotor_t;

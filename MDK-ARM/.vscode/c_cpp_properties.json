@@ -115,6 +115,7 @@
                 "d:\\the_five\\RMcontrol\\dmH7demo\\deivce\\BMI088\\inc",
                 "d:\\the_five\\RMcontrol\\dmH7demo\\application",
                 "d:\\the_five\\RMcontrol\\dmH7demo\\deivce\\video_decode",
+                "d:\\the_five\\RMcontrol\\dmH7demo\\deivce\\minipc",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
                 "d:\\the_five\\RMcontrol\\dmH7demo\\MDK-ARM",
@@ -122,8 +123,7 @@
                 "d:\\the_five\\RMcontrol\\dmH7demo\\Drivers\\STM32H7xx_HAL_Driver\\Src",
                 "d:\\the_five\\RMcontrol\\dmH7demo\\Middlewares\\ST\\STM32_USB_Device_Library\\Core\\Src",
                 "d:\\the_five\\RMcontrol\\dmH7demo\\Middlewares\\ST\\STM32_USB_Device_Library\\Class\\CDC\\Src",
-                "d:\\the_five\\RMcontrol\\dmH7demo\\deivce\\BMI088",
-                "d:\\the_five\\RMcontrol\\dmH7demo\\deivce\\minipc"
+                "d:\\the_five\\RMcontrol\\dmH7demo\\deivce\\BMI088"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

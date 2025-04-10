@@ -53,3 +53,6 @@ dm_h7_demo\usbd_cdc_if.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_
 dm_h7_demo\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 dm_h7_demo\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 dm_h7_demo\usbd_cdc_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+dm_h7_demo\usbd_cdc_if.o: ..\deivce\minipc\minipc_protocol.h
+dm_h7_demo\usbd_cdc_if.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\usbd_cdc_if.o: ../Bsp/bsp_dwt.h

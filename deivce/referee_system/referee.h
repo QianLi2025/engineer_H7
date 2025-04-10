@@ -732,6 +732,49 @@ typedef __packed struct
     } ui;
 } referee_t;
 
+
+//
+typedef enum
+{
+	OFF=0,
+	ON,
+	
+}
+sucker_switch_cmd_e;//自定义控制器吸盘的控制
+
+typedef enum
+{
+	KEEP=0,//保持
+	DOWN,
+		UP,
+	
+}
+lift_cmd_e;//自定义控制器抬升的控制
+
+/********************************************************/
+//自定义控制器数据
+typedef struct
+{
+	  float maximal_arm_target; // 大臂的目标值
+    float minimal_arm_target; // 小臂的目标值
+    float finesse_target;     // 手腕的目标值
+    float pitch_arm_target;   // pitch的目标值
+	  sucker_switch_cmd_e sucker_cmd;//吸盘
+	  lift_cmd_e lift_cmd;//z轴
+	  
+	
+}custom_cmd_t;
+
+
+//电管数据
+extern referee_t dianguan_cmd;
+
+//图传数据
+extern referee_t video_cmd;
+
+//自定义控制器
+extern custom_cmd_t custom_cmd;
+
 void referee_fbkdata(referee_t *rf, uint8_t buf[]);
 
 #endif

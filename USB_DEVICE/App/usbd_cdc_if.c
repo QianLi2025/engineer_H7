@@ -22,7 +22,8 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "minipc_protocol.h"
+extern minipc_t minipc;//小电脑结构体
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -266,8 +267,19 @@ static int8_t CDC_Receive_HS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 11 */
 	
 	//接收回调函数
+//	minipc_rec( &minipc, Buf);
+		uint8_t my_RxBuf[100];
+        uint32_t my_RxLength;
+	
+	memcpy(my_RxBuf,Buf,*Len);
+        my_RxLength=*Len;	
+	CDC_Transmit_HS(my_RxBuf, my_RxLength);
+
   USBD_CDC_SetRxBuffer(&hUsbDeviceHS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceHS);
+	
+	
+	
 	
   return (USBD_OK);
   /* USER CODE END 11 */

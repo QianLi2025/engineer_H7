@@ -7,10 +7,6 @@ Video_ctrl_t video_ctrl[2]; // ÓÃÓÚ´æ´¢Í¼´«Á´Â·µÄ¿ØÖÆÊı¾İ,[0]:µ±Ç°Êı¾İTEMP,[1]:É
 
 static void VideoRead(uint8_t *buff);
 
-
-
-
- 
 /**
  * @brief Í¼´«Êı¾İ½âÎöº¯Êı
  *

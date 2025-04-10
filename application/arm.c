@@ -5,6 +5,7 @@
 
 //末三轴 fdcan3
 //max min lift trans fdcan2
+int offline_cnt;//离线检测
 
 
 //过去
@@ -55,7 +56,7 @@ double lift_speed_ref;
 double trans_speed_output;
 
 //roll的目标角度
-double target_roll=0;
+
 
 uint8_t roll_send[8]={};
 
@@ -115,7 +116,7 @@ static void lift_height_control(double lift_height_ref);//设置上升高度
 static void trans_speed_control(double trans_speed_ref);//设置传送带速度
 
 //计算实际高度
-static void Height_Calculation(void);
+ void Height_Calculation(void);
 
 //控制实际高度
 static void lift_height_control(double lift_height_ref);
@@ -129,7 +130,7 @@ static void roll_height_init(void);
 //从cmd获取所有的电机控制信息
 static void get_arm_cmd(void);
 
-static void lift_speed_control(double lift_speed_ref);
+ void lift_speed_control(double lift_speed_ref);
 static void control_roll_angle(double roll_ref);
 
 static int last_lift_mode=-1;
@@ -137,6 +138,10 @@ static int last_roll_mode=-1;
 
 static float temp_roll;  // 保留变量值在每次进入此模式期间
 static float temp_height;  // 保留变量值在每次进入此模式期间
+
+//仅仅做测试用
+void normmally_speedPID(volatile float *speed_output);
+
 void offline_check(void);
 void ARM_INIT(void)
 {
@@ -145,15 +150,17 @@ void ARM_INIT(void)
 	M2006_init(&trans,  2,  0.18 * 1 / 36);
 	
 	M3508_init(&lift_motor,1,0.3 * 187 / 3591);
-    PID_init(&roll_pid_angle,PID_POSITION,0,0,1,10000,150);//6
-	PID_init(&roll_pid_speed,PID_POSITION,0,0,0,10000,200);
+//    PID_init(&roll_pid_angle,PID_POSITION,20,0,1,10000,150);//6
+//	PID_init(&roll_pid_speed,PID_POSITION,12,0.1,0,10000,200);
+	PID_init(&roll_pid_angle,PID_POSITION,60,0,0,10000,150);//6
+	PID_init(&roll_pid_speed,PID_POSITION,120,0.1,0,10000,200);
 
-	PID_init(&lift_pid_angle,PID_POSITION,5,0,0,10000,15000);
+	PID_init(&lift_pid_angle,PID_POSITION,12,0,0,10000,15000);//5
 	
     PID_init(&trans_pid_speed,PID_POSITION,5,0,0,10000,1500);
 	
-    PID_init(&lift_pid_speed,PID_POSITION,3,20,0,10000,1700);
-    PID_init(&pid_lift_height,PID_POSITION,5,0.01, 0, 45000, 100);//不要积分也许也可以？
+    PID_init(&lift_pid_speed,PID_POSITION,10,20,0,10000,1700);//3
+    PID_init(&pid_lift_height,PID_POSITION,5,0.1, 0, 45000, 100);//不要积分也许也可以？
 
     enable_allmotor();
 
@@ -169,7 +176,34 @@ void ARM_INIT(void)
 void ARM_TASK(void)
 {
     recieve_all_data();//收取所有电机信息	 
+	
+	
+	
+	
+	  VAL_LIMIT(ARM_CMD_data.maximal_arm_angle, MAXARM_MIN, MAXARM_MAX);
+	
+    VAL_LIMIT(ARM_CMD_data.minimal_arm_angle, MINARM_MIN, MINARM_MAX);
+	
+    if (pitch_motor.para.pos > -0.1f) {
+			VAL_LIMIT(ARM_CMD_data.finesse_angle, FINE_MIN2, FINE_MAX2);//为何
+    } else {
+        VAL_LIMIT(finesse_motor.para.pos, FINE_MIN, FINE_MAX);
+    }
+		
+    VAL_LIMIT(ARM_CMD_data.pitch_arm_angle, PITCH_MIN, PITCH_MAX);
+		
+		
+	
+//    if (height>570) {
+//        ARM_CMD_data.lift_mode=LIFT_KEEP_MODE;
+//    }
+//		
+//		if (height<10) {
+//        ARM_CMD_data.lift_mode=LIFT_KEEP_MODE;
+//    }
 
+		
+		
     //所有大电机控制
     control_all_arm( ARM_CMD_data.maximal_arm_angle, 
         ARM_CMD_data.minimal_arm_angle, 
@@ -180,42 +214,48 @@ void ARM_TASK(void)
     switch (ARM_CMD_data.trans_mode)
     {
     case GET://取
-        trans_speed_control(0);//控制传送带速度
+        trans_speed_control(-400);//控制传送带速度
         break;
     case OUTPUT://兑矿
-        trans_speed_control(0);//控制传送带速度
+        trans_speed_control(400);//控制传送带速度
         break;
+		case STOP:
+			  trans_speed_control(0);
 
     default:
         break;
     }
 
-    //高度控制
-    Height_Calculation();//计算当前高度
-    switch (ARM_CMD_data.lift_mode)
-    {
-    case LIFT_KEEP_MODE://停止
-			
-        if (last_lift_mode != LIFT_KEEP_MODE) // 如果是第一次进入该模式
-        {
-            temp_height = height; // 仅第一次更新
-        }
-        lift_height_control(temp_height);
-        break;
-        
-    case LIFT_SPEED_MODE://增量式到达某处
-        lift_speed_control(ARM_CMD_data.lift_speed);
-        break;
+//    //高度控制
+//    Height_Calculation();//计算当前高度
+//    switch (ARM_CMD_data.lift_mode)
+//    {
+//    case LIFT_KEEP_MODE://停止
+//			
+//        if (last_lift_mode != LIFT_KEEP_MODE) // 如果是第一次进入该模式
+//        {
+//            temp_height = height; // 仅第一次更新
+//        }
+//        lift_height_control(temp_height);
+//        break;
+//        
+//    case LIFT_SPEED_MODE://增量式到达某处
+//        lift_speed_control(ARM_CMD_data.lift_speed);
+//        break;
+//		
+//    case LIFT_HEIGHT_MODE://达到指定高度    
+//        lift_height_control(ARM_CMD_data.lift_height);
+//		    break;
+
+//    default:
+//        break;
+//    }
+//    last_lift_mode = ARM_CMD_data.lift_mode;
+
+
+    //执行目标速度 PID在cmd里面算
+		lift_speed_control(ARM_CMD_data.lift_speed);
 		
-    case LIFT_HEIGHT_MODE://达到指定高度    
-        lift_height_control(ARM_CMD_data.lift_height);
-		    break;
-
-    default:
-        break;
-    }
-    last_lift_mode = ARM_CMD_data.lift_mode;
-
 
 	
 	
@@ -224,13 +264,18 @@ void ARM_TASK(void)
 
     //需要做限幅 在发送消息时
 
+
+
+
+
+
     //roll轴控制
     Roll_Calculation();
     switch (ARM_CMD_data.roll_mode)
     {
     case ROLL_KEEP_MODE://停止
 
-        if (last_lift_mode != LIFT_KEEP_MODE) // 如果是第一次进入该模式
+        if (last_roll_mode != LIFT_KEEP_MODE) // 如果是第一次进入该模式
         {
             temp_roll = roll_real; // 这里的计算还需要好好改
         }
@@ -240,14 +285,31 @@ void ARM_TASK(void)
     case ROLL_ANGLE_MODE://增量式到达某处
         control_roll_angle(ARM_CMD_data.roll_angle);
         break;
+		case ROLL_OFF:
+		    break;
 
     default:
         break;
     }
     last_roll_mode = ARM_CMD_data.roll_mode;
     
+		
+		
+		
 
 
+}
+
+float speed;
+void TEST_TASK(void)
+{
+	recieve_all_data();//收取所有电机信息
+	
+	Height_Calculation();
+  lift_height_cmd(300,&speed);
+	
+//正常发送 不知有什么问题
+  normmally_speedPID(&speed);
 }
 
 
@@ -296,44 +358,97 @@ static void enable_allmotor(void)
 //检查是否失能 在5HZ任务中进行下去
 void offline_check(void)
 {
-    if(max_motor.start_flag==1)
-    enable_motor_mode( &hfdcan2, 1, MIT_MODE);//此处是txid
-    if(min_motor.start_flag==1)
-    enable_motor_mode( &hfdcan2, 2, POS_MODE);
-    if(finesse_motor.start_flag==1)
-    enable_motor_mode( &hfdcan3, 1, POS_MODE );
-    if(pitch_motor.start_flag==1)
-    enable_motor_mode( &hfdcan3, 2, POS_MODE);//除了最末端的2006
+//    if(max_motor.start_flag==1)
+//    enable_motor_mode( &hfdcan2, 1, MIT_MODE);//此处是txid
+//    if(min_motor.start_flag==1)
+//    enable_motor_mode( &hfdcan2, 2, POS_MODE);
+//    if(finesse_motor.start_flag==1)
+//    enable_motor_mode( &hfdcan3, 1, POS_MODE );
+//    if(pitch_motor.start_flag==1)
+//    enable_motor_mode( &hfdcan3, 2, POS_MODE);//除了最末端的2006
+	
+	
+	
+	
+	
+	
+	  if(max_motor.timeout_cnt >= 30)  // 1000ms没收到
+        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+
+    if(min_motor.timeout_cnt >= 30)
+        enable_motor_mode(&hfdcan2, 2, POS_MODE);
+
+    if(finesse_motor.timeout_cnt >= 30)
+        enable_motor_mode(&hfdcan3, 1, POS_MODE);
+
+    if(pitch_motor.timeout_cnt >= 30)
+        enable_motor_mode(&hfdcan3, 2, POS_MODE);
 
 }
 
-static void recieve_all_data(void)
-{
+//static void recieve_all_data(void)
+//{
     //接收电机数据
-    if(rec_id2==0x03){
-    max_motor.start_flag=0;
-    dm_fdkdata(&max_motor,rx_data2);
+//    if(rec_id2==0x03){
+//    max_motor.start_flag=0;//被激活
+//    dm_fdkdata(&max_motor,rx_data2);
+//    }
+//    if(rec_id2==0x04){
+//    min_motor.start_flag=0;
+//    dm_fdkdata(&min_motor,rx_data2);//这些事判断是否会使能的
+//    }
+
+//    if(rec_id2==0x201)
+//    M3508_fbkdata(&lift_motor,rx_data2);
+//    if(rec_id2==0x202)
+//    M2006_fbkdata(&trans,rx_data2);
+
+//    if(rec_id3==0x03){
+//    finesse_motor.start_flag=0;
+//    dm_fdkdata(&finesse_motor,rx_data3);
+//    }
+//    if(rec_id3==0x04){
+//    pitch_motor.start_flag=0;
+//    dm_fdkdata(&pitch_motor,rx_data3);
+//    }
+//    if(rec_id3==0x201)
+//    M2006_fbkdata(&roll,rx_data3);
+//}
+static void recieve_all_data(void) 
+{
+    // 接收 CAN2 数据
+    if(rec_id2 == 0x03) {
+        max_motor.timeout_cnt = 0;
+        dm_fdkdata(&max_motor, rx_data2);
     }
-    if(rec_id2==0x04){
-    min_motor.start_flag=0;
-    dm_fdkdata(&min_motor,rx_data2);//这些事判断是否会使能的
+    if(rec_id2 == 0x04) {
+        min_motor.timeout_cnt = 0;
+        dm_fdkdata(&min_motor, rx_data2);
+    }
+    if(rec_id2 == 0x201) {
+        
+        M3508_fbkdata(&lift_motor, rx_data2);
+    }
+    if(rec_id2 == 0x202) {
+        
+        M2006_fbkdata(&trans, rx_data2);
     }
 
-    if(rec_id2==0x201)
-    M3508_fbkdata(&lift_motor,rx_data2);
-    if(rec_id2==0x202)
-    M2006_fbkdata(&trans,rx_data2);
+    // 接收 CAN3 数据
+    if(rec_id3 == 0x03) {
+        finesse_motor.timeout_cnt = 0;
+        dm_fdkdata(&finesse_motor, rx_data3);
+    }
+    if(rec_id3 == 0x04) {
+        pitch_motor.timeout_cnt = 0;
+        dm_fdkdata(&pitch_motor, rx_data3);
+    }
+    if(rec_id3 == 0x201) {
+       
+        M2006_fbkdata(&roll, rx_data3);
+    }
 
-    if(rec_id3==0x03){
-    finesse_motor.start_flag=0;
-    dm_fdkdata(&finesse_motor,rx_data3);
-    }
-    if(rec_id3==0x04){
-    pitch_motor.start_flag=0;
-    dm_fdkdata(&pitch_motor,rx_data3);
-    }
-    if(rec_id3==0x201)
-    M2006_fbkdata(&roll,rx_data3);
+
 }
 
 static void get_arm_cmd(void)
@@ -348,7 +463,7 @@ static void get_arm_cmd(void)
 static void control_all_arm(double max_ref,double min_ref,double finesse_ref,double pitch_ref)
 {
     	
-	mit_ctrl(&hfdcan2,  1,  max_ref-0.2, 1 ,  30,  5,  0);//12 2.8
+	  mit_ctrl(&hfdcan2,  1,  max_ref-0.2, 1 ,  12,  2.8,  0);//30 5
     pos_speed_ctrl(&hfdcan2,  2,  min_ref, 4);//从min_arm开始
     pos_speed_ctrl(&hfdcan3,  1,  finesse_ref+0.1, 1.5);//finesse
     pos_speed_ctrl(&hfdcan3,  2,  pitch_ref, 3.5);//pitch
@@ -360,8 +475,8 @@ static void control_all_arm(double max_ref,double min_ref,double finesse_ref,dou
 static void control_roll_angle(double roll_ref)//这里是把目标值变换了 由于计算的是总圈数
 {
     //roll的双环pid
-	roll_angle_output=PID_calc(&roll_pid_angle,  roll_real,  roll_ref*ROLL_OFFSET); //这里改了很多 要注意
-    roll_speed_output=PID_calc(&roll_pid_speed,roll.para.vel_fbk,roll_angle_output);
+	  float roll_angle_output=PID_calc(&roll_pid_angle,  roll_real,  roll_ref); //这里改了很多 要注意
+    float roll_speed_output=PID_calc(&roll_pid_speed,roll.para.vel_fbk,roll_angle_output);
     splitAndStoreSignals(roll_speed_output,0,0,0,roll_send); 
     fdcanx_send_data(&hfdcan3,0x200,roll_send,8);//发送roll控制帧
 
@@ -380,30 +495,31 @@ static void trans_speed_control(double trans_speed_ref)
 
 }
 
-static void Height_Calculation(void)
+ void Height_Calculation(void)
 {
     height       = -(lift_motor.total_angle - 0)  ;//height是初始化后的
 }
 
 
 
+
 static void lift_height_control(double lift_height_ref)
 {
     // 计算升降角度的PID输出
-    double lift_height_output = -PID_calc(&pid_lift_height, height, lift_height_ref);   
+    double lift_height_output = PID_calc(&pid_lift_height, height, lift_height_ref);   
     // 计算升降速度的PID输出
-    double lift_speed_output = PID_calc(&lift_pid_speed, lift_motor.para.vel_fbk, lift_height_output);  
+    double lift_speed_output = PID_calc(&lift_pid_speed, lift_motor.para.vel_fbk, -lift_height_output);  
     
     // 分离并存储信号
     splitAndStoreSignals(lift_speed_output, trans_speed_output, 0, 0, lift_send);//顺便把传送带的也给发了
     fdcanx_send_data(&hfdcan2,0x200,lift_send,8);//发送roll控制帧
 }
 
-static void lift_speed_control(double lift_speed_ref)
+ void lift_speed_control(double lift_speed_ref)
 {
-   
+	
     // 计算升降速度的PID输出
-    double lift_speed_output = PID_calc(&lift_pid_speed, lift_motor.para.vel_fbk, lift_height_output);  
+	double lift_speed_output = PID_calc(&lift_pid_speed, lift_motor.para.vel_fbk, -lift_speed_ref);  //因为需要电机反转
     
     // 分离并存储信号
     splitAndStoreSignals(lift_speed_output, trans_speed_output, 0, 0, lift_send);//顺便把传送带的也给发了
@@ -413,7 +529,7 @@ static void lift_speed_control(double lift_speed_ref)
 
 static void Roll_Calculation(void)
 {
-    roll_real = (roll.total_angle - 0) ;
+    roll_real = (roll.total_angle - 0)/ROLL_OFFSET ;
 }
 
 static void roll_height_init(void)
@@ -431,4 +547,38 @@ void reset_roll_and_height(void)
 
 }
 
+void update_motor_timeout()
+{
+    if(max_motor.timeout_cnt < 255)
+        max_motor.timeout_cnt++;
+    if(min_motor.timeout_cnt < 255)
+        min_motor.timeout_cnt++;
+    if(finesse_motor.timeout_cnt < 255)
+        finesse_motor.timeout_cnt++;
+    if(pitch_motor.timeout_cnt < 255)
+        pitch_motor.timeout_cnt++;
+}
 
+
+//微调速度
+void lift_speed_control_delta(ARM_CMD_data_t *arm_cmd,double delta_speed)
+{
+	arm_cmd->lift_speed+=delta_speed;
+	
+}
+
+//高度控制的另外一种形式
+void lift_height_cmd(double height_ref,volatile float *ref_lift_speed)
+{
+	*ref_lift_speed=-PID_calc(&pid_lift_height,height,height_ref);
+}
+//正常发送 不知有什么问题
+void normmally_speedPID(volatile float *speed_output)
+{ 
+    // 计算升降速度的PID输出
+	  double lift_speed_output = PID_calc(&lift_pid_speed, lift_motor.para.vel_fbk, *speed_output);  //因为需要电机反转
+    
+    // 分离并存储信号
+    splitAndStoreSignals(lift_speed_output, trans_speed_output, 0, 0, lift_send);//顺便把传送带的也给发了
+    fdcanx_send_data(&hfdcan2,0x200,lift_send,8);//发送roll控制帧
+}

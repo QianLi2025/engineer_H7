@@ -3,7 +3,7 @@
 
 
 //图传接收
-uint8_t uart7_rx_buff[RE_RX_BUFFER_SIZE];
+uint8_t uart7_rx_buff[40];
 
 void Verify_CRC16_Check_Sum(uint8_t * pchMessage,uint32_t dwLength);
 void Append_CRC16_Check_Sum(uint8_t * pchMessage,uint32_t dwLength);

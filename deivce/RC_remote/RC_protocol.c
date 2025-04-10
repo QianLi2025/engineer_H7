@@ -19,6 +19,95 @@ uint16_t c_flag;
 uint16_t v_flag;
 uint16_t b_flag;
 RC_ctrl_t rc_ctrl;
+
+
+//自己定义键盘
+uint16_t v_press_count = 0;
+uint16_t ctrl_v_press_count = 0;
+uint16_t shift_v_press_count = 0;
+
+uint8_t v_flag_last;
+uint8_t ctrl_flag_last;
+uint8_t shift_flag_last;
+
+KeyCode_BUFF_t key_code_buff;//
+
+
+// 全局变量定义
+KeyComboCounter_t v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v键
+
+KeyComboCounter_t b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v键
+
+KeyComboCounter_t x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+
+KeyComboCounter_t z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+//是否被按下
+uint8_t is_key_pressed(uint16_t now, uint16_t last, KeyBit_t bit) {
+    return ((now >> bit) & 0x01) && !((last >> bit) & 0x01);
+}
+
+//是否保持
+
+uint8_t is_key_held(uint16_t now, KeyBit_t bit) {
+	
+    return (now >> bit) & 0x01;
+}
+
+void update_combo_counter(KeyCode_BUFF_t *status, KeyComboCounter_t *counter) {
+    if (
+        is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
+        !is_key_held(status->key_code, counter->shift_key) &&
+        !is_key_held(status->key_code, counter->ctrl_key)
+    ) {
+        counter->single_press_count++;
+			  counter->single_press_flag=1;
+    }
+		else{
+			counter->single_press_flag=0;//没有被单独按下
+		}
+		
+		if (
+        is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
+        is_key_held(status->key_code, counter->shift_key) &&
+        !is_key_held(status->key_code, counter->ctrl_key)
+    ) {
+        counter->shift_press_count++;
+		  	counter->shift_press_flag=1;
+    }
+		else{
+			counter->shift_press_flag=0;
+		}
+		
+		if (
+        is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
+        !is_key_held(status->key_code, counter->shift_key) &&
+        is_key_held(status->key_code, counter->ctrl_key)
+    ) {
+        counter->ctrl_press_count++;
+			counter->ctrl_press_flag=1;
+    }
+		else
+		{
+			counter->ctrl_press_flag=0;
+		}
+		
+		
+		
+		
+		
+		
+}
+
 #define RC_CH_VALUE_OFFSET ((uint16_t)1024)
 void Get_RC_ctrl_t(volatile uint8_t *rxBuf)
 {
@@ -100,5 +189,28 @@ void Get_RC_ctrl_t(volatile uint8_t *rxBuf)
     if (v_flag != 0)
         v_flag = 1;
     if (b_flag != 0)
-        b_flag = 1;
+        b_flag = 1;//这个才是滤除掩码的最终效果
+		
+		
+		
+		key_code_buff.key_code_last = key_code_buff.key_code;//更新上次的
+    key_code_buff.key_code = rc_ctrl.key.v;//这个是将当前值赋值
+
+    update_combo_counter(&key_code_buff, &v_counter);
+
+    update_combo_counter(&key_code_buff, &b_counter);
+		
+		 update_combo_counter(&key_code_buff, &g_counter);
+
+    update_combo_counter(&key_code_buff, &x_counter);
+		update_combo_counter(&key_code_buff, &c_counter);
+
+    update_combo_counter(&key_code_buff, &z_counter);
+ 
+		
+		update_combo_counter(&key_code_buff, &r_counter);
+		update_combo_counter(&key_code_buff, &f_counter);
+		
+		
 }
+//按键按下的时候是0

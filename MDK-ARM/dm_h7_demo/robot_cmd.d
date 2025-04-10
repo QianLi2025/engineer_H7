@@ -49,3 +49,15 @@ dm_h7_demo\robot_cmd.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\robot_cmd.o: ../deivce/RC_remote/struct_typedef.h
 dm_h7_demo\robot_cmd.o: ../algorithm/pid.h
 dm_h7_demo\robot_cmd.o: ../algorithm/kf_imu.h
+dm_h7_demo\robot_cmd.o: ..\deivce\minipc\minipc_protocol.h
+dm_h7_demo\robot_cmd.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\robot_cmd.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\robot_cmd.o: ../Bsp/bsp_dwt.h
+dm_h7_demo\robot_cmd.o: ..\application\arm.h
+dm_h7_demo\robot_cmd.o: ../Core/Inc/fdcan.h
+dm_h7_demo\robot_cmd.o: ../deivce/DamiaoMotors/DamiaoMotors.h
+dm_h7_demo\robot_cmd.o: ../Bsp/bsp_fdcan.h
+dm_h7_demo\robot_cmd.o: ../deivce/M2006/M2006motors.h
+dm_h7_demo\robot_cmd.o: ../deivce/M3508/M3508motors.h
+dm_h7_demo\robot_cmd.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\robot_cmd.o: ..\application\chassis.h

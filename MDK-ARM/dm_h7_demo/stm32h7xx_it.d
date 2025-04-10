@@ -49,3 +49,7 @@ dm_h7_demo\stm32h7xx_it.o: ../application/video.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/usart.h
 dm_h7_demo\stm32h7xx_it.o: ../application/robot_def.h
 dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_dwt.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/referee_system/referee.h
+dm_h7_demo\stm32h7xx_it.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\stm32h7xx_it.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/dma.h

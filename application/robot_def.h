@@ -14,6 +14,8 @@
 #define HEIGHT_MINIMUN 0
 #define REMOTE_CONTROL
 
+//#define TEST_MODE
+
 // 机器人底盘修改的参数,单位为mm(毫米)
 #define WHEEL_BASE 462                          // 纵向轴距(前进后退方向)
 #define TRACK_WIDTH 380                         // 横向轮距(左右平移方向)
@@ -140,10 +142,35 @@ typedef enum
 } video_angle_e;
 
 typedef enum
-{
-    GET=0,//取
+{   
+	  STOP=0,
+    GET,//取
     OUTPUT,//兑
 } trans_mode_e;
+
+typedef enum
+{
+    NEED=0,//要解算
+  	NONEED,//不解算
+} need_to_tranverse_e;//是否需要解算
+
+typedef enum
+{
+    CH_ENABLE=0,//使能
+	CH_DISABLE,//不使能
+} chassis_enable_e;//是否使能底盘
+
+
+
+typedef enum
+{
+    HANDLE=0,//手动模式
+	GET_SILVER,//自动取银矿  
+	AUTO_OUTPUT,//自动从矿仓取矿
+	AUTO_PUT,//自动放矿
+	
+	
+} auto_mode_e;//是否使能底盘
 
 typedef struct
 {
@@ -164,6 +191,13 @@ typedef struct
     download_mode_e download_mode; // 下载模式
     video_angle_e video_angle;     // 图传角度,理论上不应该在这，但没必要专门为了一个舵机开一个topic
     trans_mode_e trans_mode;     //传送带是否反转
+	
+	  need_to_tranverse_e if_tranverse;//是否解算
+	
+	  chassis_enable_e  chassis_enable;//底盘是否使能
+		
+		auto_mode_e auto_mode;//自动模式
+		
 	
 } ARM_CMD_data_t;
 #endif

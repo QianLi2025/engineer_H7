@@ -83,7 +83,7 @@ void CHASSIS_TASK(void)
         {
             initial_yaw = imu_data.yawTotal; // 记录初始偏航角
             first_enter_X = 0;
-			PID_clear(&straight_line_pid);
+			      PID_clear(&straight_line_pid);
         }
     
         // 计算当前偏航角相对初始偏航角的误差
@@ -104,7 +104,7 @@ void CHASSIS_TASK(void)
         {
             initial_yaw = imu_data.yawTotal; // 记录初始偏航角
             first_enter_Y = 0;
-			PID_clear(&straight_line_pid);
+		      	PID_clear(&straight_line_pid);
 
         }
     
@@ -119,10 +119,14 @@ void CHASSIS_TASK(void)
         first_enter_Y = 1; // 退出模式时重置标志，确保下次进入时重新记录yaw角度
     }
 		
+		if(Chassis_CMD_data.Chassis_straight_mode ==  STRAIGHT_Y_ON)
+		{}//不进行操作
+		
 
-    slow_start();
+//    slow_start();
 
-    Magnum_calculate(target_vx,target_vy,vw,1);//最终结果的解算
+//    Magnum_calculate(target_vx,target_vy,vw,1);//最终结果的解算
+			Magnum_calculate(vx,vy,vw,1);//最终结果的解算
 		
 		
     send_wheel_can_data();
@@ -177,7 +181,7 @@ static void slow_start(void)
 	{target_vx=vx;}
 	else if(vx>150)
 	{
-		target_vx=target_vx+0.1;
+		target_vx=target_vx+0.1f;
 	}
 	else if
 	(vx>=-150&&vx<-5)
@@ -186,7 +190,7 @@ static void slow_start(void)
 	}
 	else if(vx<-150)
 	{
-		target_vx=target_vx-0.1;
+		target_vx=target_vx-0.1f;
 	}
 	else
 	{
@@ -206,7 +210,7 @@ static void slow_start(void)
 	{target_vy=vy;}
 	else if(vy>150)
 	{
-		target_vy=target_vy+0.1;
+		target_vy=target_vy+0.1f;
 	}
 	else if
 	(vy>=-150&&vy<-5)
@@ -215,7 +219,7 @@ static void slow_start(void)
 	}
 	else if(vy<-150)
 	{
-		target_vy=target_vy-0.1;
+		target_vy=target_vy-0.1f;
 	}
 	else
 	{
@@ -232,3 +236,4 @@ static void slow_start(void)
 		
 
 }
+

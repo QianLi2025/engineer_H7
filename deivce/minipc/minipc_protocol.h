@@ -6,6 +6,21 @@
 #include "CRC8_CRC16.h"
 #include "bsp_dwt.h"
 
+typedef enum
+{
+	
+	FOR_BACK=0,
+	LEFT_RIGHT,
+	
+}chassis_direct_e;
+
+typedef enum
+{
+	ANGLE=0,
+	SPEED,
+	KEEP,
+}Ctrl_mode_e;//增量式还是绝对式
+
 typedef struct
 {
     uint8_t mcu2minipc_buf[100];
@@ -14,29 +29,35 @@ typedef struct
     __packed struct
     {
         uint8_t header; // = 0x5A;
-        uint8_t is_rune;
-        uint8_t detect_color; // 5-red
-        uint8_t is_reset;
-        float roll;  // r:
-        float yaw;   // rad
-        float pitch; //
-        float v0;
-        float motor_speed;
+        float max_realangle;  // r:
+        float min_realangle;   // rad
+			  float finesse_realangle;   // rad
+        float pitch_realangle; //
+        float roll_realangle;
+        float z_realheight;
         uint16_t checksum; // = 0; // c!
     } mcu2minipc;
     __packed struct
     {
         uint8_t header; // = 0xA5;
-        uint8_t is_tracking;
-        uint8_t is_can_hit;
-        float yaw;
-        float pitch;
-        float distance;
+        float max_angle_ctrl;
+        float min_angle_ctrl;
+        float finesse_angle_ctrl;
+        float pitch_angle_ctrl;
+			Ctrl_mode_e roll_mode;//0为绝对 1为增量 2为保持
+			  float roll_angle_ctrl;
+			  Ctrl_mode_e z_mode;//0为绝对 1为增量
+			  float z_ctrl;
+			  chassis_direct_e chassis_direction;//底盘方向 0为前后 1为左右
+			  int chassis_ctrl;
         uint16_t checksum; // = 0;
     } minipc2mcu;
     uint32_t minipc_count;      //用于记时
     uint8_t rx_pack_state[100]; //记录当前及100个数据包中的接收状态，0什么都不表示，1表示接收正常，2表示丢包
 } minipc_t;
+
+
+extern minipc_t minipc;//小电脑结构体
 
 void minipc_rec(minipc_t *pc, uint8_t pc_data_buf[]);
 void minipc_upgrade(minipc_t *pc);

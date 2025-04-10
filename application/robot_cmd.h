@@ -7,7 +7,15 @@
 #include "pid.h"
 #include "kf_imu.h"
 #include "usart.h"
-
+#include "minipc_protocol.h"
+#include "arm.h"
+#include "scara_kinematics.h"
+#include "chassis.h"
+#include "bsp_fdcan.h"
+//#include "arm_math.h"
+extern uint8_t rx_data2[8];
+extern uint16_t rec_id2;
+#define PI               3.14159265358979f
 void ROBOT_CMD_INIT(void);
 
 void ROBOT_CMD_TASK(void);

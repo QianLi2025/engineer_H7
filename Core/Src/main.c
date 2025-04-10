@@ -41,7 +41,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+float target_lift_speed1=0;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -144,15 +144,21 @@ int main(void)
  
     if(time_count%100==0)//10hz任务
     {
-      set_all_start_flag();//未使能
+//      set_all_start_flag();//未使能
+			update_motor_timeout();
 
     }
 		
-
+#ifndef TEST_MODE
     ROBOT_CMD_TASK();
     CHASSIS_TASK();
 		ARM_TASK();
-
+#endif
+		
+		#ifdef TEST_MODE
+		TEST_TASK();
+		#endif
+		
     if(time_count%10==0)//100hz任务
     {
 
@@ -170,7 +176,7 @@ int main(void)
     DWT_Delay(wasteT);
 
     time_count++;//1000hz自增
-
+   
 
     
 

@@ -4,6 +4,15 @@
 #define RED_ENGINEER 2
 #define RED_INFANTRY
 
+//电管数据
+referee_t dianguan_cmd;
+
+//图传数据
+referee_t video_cmd;
+
+//自定义控制器
+custom_cmd_t custom_cmd;
+
 __attribute__((at(0x2400CCC6 + 2600))) uint8_t uart1_dma_tx_buf[200] = {0};
 static interaction_figure_t figs[100] = {0}; //静态存储100个图形
 static uint8_t figs_state[100] = {0};        // 1表示占用，0表示未被占用
@@ -172,3 +181,12 @@ void referee_fbkdata(referee_t *rf, uint8_t buf[])
 }
 
 
+
+
+//自定义控制器解码
+//void custom_decode(uint8_t *buff)
+//{
+//	   memcpy(&video_cmd.custom_robot_data, (buff + 7), 30);//先把缓冲区的东西赋值
+
+//     memcpy(&custom_cmd, &video_cmd.custom_robot_data, 18);//解码
+//}
