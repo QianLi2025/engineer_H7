@@ -71,10 +71,28 @@ void CHASSIS_TASK(void)
     M3508_fbkdata(&motor_rf,rx_data1);
     if(rec_id1==motor_rb.id)
     M3508_fbkdata(&motor_rb,rx_data1);
+		
+		
+		
 
     vx=Chassis_CMD_data.vx;
     vy=Chassis_CMD_data.vy;
     vw=Chassis_CMD_data.vw;
+		
+		
+		if((fabs(vw)<5)&&(vx==0||vy==0))//无自旋且是单向平移（有一个方向的是0）
+		{
+			if(vy==0&&vx!=0)Chassis_CMD_data.Chassis_straight_mode =  STRAIGHT_X_ON;
+			if(vx==0&&vy!=0)Chassis_CMD_data.Chassis_straight_mode =  STRAIGHT_Y_ON;
+			if(vy==0&&vx==0)Chassis_CMD_data.Chassis_straight_mode =  STRAIGHT_OFF;
+			
+		}
+		else//有自旋或多向平移
+		{
+			Chassis_CMD_data.Chassis_straight_mode =  STRAIGHT_OFF;
+		}
+			
+		
 
     if(Chassis_CMD_data.Chassis_straight_mode == STRAIGHT_X_ON)
     {

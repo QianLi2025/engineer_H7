@@ -744,12 +744,21 @@ sucker_switch_cmd_e;//自定义控制器吸盘的控制
 
 typedef enum
 {
-	KEEP=0,//保持
+	LIFT_KEEP=0,//保持
 	DOWN,
 		UP,
 	
 }
 lift_cmd_e;//自定义控制器抬升的控制
+
+typedef enum
+{
+	STOP_ROLL=0,//保持
+	ZHENG,
+		FAN,
+	
+}
+roll_cmd_e;//自定义控制器抬升的控制
 
 /********************************************************/
 //自定义控制器数据
@@ -759,6 +768,7 @@ typedef struct
     float minimal_arm_target; // 小臂的目标值
     float finesse_target;     // 手腕的目标值
     float pitch_arm_target;   // pitch的目标值
+	  roll_cmd_e roll_cmd_direction; //roll目标值
 	  sucker_switch_cmd_e sucker_cmd;//吸盘
 	  lift_cmd_e lift_cmd;//z轴
 	  

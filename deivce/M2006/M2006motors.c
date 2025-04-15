@@ -3,7 +3,7 @@
 //定义2006电机转子的转矩常数 (0.18*1/36) N*m/A
 const double M2006_ROTOR_TORQUE_CONSTANT = 0.18 * 1 / 36;
 
-void M2006_fbkdata(M2006motor_t *M2006_motor, unsigned char data[])
+	void M2006_fbkdata(M2006motor_t *M2006_motor, unsigned char data[])
 {
     M2006_motor->para.pos_fbk = ((((short)data[0]) << 8) + data[1]) * (360.0 / 8191) * (3.1415926 / 180) - 3.1415926;                //->degree->rad
     M2006_motor->para.vel_fbk = (double)((short)((((short)data[2]) << 8) + data[3])) * (2 * 3.1415926) / 60;                         // rpm->rad/s

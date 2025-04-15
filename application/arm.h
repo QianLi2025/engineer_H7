@@ -42,10 +42,16 @@ void lift_height_cmd(double height_ref,volatile float *target_lift_speed);
 
  void lift_speed_control(double lift_speed_ref);
 void Height_Calculation(void);
-
+extern uint16_t rec_id1;
+extern uint8_t rx_data1[8];
 //测试任务
 void TEST_TASK(void);
 #define ROLL_OFFSET 35.07f//变速比
+extern M2006motor_t roll;//抬升用的3508
+extern float temp_roll;  // 保留变量值在每次进入此模式期间
 
+extern M3508motor_t lift_motor;//抬升用的3508
+
+void recieve_all_data(void);
 #endif // ARM_H
 

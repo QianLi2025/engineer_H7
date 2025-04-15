@@ -37,6 +37,7 @@
 #include "robot_cmd.h"
 #include "robot_def.h"
 #include "video.h"
+#include "sucker.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,6 +117,7 @@ int main(void)
   MX_UART5_Init();
   MX_USB_DEVICE_Init();
   MX_UART7_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 
   DWT_Init(480);
@@ -129,6 +131,9 @@ int main(void)
   CHASSIS_INIT();
   ARM_INIT();
 	VIDEO_INIT();
+//	SUCKER_INIT();
+	
+	
   
   /* USER CODE END 2 */
 
@@ -136,6 +141,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		recieve_all_data();
     // 1000HZ循环
     DWT_GetDeltaT(&task_count);
 		/*tasks begin*/
@@ -144,29 +150,56 @@ int main(void)
  
     if(time_count%100==0)//10hz任务
     {
-//      set_all_start_flag();//未使能
+//      set_all_start_flag();//未使�?
 			update_motor_timeout();
 
     }
 		
+		if(time_count%6==0)//100hz任务
+    {
+     ROBOT_CMD_TASK();
+    }
+		
 #ifndef TEST_MODE
-    ROBOT_CMD_TASK();
+	
+    
     CHASSIS_TASK();
 		ARM_TASK();
+		VIDEO_TASK();
+//		SUCKER_TASK();
+		
 #endif
 		
 		#ifdef TEST_MODE
 		TEST_TASK();
 		#endif
 		
+
     if(time_count%10==0)//100hz任务
     {
+			if(shift_flag&&f_flag)
+			{
+        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+        enable_motor_mode(&hfdcan2, 2, POS_MODE);
+        enable_motor_mode(&hfdcan3, 1, POS_MODE);
+        enable_motor_mode(&hfdcan3, 2, POS_MODE);
+			}
 
     }
 
     if(time_count%200==0)//5hz任务
     {
-//      offline_check();//离线检测
+//      offline_check();//离线�?�?
+    }
+		
+		 if(time_count%1000==0)//1hz任务
+    {
+//      offline_check();//离线�?�?
+//		
+//        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+//        enable_motor_mode(&hfdcan2, 2, POS_MODE);
+//        enable_motor_mode(&hfdcan3, 1, POS_MODE);
+//        enable_motor_mode(&hfdcan3, 2, POS_MODE);
     }
 
 

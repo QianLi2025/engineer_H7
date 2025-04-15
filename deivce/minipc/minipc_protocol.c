@@ -2,7 +2,9 @@
 
 minipc_t minipc;//小电脑结构体
 
+uint8_t size;
 
+uint8_t buff_test[50];
 //在接收数据的回调中使用，接收数据到缓冲区，并清空no_data_time
 void minipc_rec(minipc_t *pc, uint8_t pc_data_buf[])
 {
@@ -10,6 +12,8 @@ void minipc_rec(minipc_t *pc, uint8_t pc_data_buf[])
     for (int i = 0; i < 99; i++)
         pc->rx_pack_state[99 - i] = pc->rx_pack_state[98 - i];
     // crc校验
+	  size=sizeof(pc->minipc2mcu);
+	  memcpy(buff_test, (const void *)pc_data_buf,sizeof(pc->minipc2mcu));
     if (Verify_CRC16_Check_Sum(pc_data_buf, sizeof(pc->minipc2mcu)))
     {
         pc->rx_pack_state[0] = 1;

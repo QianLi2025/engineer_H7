@@ -22,12 +22,33 @@ Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
 D:\the_five\RMcontrol\dmH7demo\MDK-ARM\dm_h7_demo.uvprojx
-Project File Date:  04/09/2025
+Project File Date:  04/14/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'dm_h7_demo'
-"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 0 Warning(s).
+compiling robot_cmd.c...
+..\application\robot_cmd.c(281): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	if(max_motor.para.pos>1.42&&(target_angle1>temp_angle1))
+..\application\robot_cmd.c(290): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		if(finesse_motor.para.pos>1.71&&(target_angle3>temp_angle3))
+..\application\robot_cmd.c(275): warning:  #550-D: variable "temp_angle2"  was set but never used
+  	static float temp_angle2;
+..\application\robot_cmd.c(1213): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+          target_angle4               = -PI / 2 - 0.08;
+..\application\robot_cmd.c(1503): warning:  #1-D: last line of file ends without a newline
+  //如果在算法库中直接return后就可以跳过错误的值而不执行
+..\application\robot_cmd.c(2): warning:  #177-D: variable "debug_count"  was declared but never referenced
+  static unsigned int debug_count = 0;
+..\application\robot_cmd.c(375): warning:  #177-D: function "VisionContorl"  was declared but never referenced
+  static void VisionContorl(void)
+..\application\robot_cmd.c(386): warning:  #177-D: function "VideoControlSet"  was declared but never referenced
+  static void VideoControlSet(void)
+..\application\robot_cmd.c: 8 warnings, 0 errors
+linking...
+Program Size: Code=85886 RO-data=2570 RW-data=2300 ZI-data=72292  
+FromELF: creating hex file...
+"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +71,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

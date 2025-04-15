@@ -439,11 +439,12 @@ void UART7_IRQHandler(void)
 
   /* USER CODE END UART7_IRQn 0 */
   HAL_UART_IRQHandler(&huart7);
-	referee_fbkdata(&video_cmd,uart7_rx_buff);
-	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 18);//专门针对自定义控制器解码
+  /* USER CODE BEGIN UART7_IRQn 1 */
+		referee_fbkdata(&video_cmd,uart7_rx_buff);
+	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
 	
 	HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
-  /* USER CODE BEGIN UART7_IRQn 1 */
+	
 
   /* USER CODE END UART7_IRQn 1 */
 }

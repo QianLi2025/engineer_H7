@@ -6,7 +6,7 @@
 #include "CRC8_CRC16.h"
 #include "bsp_dwt.h"
 
-typedef enum
+typedef enum __attribute__((packed))
 {
 	
 	FOR_BACK=0,
@@ -14,7 +14,7 @@ typedef enum
 	
 }chassis_direct_e;
 
-typedef enum
+typedef enum __attribute__((packed))
 {
 	ANGLE=0,
 	SPEED,
@@ -44,12 +44,12 @@ typedef struct
         float min_angle_ctrl;
         float finesse_angle_ctrl;
         float pitch_angle_ctrl;
-			Ctrl_mode_e roll_mode;//0为绝对 1为增量 2为保持
+			  Ctrl_mode_e roll_mode;//0为绝对 1为增量 2为保持
 			  float roll_angle_ctrl;
 			  Ctrl_mode_e z_mode;//0为绝对 1为增量
 			  float z_ctrl;
 			  chassis_direct_e chassis_direction;//底盘方向 0为前后 1为左右
-			  int chassis_ctrl;
+			  uint8_t chassis_ctrl;
         uint16_t checksum; // = 0;
     } minipc2mcu;
     uint32_t minipc_count;      //用于记时

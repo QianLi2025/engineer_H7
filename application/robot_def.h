@@ -30,15 +30,15 @@
 #define SPEED_DOWN_RATE 300                     // 速度缩小倍率,用于调节速度大小
 
 #define MAXARM_MIN    -0.24f
-#define MAXARM_MAX    1.74f
+#define MAXARM_MAX    1.2f
 #define MINARM_MIN    -2.45f
 #define MINARM_MAX    2.4f
 #define FINE_MIN      -1.16f // -1.16
 #define FINE_MAX      1.72f
 #define FINE_MIN2     -2.16f
 #define FINE_MAX2     1.96f
-#define PITCH_MIN     -1.81f
-#define PITCH_MAX     1.50f
+#define PITCH_MIN     -2.00f
+#define PITCH_MAX     1.00f
 #define HEIGHT_MIN    -550.f
 #define HEIGHT_MAX    560.f // 50
 #define ROLL_MIN      -180.f

@@ -68,7 +68,9 @@ dm_h7_demo\main.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\main.o: ../deivce/RC_remote/struct_typedef.h
 dm_h7_demo\main.o: ../application/chassis.h
 dm_h7_demo\main.o: ../application/robot_cmd.h
-dm_h7_demo\main.o: ..\deivce\minipc\minipc_protocol.h
+dm_h7_demo\main.o: ../deivce/minipc/minipc_protocol.h
 dm_h7_demo\main.o: ../algorithm/CRC8_CRC16.h
 dm_h7_demo\main.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\main.o: ../deivce/referee_system/referee.h
 dm_h7_demo\main.o: ../application/video.h
+dm_h7_demo\main.o: ../application/sucker.h
