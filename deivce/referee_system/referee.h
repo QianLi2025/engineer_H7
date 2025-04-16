@@ -14,6 +14,7 @@
 #include "string.h"
 #include "usart.h"
 #include "dma.h"
+#include "robot_def.h"
 
 typedef enum
 {
@@ -786,5 +787,46 @@ extern referee_t video_cmd;
 extern custom_cmd_t custom_cmd;
 
 void referee_fbkdata(referee_t *rf, uint8_t buf[]);
+
+
+
+
+
+extern uint16_t rf_w_flag;
+extern uint16_t rf_s_flag;
+extern uint16_t rf_a_flag;
+extern uint16_t rf_d_flag;
+extern uint16_t rf_q_flag;
+extern uint16_t rf_e_flag;
+extern uint16_t rf_shift_flag;
+extern uint16_t rf_ctrl_flag;
+extern uint8_t rf_press_left;
+extern uint8_t rf_press_right;
+extern uint16_t rf_r_flag;
+extern uint16_t rf_f_flag;
+extern uint16_t rf_g_flag;
+extern uint16_t rf_z_flag;
+extern uint16_t rf_x_flag;
+extern uint16_t rf_c_flag;
+extern uint16_t rf_v_flag;
+extern uint16_t rf_b_flag;
+
+//图传遥控解码
+void referee_rc_decode(referee_t *rf);
+
+
+
+extern KeyComboCounter_t rf_v_counter ;
+
+extern KeyComboCounter_t rf_b_counter;
+extern KeyComboCounter_t rf_g_counter ;
+
+extern KeyComboCounter_t rf_x_counter ;
+
+extern KeyComboCounter_t rf_z_counter;                    
+
+extern KeyComboCounter_t rf_c_counter ; 
+extern KeyComboCounter_t rf_r_counter ;
+extern KeyComboCounter_t rf_f_counter ;
 
 #endif

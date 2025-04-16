@@ -118,6 +118,7 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_UART7_Init();
   MX_TIM1_Init();
+  MX_USART10_UART_Init();
   /* USER CODE BEGIN 2 */
 
   DWT_Init(480);

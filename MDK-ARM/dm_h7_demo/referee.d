@@ -48,3 +48,4 @@ dm_h7_demo\referee.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h
 dm_h7_demo\referee.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h
 dm_h7_demo\referee.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
 dm_h7_demo\referee.o: ../Core/Inc/dma.h
+dm_h7_demo\referee.o: ../application/robot_def.h

@@ -181,6 +181,192 @@ void referee_fbkdata(referee_t *rf, uint8_t buf[])
 }
 
 
+uint16_t rf_w_flag;
+uint16_t rf_s_flag;
+uint16_t rf_a_flag;
+uint16_t rf_d_flag;
+uint16_t rf_q_flag;
+uint16_t rf_e_flag;
+uint16_t rf_shift_flag;
+uint16_t rf_ctrl_flag;
+
+uint16_t rf_r_flag;
+uint16_t rf_f_flag;
+uint16_t rf_g_flag;
+uint16_t rf_z_flag;
+uint16_t rf_x_flag;
+uint16_t rf_c_flag;
+uint16_t rf_v_flag;
+uint16_t rf_b_flag;
+
+
+	
+
+ KeyComboCounter_t rf_v_counter ;
+
+ KeyComboCounter_t rf_b_counter;
+ KeyComboCounter_t rf_g_counter ;
+
+ KeyComboCounter_t rf_x_counter ;
+
+ KeyComboCounter_t rf_z_counter;                    
+
+ KeyComboCounter_t rf_c_counter ; 
+ KeyComboCounter_t rf_r_counter ;
+ KeyComboCounter_t rf_f_counter ;
+ 
+ 
+ KeyCode_BUFF_t rf_key_code_buff;//
+
+
+
+// 全局变量定义
+KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v键
+
+KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v键
+
+KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+
+KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b键
+
+
+
+//是否被按下
+static uint8_t is_key_pressed(uint16_t now, uint16_t last, KeyBit_t bit) {
+    return ((now >> bit) & 0x01) && !((last >> bit) & 0x01);
+}
+
+//是否保持
+
+static uint8_t is_key_held(uint16_t now, KeyBit_t bit) {
+	
+    return (now >> bit) & 0x01;
+}
+
+static void update_combo_counter(KeyCode_BUFF_t *status, KeyComboCounter_t *counter) {
+    if (
+        is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
+        !is_key_held(status->key_code, counter->shift_key) &&
+        !is_key_held(status->key_code, counter->ctrl_key)
+    ) {
+        counter->single_press_count++;
+			  counter->single_press_flag=1;
+    }
+		else{
+			counter->single_press_flag=0;//没有被单独按下
+		}
+		
+		if (
+        is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
+        is_key_held(status->key_code, counter->shift_key) &&
+        !is_key_held(status->key_code, counter->ctrl_key)
+    ) {
+        counter->shift_press_count++;
+		  	counter->shift_press_flag=1;
+    }
+		else{
+			counter->shift_press_flag=0;
+		}
+		
+		if (
+        is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
+        !is_key_held(status->key_code, counter->shift_key) &&
+        is_key_held(status->key_code, counter->ctrl_key)
+    ) {
+        counter->ctrl_press_count++;
+			counter->ctrl_press_flag=1;
+    }
+		else
+		{
+			counter->ctrl_press_flag=0;
+		}
+
+		
+}
+
+	
+//在图传的串口中断中使用
+void referee_rc_decode(referee_t *rf)
+{
+    uint8_t low_bit = (rf->remote_control.keyboard_value) & 0xFF;
+	
+    rf_w_flag     = (low_bit & 0x01);
+    rf_s_flag     = (low_bit & 0x02);
+    rf_a_flag     = (low_bit & 0x04);
+    rf_d_flag     = (low_bit & 0x08);
+    rf_q_flag     = (low_bit & 0x40);
+    rf_e_flag     = (low_bit & 0x80);
+    rf_shift_flag = (low_bit & 0x10);
+    rf_ctrl_flag  = (low_bit & 0x20);
+
+    rf_r_flag = rf->remote_control.keyboard_value & (0x01 << 8);
+    rf_f_flag = rf->remote_control.keyboard_value & (0x02 << 8);
+    rf_g_flag = rf->remote_control.keyboard_value & (0x04 << 8);
+    rf_z_flag = rf->remote_control.keyboard_value & (0x08 << 8);
+    rf_x_flag = rf->remote_control.keyboard_value & (0x10 << 8);
+    rf_c_flag = rf->remote_control.keyboard_value & (0x20 << 8);
+    rf_v_flag = rf->remote_control.keyboard_value & (0x40 << 8);
+    rf_b_flag = rf->remote_control.keyboard_value & (0x80 << 8);
+	
+	  if (rf_w_flag != 0)
+        rf_w_flag = 1;
+    if (rf_s_flag != 0)
+        rf_s_flag = 1;
+    if (rf_a_flag != 0)
+        rf_a_flag = 1;
+    if (rf_d_flag != 0)
+        rf_d_flag = 1;
+    if (rf_q_flag != 0)
+        rf_q_flag = 1;
+    if (rf_e_flag != 0)
+        rf_e_flag = 1;
+    if (rf_shift_flag != 0)
+        rf_shift_flag = 1;
+    if (rf_ctrl_flag != 0)
+        rf_ctrl_flag = 1;
+
+    if (rf_r_flag != 0)
+        rf_r_flag = 1;
+    if (rf_f_flag != 0)
+        rf_f_flag = 1;
+    if (rf_g_flag != 0)
+        rf_g_flag = 1;
+    if (rf_z_flag != 0)
+        rf_z_flag = 1;
+    if (rf_x_flag != 0)
+        rf_x_flag = 1;
+    if (rf_c_flag != 0)
+        rf_c_flag = 1;
+    if (rf_v_flag != 0)
+        rf_v_flag = 1;
+    if (rf_b_flag != 0)
+        rf_b_flag = 1;
+
+	
+		rf_key_code_buff.key_code_last = rf_key_code_buff.key_code;//更新上次的
+
+		rf_key_code_buff.key_code = video_cmd.remote_control.keyboard_value;
+
+	  update_combo_counter(&rf_key_code_buff, &rf_v_counter);
+    update_combo_counter(&rf_key_code_buff, &rf_b_counter);	
+		update_combo_counter(&rf_key_code_buff, &rf_g_counter);
+    update_combo_counter(&rf_key_code_buff, &rf_x_counter);
+		update_combo_counter(&rf_key_code_buff, &rf_c_counter);
+    update_combo_counter(&rf_key_code_buff, &rf_z_counter);
+		update_combo_counter(&rf_key_code_buff, &rf_r_counter);
+		update_combo_counter(&rf_key_code_buff, &rf_f_counter);
+
+	
+}
 
 
 //自定义控制器解码

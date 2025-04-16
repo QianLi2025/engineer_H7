@@ -138,10 +138,13 @@ void ROBOT_CMD_INIT(void)
     HAL_UARTEx_ReceiveToIdle_IT(&huart5,uart5_rx_buff, sizeof(uart5_rx_buff));
 }
 
+//使用图传链路还是遥控呢
+void	remote_cmd_choose(void);
 
 //roll和loft直接由此控制
 void ROBOT_CMD_TASK(void)
 {
+	remote_cmd_choose();
 	
 	//0点设置
 	if(ctrl_flag&&g_flag)
@@ -1494,10 +1497,42 @@ void limit_all_angle_lift(void)//设置限幅
 		
     VAL_LIMIT(target_angle4, PITCH_MIN, PITCH_MAX);
 		
-		if(target_lift_speed>10&&height>=650)
+		if(target_lift_speed>10&&height>=600)
 		{target_lift_speed=-10;}
 //		if(target_lift_speed<-10&&height<=20)//高度限幅 这个没必要
 //		{target_lift_speed=10;}
 		
+}
+
+void	remote_cmd_choose(void)
+{
+
+	 w_flag = (w_flag || rf_w_flag);
+   s_flag = (s_flag || rf_s_flag);
+   a_flag = (a_flag || rf_a_flag);
+   d_flag = (d_flag || rf_d_flag);
+   q_flag = (q_flag || rf_q_flag);
+   e_flag = (e_flag || rf_e_flag);
+   shift_flag = (shift_flag || rf_shift_flag);
+   ctrl_flag  = (ctrl_flag  || rf_ctrl_flag);
+
+   r_flag = (r_flag || rf_r_flag);
+   f_flag = (f_flag || rf_f_flag);
+   g_flag = (g_flag || rf_g_flag);
+   z_flag = (z_flag || rf_z_flag);
+   x_flag = (x_flag || rf_x_flag);
+   c_flag = (c_flag || rf_c_flag);
+   v_flag = (v_flag || rf_v_flag);
+   b_flag = (b_flag || rf_b_flag);
+	 if(!rc_ctrl.rc.s[1]||rc_ctrl.rc.s[0])//收不到数据
+	{
+		//鼠标
+		press_left =  video_cmd.remote_control.left_button_down;
+    press_right = video_cmd.remote_control.right_button_down;
+
+		rc_ctrl.mouse.x = video_cmd.remote_control.mouse_x;                             //!< Mouse X axis
+    rc_ctrl.mouse.y = video_cmd.remote_control.mouse_y;                             //!< Mouse Y axis
+    rc_ctrl.mouse.z = video_cmd.remote_control.mouse_z;                             //!< Mouse Z axis
+	}
 }
 //如果在算法库中直接return后就可以跳过错误的值而不执行

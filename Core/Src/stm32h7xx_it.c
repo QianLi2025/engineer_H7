@@ -34,6 +34,9 @@
 extern uint8_t uart5_rx_buff[REMOTE_BUFF_SIZE];
 extern uint8_t uart7_rx_buff[RE_RX_BUFFER_SIZE];
 
+extern uint8_t uart10_rx_buff[RE_RX_BUFFER_SIZE];
+
+
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -76,6 +79,7 @@ extern UART_HandleTypeDef huart5;
 extern UART_HandleTypeDef huart7;
 extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
+extern UART_HandleTypeDef huart10;
 /* USER CODE BEGIN EV */
 extern uint8_t rc_buf[100];
 /* USER CODE END EV */
@@ -440,13 +444,33 @@ void UART7_IRQHandler(void)
   /* USER CODE END UART7_IRQn 0 */
   HAL_UART_IRQHandler(&huart7);
   /* USER CODE BEGIN UART7_IRQn 1 */
-		referee_fbkdata(&video_cmd,uart7_rx_buff);
+	referee_fbkdata(&video_cmd,uart7_rx_buff);
+	referee_rc_decode(&video_cmd);//图传遥控
 	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
 	
 	HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
 	
 
   /* USER CODE END UART7_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART10 global interrupt.
+  */
+void USART10_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART10_IRQn 0 */
+
+  /* USER CODE END USART10_IRQn 0 */
+  HAL_UART_IRQHandler(&huart10);
+  /* USER CODE BEGIN USART10_IRQn 1 */
+	
+	referee_fbkdata(&dianguan_cmd,uart10_rx_buff);
+	 
+	
+	HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
+
+  /* USER CODE END USART10_IRQn 1 */
 }
 
 /**

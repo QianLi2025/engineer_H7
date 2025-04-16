@@ -58,12 +58,12 @@ uint8_t is_key_pressed(uint16_t now, uint16_t last, KeyBit_t bit) {
 
 //是否保持
 
-uint8_t is_key_held(uint16_t now, KeyBit_t bit) {
+static uint8_t is_key_held(uint16_t now, KeyBit_t bit) {
 	
     return (now >> bit) & 0x01;
 }
 
-void update_combo_counter(KeyCode_BUFF_t *status, KeyComboCounter_t *counter) {
+static void update_combo_counter(KeyCode_BUFF_t *status, KeyComboCounter_t *counter) {
     if (
         is_key_pressed(status->key_code, status->key_code_last, counter->primary) &&
         !is_key_held(status->key_code, counter->shift_key) &&
@@ -100,11 +100,7 @@ void update_combo_counter(KeyCode_BUFF_t *status, KeyComboCounter_t *counter) {
 		{
 			counter->ctrl_press_flag=0;
 		}
-		
-		
-		
-		
-		
+
 		
 }
 
@@ -146,8 +142,11 @@ void Get_RC_ctrl_t(volatile uint8_t *rxBuf)
     e_flag = (rxBuf[14] & 0x80);
     shift_flag = (rxBuf[14] & 0x10);
     ctrl_flag = (rxBuf[14] & 0x20);
+		
     press_left = rc_ctrl.mouse.press_l;
     press_right = rc_ctrl.mouse.press_r;
+		
+		
     r_flag = rc_ctrl.key.v & (0x00 | 0x01 << 8);
     f_flag = rc_ctrl.key.v & (0x00 | 0x02 << 8);
     g_flag = rc_ctrl.key.v & (0x00 | 0x04 << 8);
@@ -156,6 +155,8 @@ void Get_RC_ctrl_t(volatile uint8_t *rxBuf)
     c_flag = rc_ctrl.key.v & (0x00 | 0x20 << 8);
     v_flag = rc_ctrl.key.v & (0x00 | 0x40 << 8);
     b_flag = rc_ctrl.key.v & (0x00 | 0x80 << 8);
+		
+		
     if (w_flag != 0)
         w_flag = 1;
     if (s_flag != 0)
@@ -191,16 +192,18 @@ void Get_RC_ctrl_t(volatile uint8_t *rxBuf)
     if (b_flag != 0)
         b_flag = 1;//这个才是滤除掩码的最终效果
 		
-		
-		
+
 		key_code_buff.key_code_last = key_code_buff.key_code;//更新上次的
-    key_code_buff.key_code = rc_ctrl.key.v;//这个是将当前值赋值
+
+		key_code_buff.key_code = rc_ctrl.key.v;//使用遥控器键鼠
+		
+	
 
     update_combo_counter(&key_code_buff, &v_counter);
 
     update_combo_counter(&key_code_buff, &b_counter);
 		
-		 update_combo_counter(&key_code_buff, &g_counter);
+		update_combo_counter(&key_code_buff, &g_counter);
 
     update_combo_counter(&key_code_buff, &x_counter);
 		update_combo_counter(&key_code_buff, &c_counter);

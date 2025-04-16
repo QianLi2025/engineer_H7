@@ -50,3 +50,4 @@ void minipc_upgrade(minipc_t *pc)
     Append_CRC16_Check_Sum((uint8_t *)&(pc->mcu2minipc), sizeof(pc->mcu2minipc));//添加
     memcpy((void *)(pc->mcu2minipc_buf), (const void *)&(pc->mcu2minipc), sizeof(pc->mcu2minipc));//将帧头等发送的结构体 添加到缓冲区
 }
+

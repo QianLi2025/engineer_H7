@@ -22,5 +22,15 @@ void SUCKER_TASK(void)
     if (ARM_CMD_data.sucker_mode == SUCKER_HALF) {
         __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 1300);
     }
+		
+//		if (ARM_CMD_data.sucker_mode == SUCKER_ON) {
+//        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 19999);
+//    } else {
+//        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 0);
+//    }
+//		
+//    if (ARM_CMD_data.sucker_mode == SUCKER_HALF) {
+//        __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 1300);
+//    }
 	
 }

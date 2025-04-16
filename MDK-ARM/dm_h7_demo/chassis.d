@@ -50,5 +50,10 @@ dm_h7_demo\chassis.o: ../algorithm/pid.h
 dm_h7_demo\chassis.o: ..\application\robot_def.h
 dm_h7_demo\chassis.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\chassis.o: ../deivce/RC_remote/struct_typedef.h
+dm_h7_demo\chassis.o: ../deivce/referee_system/referee.h
+dm_h7_demo\chassis.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\chassis.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\chassis.o: ../Core/Inc/usart.h
+dm_h7_demo\chassis.o: ../Core/Inc/dma.h
 dm_h7_demo\chassis.o: ../Core/Inc/fdcan.h
 dm_h7_demo\chassis.o: ../Bsp/bsp_fdcan.h

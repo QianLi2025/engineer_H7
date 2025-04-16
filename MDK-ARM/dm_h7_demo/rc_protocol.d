@@ -44,3 +44,9 @@ dm_h7_demo\rc_protocol.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart
 dm_h7_demo\rc_protocol.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h
 dm_h7_demo\rc_protocol.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h
 dm_h7_demo\rc_protocol.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
+dm_h7_demo\rc_protocol.o: ../deivce/referee_system/referee.h
+dm_h7_demo\rc_protocol.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\rc_protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\rc_protocol.o: ../Core/Inc/usart.h
+dm_h7_demo\rc_protocol.o: ../Core/Inc/dma.h
+dm_h7_demo\rc_protocol.o: ../application/robot_def.h

@@ -48,5 +48,7 @@ dm_h7_demo\video_decode.o: ../application/robot_def.h
 dm_h7_demo\video_decode.o: ../Bsp/bsp_dwt.h
 dm_h7_demo\video_decode.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\video_decode.o: ../deivce/RC_remote/struct_typedef.h
-dm_h7_demo\video_decode.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\video_decode.o: ../deivce/referee_system/referee.h
 dm_h7_demo\video_decode.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\video_decode.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\video_decode.o: ../Core/Inc/dma.h

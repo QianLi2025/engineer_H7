@@ -53,3 +53,8 @@ dm_h7_demo\arm.o: ..\application\robot_def.h
 dm_h7_demo\arm.o: ../Bsp/bsp_dwt.h
 dm_h7_demo\arm.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\arm.o: ../deivce/RC_remote/struct_typedef.h
+dm_h7_demo\arm.o: ../deivce/referee_system/referee.h
+dm_h7_demo\arm.o: ../algorithm/CRC8_CRC16.h
+dm_h7_demo\arm.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+dm_h7_demo\arm.o: ../Core/Inc/usart.h
+dm_h7_demo\arm.o: ../Core/Inc/dma.h

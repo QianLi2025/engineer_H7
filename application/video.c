@@ -4,7 +4,7 @@ extern ARM_CMD_data_t ARM_CMD_data;
 
 //图传接收
 uint8_t uart7_rx_buff[40];
-
+uint8_t uart10_rx_buff[40];
 
 void VIDEO_INIT(void)
 {
