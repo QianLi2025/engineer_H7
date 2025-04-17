@@ -2,6 +2,11 @@
 #define __BSP_FDCAN_H__
 #include "main.h"
 #include "fdcan.h"
+//#include "M3508motors.h"
+//#include "M2006motors.h"
+//#include "DamiaoMotors.h"
+#include "arm.h"
+#include "chassis.h"
 
 #define hcan_t FDCAN_HandleTypeDef
 

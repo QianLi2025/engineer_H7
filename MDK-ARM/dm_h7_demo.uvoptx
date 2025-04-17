@@ -715,6 +715,66 @@
           <WinNumber>1</WinNumber>
           <ItemText>pitch_motor,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>111</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>video_cmd</ItemText>
+        </Ww>
+        <Ww>
+          <count>112</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ctrl_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>113</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rf_ctrl_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>114</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>auto_operate_mode</ItemText>
+        </Ww>
+        <Ww>
+          <count>115</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>silver_mode_step</ItemText>
+        </Ww>
+        <Ww>
+          <count>116</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rc_mode_xy</ItemText>
+        </Ww>
+        <Ww>
+          <count>117</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>temp_xy</ItemText>
+        </Ww>
+        <Ww>
+          <count>118</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rf_shift_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>119</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rf_f_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>120</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rf_g_counter,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>121</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>backback_step</ItemText>
+        </Ww>
+        <Ww>
+          <count>122</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rc_mode_xy</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -896,6 +956,11 @@
           <count>35</count>
           <WinNumber>2</WinNumber>
           <ItemText>minipc_rec</ItemText>
+        </Ww>
+        <Ww>
+          <count>36</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>temp_xy</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

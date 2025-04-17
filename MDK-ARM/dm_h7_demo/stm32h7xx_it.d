@@ -61,8 +61,10 @@ dm_h7_demo\stm32h7xx_it.o: ../application/arm.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/fdcan.h
 dm_h7_demo\stm32h7xx_it.o: ../deivce/DamiaoMotors/DamiaoMotors.h
 dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_fdcan.h
-dm_h7_demo\stm32h7xx_it.o: ../deivce/M2006/M2006motors.h
-dm_h7_demo\stm32h7xx_it.o: ../deivce/M3508/M3508motors.h
-dm_h7_demo\stm32h7xx_it.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\stm32h7xx_it.o: ../application/arm.h
 dm_h7_demo\stm32h7xx_it.o: ../application/chassis.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/M3508/M3508motors.h
+dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_fdcan.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/M2006/M2006motors.h
+dm_h7_demo\stm32h7xx_it.o: ../algorithm/scara_kinematics.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/tim.h

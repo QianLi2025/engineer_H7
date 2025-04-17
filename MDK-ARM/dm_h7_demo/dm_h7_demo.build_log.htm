@@ -27,85 +27,7 @@ Project File Date:  04/16/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'dm_h7_demo'
-compiling minipc_protocol.c...
-compiling referee.c...
-..\deivce\referee_system\referee.c(24): warning:  #167-D: argument of type "frame_header_t *" is incompatible with parameter of type "uint8_t *"
-      Append_CRC8_Check_Sum(&(rf->ui.ui_send.ui_header), rf->ui.ui_send.ui_data_len);
-..\deivce\referee_system\referee.c(27): warning:  #167-D: argument of type "uint16_t" is incompatible with parameter of type "const void *__restrict__"
-      memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t)], rf->ui.ui_send.cmd_id, sizeof(uint16_t));
-..\deivce\referee_system\referee.c(224): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(224): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(224): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(226): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(226): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(226): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(228): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(228): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(228): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(230): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(230): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(230): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(233): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(233): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(233): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(235): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(235): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(235): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(237): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(237): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(237): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(239): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(239): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(239): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(378): warning:  #1-D: last line of file ends without a newline
-  //}
-..\deivce\referee_system\referee.c: 27 warnings, 0 errors
-compiling robot_cmd.c...
-..\application\robot_cmd.c(284): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	if(max_motor.para.pos>1.42&&(target_angle1>temp_angle1))
-..\application\robot_cmd.c(293): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		if(finesse_motor.para.pos>1.71&&(target_angle3>temp_angle3))
-..\application\robot_cmd.c(278): warning:  #550-D: variable "temp_angle2"  was set but never used
-  	static float temp_angle2;
-..\application\robot_cmd.c(1216): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-          target_angle4               = -PI / 2 - 0.08;
-..\application\robot_cmd.c(1538): warning:  #1-D: last line of file ends without a newline
-  //如果在算法库中直接return后就可以跳过错误的值而不执行
-..\application\robot_cmd.c(2): warning:  #177-D: variable "debug_count"  was declared but never referenced
-  static unsigned int debug_count = 0;
-..\application\robot_cmd.c(378): warning:  #177-D: function "VisionContorl"  was declared but never referenced
-  static void VisionContorl(void)
-..\application\robot_cmd.c(389): warning:  #177-D: function "VideoControlSet"  was declared but never referenced
-  static void VideoControlSet(void)
-..\application\robot_cmd.c: 8 warnings, 0 errors
-linking...
-Program Size: Code=87534 RO-data=2570 RW-data=2432 ZI-data=72320  
-FromELF: creating hex file...
-"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 35 Warning(s).
+"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -128,7 +50,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

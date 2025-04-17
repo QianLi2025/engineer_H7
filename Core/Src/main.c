@@ -148,6 +148,18 @@ int main(void)
 		/*tasks begin*/
     kf_imu_upgrade();
 		/*tasks end*/
+		
+		    if(time_count%10==0)//100hz任务
+    {
+			if((shift_flag==1&&f_flag==1)||(rf_shift_flag==1&&rf_f_flag==1))
+			{
+        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+        enable_motor_mode(&hfdcan2, 2, POS_MODE);
+        enable_motor_mode(&hfdcan3, 1, POS_MODE);
+        enable_motor_mode(&hfdcan3, 2, POS_MODE);
+			}
+
+    }
  
     if(time_count%100==0)//10hz任务
     {
@@ -176,17 +188,7 @@ int main(void)
 		#endif
 		
 
-    if(time_count%10==0)//100hz任务
-    {
-			if(shift_flag&&f_flag)
-			{
-        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
-        enable_motor_mode(&hfdcan2, 2, POS_MODE);
-        enable_motor_mode(&hfdcan3, 1, POS_MODE);
-        enable_motor_mode(&hfdcan3, 2, POS_MODE);
-			}
 
-    }
 
     if(time_count%200==0)//5hz任务
     {

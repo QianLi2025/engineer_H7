@@ -8,8 +8,7 @@ uint16_t q_flag;
 uint16_t e_flag;
 uint16_t shift_flag;
 uint16_t ctrl_flag;
-uint8_t press_left;
-uint8_t press_right;
+
 uint16_t r_flag;
 uint16_t f_flag;
 uint16_t g_flag;
@@ -18,8 +17,13 @@ uint16_t x_flag;
 uint16_t c_flag;
 uint16_t v_flag;
 uint16_t b_flag;
+
+
 RC_ctrl_t rc_ctrl;
 
+
+uint8_t press_left;
+uint8_t press_right;
 
 //自己定义键盘
 uint16_t v_press_count = 0;
@@ -209,8 +213,6 @@ void Get_RC_ctrl_t(volatile uint8_t *rxBuf)
 		update_combo_counter(&key_code_buff, &c_counter);
 
     update_combo_counter(&key_code_buff, &z_counter);
- 
-		
 		update_combo_counter(&key_code_buff, &r_counter);
 		update_combo_counter(&key_code_buff, &f_counter);
 		

@@ -102,8 +102,29 @@ void fdcan1_rx_callback(void)
 {
 	// rec_id:数据包id rx_data:数据
 	fdcanx_receive(&hfdcan1, &rec_id1, rx_data1);
-	/*user decode fcn start*/
 	
+	    
+
+		
+	/*user decode fcn start*/
+			 if(rec_id1 == 0x205) 
+		{
+        M3508_fbkdata(&lift_motor, rx_data1);
+    }
+			 if(rec_id1 == 0x206) 
+		{      
+        M2006_fbkdata(&trans, rx_data1);
+    }
+		
+		
+		if(rec_id1==motor_lf.id)
+    M3508_fbkdata(&motor_lf,rx_data1);
+    if(rec_id1==motor_lb.id)
+    M3508_fbkdata(&motor_lb,rx_data1);
+    if(rec_id1==motor_rf.id)
+    M3508_fbkdata(&motor_rf,rx_data1);
+    if(rec_id1==motor_rb.id)
+    M3508_fbkdata(&motor_rb,rx_data1);
 	/*user decode fcn end*/
 }
 uint8_t rx_data2[8] = {0};
@@ -113,6 +134,15 @@ void fdcan2_rx_callback(void)
 	// rec_id:数据包id rx_data:数据
 	fdcanx_receive(&hfdcan2, &rec_id2, rx_data2);
 	/*user decode fcn start*/
+	    if(rec_id2 == 0x03) {
+
+        dm_fdkdata(&max_motor, rx_data2);
+			
+    }
+    if(rec_id2 == 0x04) {
+  
+        dm_fdkdata(&min_motor, rx_data2);
+    }
 
 	/*user decode fcn end*/
 }
@@ -123,6 +153,20 @@ void fdcan3_rx_callback(void)
 	// rec_id:数据包id rx_data:数据
 	fdcanx_receive(&hfdcan3, &rec_id3, rx_data3);
 	/*user decode fcn start*/
+	    // 接收 CAN3 数据
+    if(rec_id3 == 0x03) {
+
+        dm_fdkdata(&finesse_motor, rx_data3);
+
+    }
+    if(rec_id3 == 0x04) {
+
+        dm_fdkdata(&pitch_motor, rx_data3);
+    }
+    if(rec_id3 == 0x201) {
+       
+        M2006_fbkdata(&roll, rx_data3);
+    }
 	
 	/*user decode fcn end*/
 }

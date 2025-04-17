@@ -47,10 +47,12 @@ dm_h7_demo\arm.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
 dm_h7_demo\arm.o: ../Core/Inc/fdcan.h
 dm_h7_demo\arm.o: ../deivce/DamiaoMotors/DamiaoMotors.h
 dm_h7_demo\arm.o: ../Bsp/bsp_fdcan.h
-dm_h7_demo\arm.o: ../deivce/M2006/M2006motors.h
-dm_h7_demo\arm.o: ../deivce/M3508/M3508motors.h
-dm_h7_demo\arm.o: ..\application\robot_def.h
+dm_h7_demo\arm.o: ../application/arm.h
+dm_h7_demo\arm.o: ../application/chassis.h
+dm_h7_demo\arm.o: ../algorithm/kf_imu.h
 dm_h7_demo\arm.o: ../Bsp/bsp_dwt.h
+dm_h7_demo\arm.o: ../deivce/M3508/M3508motors.h
+dm_h7_demo\arm.o: ../application/robot_def.h
 dm_h7_demo\arm.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\arm.o: ../deivce/RC_remote/struct_typedef.h
 dm_h7_demo\arm.o: ../deivce/referee_system/referee.h
@@ -58,3 +60,5 @@ dm_h7_demo\arm.o: ../algorithm/CRC8_CRC16.h
 dm_h7_demo\arm.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 dm_h7_demo\arm.o: ../Core/Inc/usart.h
 dm_h7_demo\arm.o: ../Core/Inc/dma.h
+dm_h7_demo\arm.o: ../Bsp/bsp_fdcan.h
+dm_h7_demo\arm.o: ../deivce/M2006/M2006motors.h

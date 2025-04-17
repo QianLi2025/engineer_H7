@@ -31,7 +31,7 @@ pid_type_def pid_lift_height;//目标高度
 
 double max_ref,min_ref,finesse_ref,pitch_ref,roll_ref;
 
-dmmotor_t max_motor,min_motor,finesse_motor,pitch_motor;
+
 
 M2006motor_t roll,trans;//roll和传送带
 
@@ -179,23 +179,23 @@ void ARM_INIT(void)
 //roll一共两种角度 保持
 void ARM_TASK(void)
 {
-    recieve_all_data();//收取所有电机信息	 
+//    recieve_all_data();//收取所有电机信息	 
 	
 	
 	
 	
-//	  VAL_LIMIT(ARM_CMD_data.maximal_arm_angle, MAXARM_MIN, MAXARM_MAX);
-//	
-//    VAL_LIMIT(ARM_CMD_data.minimal_arm_angle, MINARM_MIN, MINARM_MAX);
-//	
-//    if (pitch_motor.para.pos > -0.1f) {
-//			VAL_LIMIT(ARM_CMD_data.finesse_angle, FINE_MIN2, FINE_MAX2);//为何
-//    } else {
-//        VAL_LIMIT(finesse_motor.para.pos, FINE_MIN, FINE_MAX);
-//    }
-//		
-//    VAL_LIMIT(ARM_CMD_data.pitch_arm_angle, PITCH_MIN, PITCH_MAX);
-//		
+	  VAL_LIMIT(ARM_CMD_data.maximal_arm_angle, MAXARM_MIN, MAXARM_MAX);
+	
+    VAL_LIMIT(ARM_CMD_data.minimal_arm_angle, MINARM_MIN, MINARM_MAX);
+	
+    if (pitch_motor.para.pos > -0.1f) {
+			  VAL_LIMIT(ARM_CMD_data.finesse_angle, FINE_MIN2, FINE_MAX2);//为何
+    } else {
+        VAL_LIMIT(ARM_CMD_data.finesse_angle, FINE_MIN, FINE_MAX);
+    }
+		
+    VAL_LIMIT(ARM_CMD_data.pitch_arm_angle, PITCH_MIN, PITCH_MAX);
+		
 		
 		
 	
@@ -520,7 +520,8 @@ static void trans_speed_control(double trans_speed_ref)
  void Height_Calculation(void)
 {
 //    height       = -(lift_motor.total_angle - 0)/1.7 ;//height是初始化后的
-	height = -(lift_motor.total_angle - 0)*0.796 ;//height是初始化后的
+//	height = -(lift_motor.total_angle - 0)*0.796 ;//height是初始化后的
+	height = -(lift_motor.total_angle - 0)*0.37 ;//height是初始化后的
 }
 
 

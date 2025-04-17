@@ -11,6 +11,8 @@
 #include "fdcan.h"
 #include "bsp_fdcan.h"
 
+extern M3508motor_t motor_lf,motor_lb,motor_rf,motor_rb;
+
 
 void CHASSIS_INIT(void);
 

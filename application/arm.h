@@ -12,7 +12,7 @@
 #include "RC_protocol.h"
 
 
-extern dmmotor_t max_motor,min_motor,finesse_motor,pitch_motor;
+//extern dmmotor_t max_motor,min_motor,finesse_motor,pitch_motor;
 
 extern M2006motor_t roll,trans;//roll和传送带
 

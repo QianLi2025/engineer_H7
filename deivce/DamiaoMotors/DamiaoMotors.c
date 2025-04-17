@@ -1,4 +1,7 @@
 #include "DamiaoMotors.h"
+
+
+dmmotor_t max_motor,min_motor,finesse_motor,pitch_motor;
 /**
 ************************************************************************
 * @brief:      	float_to_uint: 浮点数转换为无符号整数函数

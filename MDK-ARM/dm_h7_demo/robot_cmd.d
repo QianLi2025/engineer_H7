@@ -59,7 +59,9 @@ dm_h7_demo\robot_cmd.o: ..\application\arm.h
 dm_h7_demo\robot_cmd.o: ../Core/Inc/fdcan.h
 dm_h7_demo\robot_cmd.o: ../deivce/DamiaoMotors/DamiaoMotors.h
 dm_h7_demo\robot_cmd.o: ../Bsp/bsp_fdcan.h
-dm_h7_demo\robot_cmd.o: ../deivce/M2006/M2006motors.h
+dm_h7_demo\robot_cmd.o: ../application/arm.h
+dm_h7_demo\robot_cmd.o: ../application/chassis.h
 dm_h7_demo\robot_cmd.o: ../deivce/M3508/M3508motors.h
+dm_h7_demo\robot_cmd.o: ../Bsp/bsp_fdcan.h
+dm_h7_demo\robot_cmd.o: ../deivce/M2006/M2006motors.h
 dm_h7_demo\robot_cmd.o: ../algorithm/scara_kinematics.h
-dm_h7_demo\robot_cmd.o: ..\application\chassis.h

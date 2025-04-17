@@ -73,5 +73,5 @@ void mit_ctrl(FDCAN_HandleTypeDef *hcan, uint16_t motor_id, float pos, float vel
 void pos_speed_ctrl(FDCAN_HandleTypeDef *hcan, uint16_t motor_id, float pos, float vel);
 void speed_ctrl(FDCAN_HandleTypeDef *hcan, uint16_t motor_id, float vel);
 void dm_fdkdata(dmmotor_t *motor, uint8_t *rx_data);
-
+extern dmmotor_t max_motor,min_motor,finesse_motor,pitch_motor;
 #endif // DAMIAOMOTORS_H

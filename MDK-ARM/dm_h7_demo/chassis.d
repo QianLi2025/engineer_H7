@@ -57,3 +57,8 @@ dm_h7_demo\chassis.o: ../Core/Inc/usart.h
 dm_h7_demo\chassis.o: ../Core/Inc/dma.h
 dm_h7_demo\chassis.o: ../Core/Inc/fdcan.h
 dm_h7_demo\chassis.o: ../Bsp/bsp_fdcan.h
+dm_h7_demo\chassis.o: ../application/arm.h
+dm_h7_demo\chassis.o: ../deivce/DamiaoMotors/DamiaoMotors.h
+dm_h7_demo\chassis.o: ../Bsp/bsp_fdcan.h
+dm_h7_demo\chassis.o: ../deivce/M2006/M2006motors.h
+dm_h7_demo\chassis.o: ../application/chassis.h
