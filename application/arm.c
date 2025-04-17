@@ -448,20 +448,20 @@ void recieve_all_data(void)
 		
 		
 
-    // 接收 CAN3 数据
-    if(rec_id3 == 0x0003) {
-        finesse_motor.timeout_cnt = 0;
-        dm_fdkdata(&finesse_motor, rx_data3);
-			fdcan3_count = DWT_GetDeltaT(&task_count);
-    }
-    if(rec_id3 == 0x04) {
-        pitch_motor.timeout_cnt = 0;
-        dm_fdkdata(&pitch_motor, rx_data3);
-    }
-    if(rec_id3 == 0x201) {
-       
-        M2006_fbkdata(&roll, rx_data3);
-    }
+//    // 接收 CAN3 数据
+//    if(rec_id3 == 0x0003) {
+//        finesse_motor.timeout_cnt = 0;
+//        dm_fdkdata(&finesse_motor, rx_data3);
+//			fdcan3_count = DWT_GetDeltaT(&task_count);
+//    }
+//    if(rec_id3 == 0x04) {
+//        pitch_motor.timeout_cnt = 0;
+//        dm_fdkdata(&pitch_motor, rx_data3);
+//    }
+//    if(rec_id3 == 0x201) {
+//       
+//        M2006_fbkdata(&roll, rx_data3);
+//    }
 
 
 }

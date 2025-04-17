@@ -775,6 +775,31 @@
           <WinNumber>1</WinNumber>
           <ItemText>rc_mode_xy</ItemText>
         </Ww>
+        <Ww>
+          <count>123</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>temp_xy</ItemText>
+        </Ww>
+        <Ww>
+          <count>124</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rc_mode_xy</ItemText>
+        </Ww>
+        <Ww>
+          <count>125</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rec_id3</ItemText>
+        </Ww>
+        <Ww>
+          <count>126</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rf_c_counter</ItemText>
+        </Ww>
+        <Ww>
+          <count>127</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rf_z_counter</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>

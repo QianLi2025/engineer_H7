@@ -132,7 +132,7 @@ int main(void)
   CHASSIS_INIT();
   ARM_INIT();
 	VIDEO_INIT();
-//	SUCKER_INIT();
+	SUCKER_INIT();
 	
 	
   
@@ -157,6 +157,8 @@ int main(void)
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
         enable_motor_mode(&hfdcan3, 2, POS_MODE);
+				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
+        NVIC_SystemReset();//软件复位
 			}
 
     }
@@ -179,7 +181,7 @@ int main(void)
     CHASSIS_TASK();
 		ARM_TASK();
 		VIDEO_TASK();
-//		SUCKER_TASK();
+		SUCKER_TASK();
 		
 #endif
 		
