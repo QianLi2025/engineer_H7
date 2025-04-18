@@ -184,6 +184,9 @@ void normally_chassis_control(void);
 void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc);//调整后的视觉控制
 
 
+void video_offline_protect(void);//图传离线保护
+
+
 void ROBOT_CMD_INIT(void)
 {
     HAL_UARTEx_ReceiveToIdle_IT(&huart5,uart5_rx_buff, sizeof(uart5_rx_buff));
@@ -275,6 +278,10 @@ void ROBOT_CMD_TASK(void)
 		{
 			auto_get_silver();
 		}
+		
+		
+		//离线检查
+		video_offline_protect();//很好的保护
 		
 		
 		
@@ -724,7 +731,7 @@ void get_ready_auto(void)
             rc_mode_xy[1]     = 200;
             target_angle4     = -PI / 2;
             yaw_absolute      = 0;
-            lift_height_cmd(590, &target_lift_speed);
+            lift_height_cmd(40, &target_lift_speed);
         }
         //取金矿模式预备
         if (c_flag) {
@@ -1534,6 +1541,19 @@ void	remote_cmd_choose(void)
     rc_ctrl.mouse.y = video_cmd.remote_control.mouse_y;                             //!< Mouse Y axis
     rc_ctrl.mouse.z = video_cmd.remote_control.mouse_z;                             //!< Mouse Z axis
 		
+	}
+}
+
+void video_offline_protect(void)//图传离线保护
+{
+	if(video_cm.state==DEVICE_NOT_CONNECTED)
+	{
+		Chassis_CMD_data.vy=0;
+		Chassis_CMD_data.vx=0;
+		Chassis_CMD_data.vw=0;	
+		ARM_CMD_data.sucker_mode    = SUCKER_OFF;
+		
+    		
 	}
 }
 //如果在算法库中直接return后就可以跳过错误的值而不执行

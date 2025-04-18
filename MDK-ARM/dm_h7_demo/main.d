@@ -74,5 +74,6 @@ dm_h7_demo\main.o: ../deivce/M2006/M2006motors.h
 dm_h7_demo\main.o: ../application/robot_cmd.h
 dm_h7_demo\main.o: ../deivce/minipc/minipc_protocol.h
 dm_h7_demo\main.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\main.o: ../deivce/cm_device.h
 dm_h7_demo\main.o: ../application/video.h
 dm_h7_demo\main.o: ../application/sucker.h

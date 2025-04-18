@@ -23,7 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "RC_protocol.h"
-
+#include "cm_device.h"
 #include "video.h"
 /* USER CODE END Includes */
 
@@ -446,8 +446,11 @@ void UART7_IRQHandler(void)
   /* USER CODE BEGIN UART7_IRQn 1 */
 	referee_fbkdata(&video_cmd,uart7_rx_buff);
 	referee_rc_decode(&video_cmd);//图传遥控
-	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
 	
+	device_fbk(&video_cm);//更新离线时间
+	
+	
+	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
 	HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
 	
 

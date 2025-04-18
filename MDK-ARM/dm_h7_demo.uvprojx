@@ -824,6 +824,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>cm_device</GroupName>
+          <Files>
+            <File>
+              <FileName>cm_device.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\deivce\cm_device.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>

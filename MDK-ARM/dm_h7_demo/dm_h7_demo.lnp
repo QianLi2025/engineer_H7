@@ -69,6 +69,7 @@
 "dm_h7_demo\video.o"
 "dm_h7_demo\video_decode.o"
 "dm_h7_demo\minipc_protocol.o"
+"dm_h7_demo\cm_device.o"
 --strict --scatter "dm_h7_demo\dm_h7_demo.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

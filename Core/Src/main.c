@@ -38,6 +38,8 @@
 #include "robot_def.h"
 #include "video.h"
 #include "sucker.h"
+#include "cm_device.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -134,6 +136,7 @@ int main(void)
 	VIDEO_INIT();
 	SUCKER_INIT();
 	
+	device_init(&video_cm, 0.5,  1);//初始化图传设备超时时间
 	
   
   /* USER CODE END 2 */
@@ -149,25 +152,22 @@ int main(void)
     kf_imu_upgrade();
 		/*tasks end*/
 		
-		    if(time_count%10==0)//100hz浠诲姟
+		 if(time_count%10==0)//100hz浠诲姟
     {
 			if((shift_flag==1&&f_flag==1)||(rf_shift_flag==1&&rf_f_flag==1))
 			{
-        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
+        NVIC_SystemReset();//软件复位
+				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
         enable_motor_mode(&hfdcan3, 2, POS_MODE);
-				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
-        NVIC_SystemReset();//软件复位
 			}
-
     }
  
     if(time_count%100==0)//10hz浠诲姟
     {
-//      set_all_start_flag();//鏈娇鑳?
-			update_motor_timeout();
-
+			device_refresh(&video_cm);
     }
 		
 		if(time_count%6==0)//100hz浠诲姟
@@ -199,12 +199,7 @@ int main(void)
 		
 		 if(time_count%1000==0)//1hz浠诲姟
     {
-//      offline_check();//绂荤嚎妫?娴?
-//		
-//        enable_motor_mode(&hfdcan2, 1, MIT_MODE);
-//        enable_motor_mode(&hfdcan2, 2, POS_MODE);
-//        enable_motor_mode(&hfdcan3, 1, POS_MODE);
-//        enable_motor_mode(&hfdcan3, 2, POS_MODE);
+
     }
 
 

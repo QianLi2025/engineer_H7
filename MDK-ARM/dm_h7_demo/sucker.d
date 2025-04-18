@@ -67,3 +67,4 @@ dm_h7_demo\sucker.o: ../deivce/M3508/M3508motors.h
 dm_h7_demo\sucker.o: ../Bsp/bsp_fdcan.h
 dm_h7_demo\sucker.o: ../deivce/M2006/M2006motors.h
 dm_h7_demo\sucker.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\sucker.o: ../deivce/cm_device.h

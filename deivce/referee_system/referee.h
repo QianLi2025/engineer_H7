@@ -721,6 +721,7 @@ typedef __packed struct
             uint8_t ui_data_buf[112]; // 0x301子内容的数据空间
             int ui_data_len;
         } ui_send;
+				
         __packed struct
         {
             interaction_layer_delete_t interaction_layer_delete;       // 0x100

@@ -65,3 +65,4 @@ dm_h7_demo\robot_cmd.o: ../deivce/M3508/M3508motors.h
 dm_h7_demo\robot_cmd.o: ../Bsp/bsp_fdcan.h
 dm_h7_demo\robot_cmd.o: ../deivce/M2006/M2006motors.h
 dm_h7_demo\robot_cmd.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\robot_cmd.o: ../deivce/cm_device.h

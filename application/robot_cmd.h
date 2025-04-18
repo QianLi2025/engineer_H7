@@ -13,19 +13,7 @@
 #include "chassis.h"
 #include "bsp_fdcan.h"
 #include "referee.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
+#include "cm_device.h"
 
 
 //#include "arm_math.h"

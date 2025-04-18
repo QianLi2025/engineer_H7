@@ -51,8 +51,9 @@ dm_h7_demo\stm32h7xx_it.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/usart.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/dma.h
 dm_h7_demo\stm32h7xx_it.o: ../application/robot_def.h
-dm_h7_demo\stm32h7xx_it.o: ../application/video.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/cm_device.h
 dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_dwt.h
+dm_h7_demo\stm32h7xx_it.o: ../application/video.h
 dm_h7_demo\stm32h7xx_it.o: ../application/robot_cmd.h
 dm_h7_demo\stm32h7xx_it.o: ../algorithm/pid.h
 dm_h7_demo\stm32h7xx_it.o: ../algorithm/kf_imu.h
