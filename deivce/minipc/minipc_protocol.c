@@ -30,7 +30,8 @@ void minipc_rec(minipc_t *pc, uint8_t pc_data_buf[])
 void minipc_upgrade(minipc_t *pc)
 {
     float dt = DWT_GetDeltaT(&(pc->minipc_count));
-    pc->no_data_time += dt;
+    pc->no_data_time += dt;//典型
+	
     int pack_ok = 0;
     int pack_loss = 0;
     for (int i = 0; i < 100; i++)

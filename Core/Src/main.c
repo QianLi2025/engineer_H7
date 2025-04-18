@@ -95,13 +95,14 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+//  HAL_Delay(100);//上电自启动
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+	
 
   /* USER CODE END SysInit */
 
@@ -136,8 +137,8 @@ int main(void)
 	VIDEO_INIT();
 	SUCKER_INIT();
 	
-	device_init(&video_cm, 0.5,  1);//初始化图传设备超时时间
-	
+	device_init(&video_cm, 0.3,  1);//初始化图传设备超时时间
+	device_init(&rc_cm, 0.3,  2);//初始化图传设备超时时间
   
   /* USER CODE END 2 */
 
@@ -154,7 +155,7 @@ int main(void)
 		
 		 if(time_count%10==0)//100hz浠诲姟
     {
-			if((shift_flag==1&&f_flag==1)||(rf_shift_flag==1&&rf_f_flag==1))
+			if(shift_flag==1&&f_flag==1)
 			{
 				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
         NVIC_SystemReset();//软件复位
@@ -165,12 +166,13 @@ int main(void)
 			}
     }
  
-    if(time_count%100==0)//10hz浠诲姟
+    if(time_count%5==0)//200hz浠诲姟
     {
 			device_refresh(&video_cm);
+			device_refresh(&rc_cm);
     }
 		
-		if(time_count%6==0)//100hz浠诲姟
+		if(time_count%5==0)//200hz浠诲姟
     {
      ROBOT_CMD_TASK();
     }
@@ -209,14 +211,7 @@ int main(void)
     DWT_Delay(wasteT);
 
     time_count++;//1000hz鑷
-   
-
-    
-
-
-		
-		
-		
+ 
 		
 		
     /* USER CODE END WHILE */

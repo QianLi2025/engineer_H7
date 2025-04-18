@@ -212,6 +212,9 @@ uint16_t rf_c_flag;
 uint16_t rf_v_flag;
 uint16_t rf_b_flag;
 
+uint8_t rf_press_left;
+uint8_t rf_press_right;
+
 
 	
 
@@ -330,6 +333,9 @@ void referee_rc_decode(referee_t *rf)
     rf_v_flag = rf->remote_control.keyboard_value & (0x40 << 8);
     rf_b_flag = rf->remote_control.keyboard_value & (0x80 << 8);
 	
+	  rf_press_left=video_cmd.remote_control.left_button_down;
+		rf_press_right=video_cmd.remote_control.right_button_down;
+	
 	  if (rf_w_flag != 0)
         rf_w_flag = 1;
     if (rf_s_flag != 0)
@@ -346,6 +352,11 @@ void referee_rc_decode(referee_t *rf)
         rf_shift_flag = 1;
     if (rf_ctrl_flag != 0)
         rf_ctrl_flag = 1;
+		
+		if (rf_press_left != 0)
+        rf_press_left = 1;
+    if (rf_press_right != 0)
+        rf_press_right = 1;
 
     if (rf_r_flag != 0)
         rf_r_flag = 1;

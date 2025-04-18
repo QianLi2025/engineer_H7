@@ -16,6 +16,11 @@
 #include "cm_device.h"
 
 
+// uint16_t 类型的按键标志
+
+
+// uint8_t 类型的鼠标按键标志
+
 //#include "arm_math.h"
 extern uint8_t rx_data2[8];
 extern uint16_t rec_id2;

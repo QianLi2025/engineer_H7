@@ -519,7 +519,7 @@ static void trans_speed_control(double trans_speed_ref)
 
  void Height_Calculation(void)
 {
-//    height       = -(lift_motor.total_angle - 0)/1.7 ;//height是初始化后的
+//  height       = -(lift_motor.total_angle - 0)/1.7 ;//height是初始化后的
 //	height = -(lift_motor.total_angle - 0)*0.796 ;//height是初始化后的
 	height = -(lift_motor.total_angle - 0)*0.37 ;//height是初始化后的
 }

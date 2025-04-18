@@ -416,6 +416,9 @@ void UART5_IRQHandler(void)
   HAL_UART_IRQHandler(&huart5);
   /* USER CODE BEGIN UART5_IRQn 1 */
   HAL_UARTEx_ReceiveToIdle_IT(&huart5,uart5_rx_buff, sizeof(uart5_rx_buff));
+	
+	device_fbk(&rc_cm);//更新离线时间
+	
 	Get_RC_ctrl_t(uart5_rx_buff);
   /* USER CODE END UART5_IRQn 1 */
 }

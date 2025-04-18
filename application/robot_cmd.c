@@ -1,51 +1,17 @@
 #include "robot_cmd.h"
 
 
+// 当前使用的指针（总指针）
+KeyComboCounter_t *v_counter = &rc_v_counter;
+KeyComboCounter_t *b_counter = &rc_b_counter;
+KeyComboCounter_t *g_counter = &rc_g_counter;
+KeyComboCounter_t *x_counter = &rc_x_counter;
+KeyComboCounter_t *z_counter = &rc_z_counter;
+KeyComboCounter_t *c_counter = &rc_c_counter;
+KeyComboCounter_t *r_counter = &rc_r_counter;
+KeyComboCounter_t *f_counter = &rc_f_counter;
 
 
-#define USE_RF_COUNTER 1
-
-#if USE_RF_COUNTER
-
-
-#define w_flag     rf_w_flag
-#define s_flag     rf_s_flag
-#define a_flag     rf_a_flag
-#define d_flag     rf_d_flag
-#define q_flag     rf_q_flag
-#define e_flag     rf_e_flag
-#define shift_flag rf_shift_flag
-#define ctrl_flag  rf_ctrl_flag
-
-#define r_flag     rf_r_flag
-#define f_flag     rf_f_flag
-#define g_flag     rf_g_flag
-#define z_flag     rf_z_flag
-#define x_flag     rf_x_flag
-#define c_flag     rf_c_flag
-#define v_flag     rf_v_flag
-#define b_flag     rf_b_flag
-
-
-#define v_counter   rf_v_counter
-#define b_counter   rf_b_counter
-#define g_counter   rf_g_counter
-#define x_counter   rf_x_counter
-#define z_counter   rf_z_counter
-#define c_counter   rf_c_counter
-#define r_counter   rf_r_counter
-#define f_counter   rf_f_counter
-
-
-
-#define		press_left   video_cmd.remote_control.left_button_down
-#define    press_right  video_cmd.remote_control.right_button_down
-
-//#define		rc_ctrl.mouse.x  video_cmd.remote_control.mouse_x                            //!< Mouse X axis
-//#define    rc_ctrl.mouse.y  video_cmd.remote_control.mouse_y                             //!< Mouse Y axis
-//#define    rc_ctrl.mouse.z  video_cmd.remote_control.mouse_z                             //!< Mouse Z axis
-
-#endif
 
 
 
@@ -210,10 +176,8 @@ void ROBOT_CMD_TASK(void)
 		ARM_CMD_data.roll_angle=0;
 	}
 	Height_Calculation();
-
 	//吸盘控制
 	sucker_ctrl();
-	
 	video_angle_ctrl();//图传角度控制
 	
 	if_solve_flag=1;//默认需要解算
@@ -226,42 +190,36 @@ void ROBOT_CMD_TASK(void)
 		auto_mode_select_centre();
 		
 		//判断遥控器拨杆,如果在下面就用自定义控制
-		if(rc_ctrl.rc.s[0]==2)
+		if((rc_ctrl.rc.s[0]==2)&&rc_cm.state==DEVICE_OK)
 		{
 			costum_ctrl_arm();
 		}
 		else
-    {
-
+        {
 		//如果在其他地方就用键鼠或拨杆控制
 		//几个电机//鼠标遥控
 		//roll //鼠标//遥控器
 		//抬升 //鼠标//遥控器
 		real_handle_mode();
 		//模式预备
-		    //低头到银矿距离
+		//低头到银矿距离
      
         //取银矿模式预备
 
         //取金矿模式预备
 
-				
         //兑矿预备（一般指4级矿）
         //口朝左
 
         //口朝右
-	 //准备好喽！！！！！！！！！！
-		 get_ready_auto();
+	    //准备好喽！！！！！！！！！！
+		get_ready_auto();
 		 //取金矿模式锁机械臂
-     lock_arm();
+        lock_arm();
 		 //推矿模式
-	   push_block();		 	
-	   }	
+	    push_block();		 	
+	    }	
 	}
-
-	
-
-	
 	/******************************自动收矿模式**************************************/
 		if(auto_operate_mode==2)
 		{
@@ -333,10 +291,22 @@ void ROBOT_CMD_TASK(void)
 //	limit_all_angle_lift();//限幅
 			if(target_lift_speed>10&&height>=590)
 		{target_lift_speed=-10;}
+		
+		VAL_LIMIT(target_angle1, MAXARM_MIN, MAXARM_MAX);
+	
+    VAL_LIMIT(target_angle2, MINARM_MIN, MINARM_MAX);
+	
+    if (pitch_motor.para.pos > -0.1f) {
+			  VAL_LIMIT(target_angle3, FINE_MIN2, FINE_MAX2);//为何
+    } else {
+        VAL_LIMIT(target_angle3, FINE_MIN, FINE_MAX);
+    }
+		
+    VAL_LIMIT(target_angle4, PITCH_MIN, PITCH_MAX);
 	
 
 	
-	normally_set_all_data();//一些误差在此进行校正
+	  normally_set_all_data();//一些误差在此进行校正
 
 }
 
@@ -558,7 +528,7 @@ void chassis_auto(void)
 //图传角度
 void video_angle_ctrl(void)
 {
-	  if (v_counter.single_press_count % 2 == 1) {
+	  if (v_counter->single_press_count % 2 == 1) {
         ARM_CMD_data.video_angle = PITCH_120;
     } else {
         ARM_CMD_data.video_angle = PITCH_90;
@@ -567,7 +537,7 @@ void video_angle_ctrl(void)
 //吸盘控制
 void sucker_ctrl(void)
 {
-	    if (r_counter.single_press_count % 2 == 1) //|| switch_is_up(rc_data[TEMP].rc.switch_right)) {
+	    if (r_counter->single_press_count % 2 == 1) //|| switch_is_up(rc_data[TEMP].rc.switch_right)) {
     {    
         ARM_CMD_data.sucker_mode = SUCKER_ON;
     } else {
@@ -581,24 +551,24 @@ void sucker_ctrl(void)
 void auto_mode_select_centre(void)
 {
 	        /***************自动模式通道****************/
-        if (b_counter.shift_press_count % 2 == 1) {
+        if (b_counter->shift_press_count % 2 == 1) {
 //            ARM_CMD_data.auto_mode=AUTO_OUTPUT ; //开启自动放东西模式
 					auto_operate_mode = 2; //开启自动放东西模式
             yaw_absolute      = 0;
         } else {
             count_for_drop = 0;
         }
-        if (g_counter.shift_press_count % 2 == 1) {
+        if (g_counter->shift_press_count % 2 == 1) {
 //            ARM_CMD_data.auto_mode=AUTO_OUTPUT;//自动从矿仓取
 					auto_operate_mode = 1; //开启自动取东西模式
             yaw_absolute      = 0;
         }
-        if (g_counter.shift_press_count % 2 == 0 && b_counter.shift_press_count % 2 == 0) {
+        if (g_counter->shift_press_count % 2 == 0 && b_counter->shift_press_count % 2 == 0) {
             //trans停下来
 					ARM_CMD_data.trans_mode=STOP;
         }
         //自动银矿模式启动
-        if (x_counter.shift_press_count % 2 == 1) {
+        if (x_counter->shift_press_count % 2 == 1) {
 //            ARM_CMD_data.auto_mode=GET_SILVER;
 					auto_operate_mode = 3;
             yaw_absolute      = 0;
@@ -610,10 +580,8 @@ void auto_mode_select_centre(void)
 void real_handle_mode(void)//真手动模式
 {
 	 /******************手动部分********************/
-
         // xy命令获取
         //鼠标控
-	      
         if ((!shift_flag)&&(!ctrl_flag) && (!(press_left && press_right)) ){
             rc_mode_xy[1] -= rc_ctrl.mouse.x / 50;
             rc_mode_xy[0] -= rc_ctrl.mouse.y / 30;
@@ -667,8 +635,8 @@ void real_handle_mode(void)//真手动模式
 	
 			
         //遥控器拨杆抬
-			if(!(press_left || press_right))
-			{
+		if(!(press_left || press_right))
+		{
 				
 			
         if (rc_ctrl.rc.s[1]==2) {//左拨杆向下
@@ -682,7 +650,7 @@ void real_handle_mode(void)//真手动模式
         }
 			}
 				
-				//抬升
+		//抬升
         //鼠标抬
 			if(!ctrl_flag){
         if (press_left && (!press_right)) {
@@ -731,7 +699,7 @@ void get_ready_auto(void)
             rc_mode_xy[1]     = 200;
             target_angle4     = -PI / 2;
             yaw_absolute      = 0;
-            lift_height_cmd(40, &target_lift_speed);
+            lift_height_cmd(100, &target_lift_speed);
         }
         //取金矿模式预备
         if (c_flag) {
@@ -800,13 +768,12 @@ void yaw_absolute_ctrl(void)
 
 void lock_arm(void)
 {
-
-				/**********************取金矿模式锁机械臂***********************************/
-        if (z_counter.shift_press_count % 3 == 0) {
+		/**********************取金矿模式锁机械臂***********************************/
+        if (z_counter->shift_press_count % 3 == 0) {//真正决定会不会进入此模式
             count_for_modeShift= 0;
-            c_counter.ctrl_press_count = 0; //伸直机械臂命令清零
+            c_counter->ctrl_press_count = 0; //伸直机械臂命令清零
         }
-        if (z_counter.shift_press_count % 3 == 1) {
+        if (z_counter->shift_press_count % 3 == 1) {
             lift_height_cmd(65, &target_lift_speed);
             rc_mode_xy[0]       = 330;
             rc_mode_xy[1]       = 0;
@@ -814,7 +781,7 @@ void lock_arm(void)
             yaw_absolute        = 0;
             count_for_modeShift = 0;
             //伸直机械臂
-            if (c_counter.ctrl_press_count % 2 == 1) {
+            if (c_counter->ctrl_press_count % 2 == 1) {
                 target_angle1 = 0;
                 target_angle2 = 0;
                 yaw_absolute  = 0;
@@ -822,15 +789,15 @@ void lock_arm(void)
                 if_solve_flag = 0; //机械臂不解算
             }
         }
-        if (z_counter.shift_press_count % 3 == 2) { //这个模式不会长时间持续
+        if (z_counter->shift_press_count % 3 == 2) { //这个模式不会长时间持续
             lift_height_cmd(120, &target_lift_speed);
             rc_mode_xy[0]     = 330;
             rc_mode_xy[1]     = 0;
             target_angle4     = 0;
             yaw_absolute      = 0;
             count_for_modeShift++;
-            if (count_for_modeShift > 300 && (c_counter.ctrl_press_count % 2 != 1)) {
-                z_counter.ctrl_press_count = 0;
+            if (count_for_modeShift > 300 && (c_counter->ctrl_press_count % 2 != 1)) {
+                z_counter->shift_press_count = 0;
             }
             if_solve_flag = 0; //机械臂不解算
         }
@@ -842,9 +809,9 @@ void auto_get_silver(void)
 	 //开吸盘
         ARM_CMD_data.sucker_mode = SUCKER_ON;
         //其他模式清零
-        z_counter.shift_press_count = 0;
+        z_counter->shift_press_count = 0;
         //识别自动模式是否关闭,并清空倒计时的自动标志位
-        if (x_counter.shift_press_count % 2 == 0) {
+        if (x_counter->shift_press_count % 2 == 0) {
             auto_operate_mode = 0;
             count_for_drop    = 0;
             silver_mode_step  = -1.f;
@@ -1107,9 +1074,9 @@ void auto_get_silver(void)
             count_for_step6++;
             if (count_for_step6 > 150) {
                 //回到手动控制模式
-                x_counter.shift_press_count = 0;//肯定
+                x_counter->shift_press_count = 0;//肯定
                 ARM_CMD_data.sucker_mode                             = SUCKER_ON;
-                r_counter.single_press_count            = 1; //设置手动模式吸盘开
+                r_counter->single_press_count            = 1; //设置手动模式吸盘开
             }
         }
 }
@@ -1189,9 +1156,9 @@ void push_block(void)
 void auto_fetch_block(void)
 {      
    	//其他模式清零
-        z_counter.shift_press_count = 0;
+        z_counter->shift_press_count = 0;
         //识别自动模式是否关闭,并清空倒计时的自动标志位
-        if (g_counter.shift_press_count % 2 == 0) {
+        if (g_counter->shift_press_count % 2 == 0) {
             auto_operate_mode = 0;
             count_for_lift    = 0;
             count_for_suck    = 0;
@@ -1263,9 +1230,9 @@ void auto_fetch_block(void)
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
                 if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {
                     //回到手动控制模式
-                    g_counter.shift_press_count = 0;
+                    g_counter->shift_press_count = 0;
                     ARM_CMD_data.sucker_mode= SUCKER_ON;
-                    r_counter.single_press_count= 1; //设置手动模式吸盘开
+                    r_counter->single_press_count= 1; //设置手动模式吸盘开
                     backget_step = 0; //标志位清零
                 }
                 if_solve_flag = 1; //机械臂解算
@@ -1277,9 +1244,9 @@ void auto_fetch_block(void)
 void auto_put_block(void)//自动放东西
 {
 //其他模式清零
-        z_counter.shift_press_count = 0;
+        z_counter->shift_press_count = 0;
         //识别自动模式是否关闭,并清空倒计时的自动标志位
-        if (b_counter.shift_press_count % 2 == 0) {
+        if (b_counter->shift_press_count % 2 == 0) {
             auto_operate_mode = 0;
             count_for_drop    = 0;
         }
@@ -1338,7 +1305,7 @@ void auto_put_block(void)//自动放东西
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
                 if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {//坐标差小于一定程度
                     //回到手动控制模式
-                    b_counter.shift_press_count = 0;
+                    b_counter->shift_press_count = 0;
                     backback_step                                        = 0; //步进标志位清零
                     ARM_CMD_data.sucker_mode                             = SUCKER_ON;
                 }
@@ -1430,6 +1397,7 @@ void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后
    target_angle2=minipc->minipc2mcu.min_angle_ctrl;
 	 target_angle3=minipc->minipc2mcu.finesse_angle_ctrl;
 	 target_angle4=minipc->minipc2mcu.pitch_angle_ctrl;
+	
 //	 float temp_xy[2]  = {0, 0};
 //   scara_forward_kinematics(ARM_CMD_data.maximal_arm_angle, ARM_CMD_data.minimal_arm_angle, ARMLENGHT1, ARMLENGHT2, temp_xy);
 //	 rc_mode_xy[0]     = temp_xy[0];
@@ -1464,7 +1432,7 @@ void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后
 //	 target_lift_speed=0;
 //	 }//增量式 
 	
-	//没想好速度模式在视觉方面要怎么用
+//  没想好速度模式在视觉方面要怎么用
 	
 }
 
@@ -1531,27 +1499,138 @@ void	remote_cmd_choose(void)
 {
 
 
-	 if(!rc_ctrl.rc.s[1]||rc_ctrl.rc.s[0])//收不到数据
-	{
-		//鼠标
-//		press_left =  video_cmd.remote_control.left_button_down;
-//    press_right = video_cmd.remote_control.right_button_down;
 
-		rc_ctrl.mouse.x = video_cmd.remote_control.mouse_x;                             //!< Mouse X axis
-    rc_ctrl.mouse.y = video_cmd.remote_control.mouse_y;                             //!< Mouse Y axis
-    rc_ctrl.mouse.z = video_cmd.remote_control.mouse_z;                             //!< Mouse Z axis
+	if((video_cm.state==DEVICE_OK)&&(rc_cm.state==DEVICE_NOT_CONNECTED))
+	{//遥控离线 使用图传链路
+			
+	    	rc_ctrl.mouse.x = video_cmd.remote_control.mouse_x;                             //!< Mouse X axis
+        rc_ctrl.mouse.y = video_cmd.remote_control.mouse_y;                             //!< Mouse Y axis
+        rc_ctrl.mouse.z = video_cmd.remote_control.mouse_z;                             //!< Mouse Z axis
+			
+	      memcpy(&rf_v_counter, v_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_b_counter, b_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_g_counter, g_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_x_counter, x_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_z_counter, z_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_c_counter, c_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_r_counter, r_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rf_f_counter, f_counter, sizeof(KeyComboCounter_t));
+
+        v_counter = &rf_v_counter;
+        b_counter = &rf_b_counter;
+        g_counter = &rf_g_counter;
+        x_counter = &rf_x_counter;
+        z_counter = &rf_z_counter;
+        c_counter = &rf_c_counter;
+        r_counter = &rf_r_counter;
+        f_counter = &rf_f_counter;
+				// 将所有 rc_ 打头的按键标志清零
+        rc_w_flag = 0;
+        rc_s_flag = 0;
+        rc_a_flag = 0;
+        rc_d_flag = 0;
+        rc_q_flag = 0;
+        rc_e_flag = 0;
+        rc_shift_flag = 0;
+        rc_ctrl_flag = 0;
+
+        rc_press_left = 0;
+        rc_press_right = 0;
+
+        rc_r_flag = 0;
+        rc_f_flag = 0;
+        rc_g_flag = 0;
+        rc_z_flag = 0;
+        rc_x_flag = 0;
+        rc_c_flag = 0;
+        rc_v_flag = 0;
+        rc_b_flag = 0;
+
+
+
+			
+			
+	}
+		
+		if(((video_cm.state==DEVICE_NOT_CONNECTED)&&(rc_cm.state==DEVICE_OK))
+			||((video_cm.state==DEVICE_OK)&&(rc_cm.state==DEVICE_OK)))//同时可用 或者 图传离线 使用遥控链路
+	{
+
+		    memcpy(&rc_v_counter, v_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_b_counter, b_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_g_counter, g_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_x_counter, x_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_z_counter, z_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_c_counter, c_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_r_counter, r_counter, sizeof(KeyComboCounter_t));
+        memcpy(&rc_f_counter, f_counter, sizeof(KeyComboCounter_t));
+
+        v_counter = &rc_v_counter;
+        b_counter = &rc_b_counter;
+        g_counter = &rc_g_counter;
+        x_counter = &rc_x_counter;
+        z_counter = &rc_z_counter;
+        c_counter = &rc_c_counter;
+        r_counter = &rc_r_counter;
+        f_counter = &rc_f_counter;
+        // 将所有 rf_ 打头的按键标志清零
+        rf_w_flag = 0;
+        rf_s_flag = 0;
+        rf_a_flag = 0;
+        rf_d_flag = 0;
+        rf_q_flag = 0;
+        rf_e_flag = 0;
+        rf_shift_flag = 0;
+        rf_ctrl_flag = 0;
+
+        rf_press_left = 0;
+        rf_press_right = 0;
+
+        rf_r_flag = 0;
+        rf_f_flag = 0;
+        rf_g_flag = 0;
+        rf_z_flag = 0;
+        rf_x_flag = 0;
+        rf_c_flag = 0;
+        rf_v_flag = 0;
+        rf_b_flag = 0;
+
 		
 	}
+		
+	
+
+        w_flag     = rc_w_flag     || rf_w_flag;
+        s_flag     = rc_s_flag     || rf_s_flag;
+        a_flag     = rc_a_flag     || rf_a_flag;
+        d_flag     = rc_d_flag     || rf_d_flag;
+        q_flag     = rc_q_flag     || rf_q_flag;
+        e_flag     = rc_e_flag     || rf_e_flag;
+        shift_flag = rc_shift_flag || rf_shift_flag;
+        ctrl_flag  = rc_ctrl_flag  || rf_ctrl_flag;
+
+        press_left =	rc_press_left||rf_press_left;
+        press_right =	rc_press_right||rf_press_right;	
+
+        r_flag     = rc_r_flag     || rf_r_flag;
+        f_flag     = rc_f_flag     || rf_f_flag;
+        g_flag     = rc_g_flag     || rf_g_flag;
+        z_flag     = rc_z_flag     || rf_z_flag;
+        x_flag     = rc_x_flag     || rf_x_flag;
+        c_flag     = rc_c_flag     || rf_c_flag;
+        v_flag     = rc_v_flag     || rf_v_flag;
+        b_flag     = rc_b_flag     || rf_b_flag;
+
 }
 
 void video_offline_protect(void)//图传离线保护
 {
-	if(video_cm.state==DEVICE_NOT_CONNECTED)
+	if(video_cm.state==DEVICE_NOT_CONNECTED&&rc_cm.state==DEVICE_NOT_CONNECTED)
 	{
 		Chassis_CMD_data.vy=0;
 		Chassis_CMD_data.vx=0;
 		Chassis_CMD_data.vw=0;	
-		ARM_CMD_data.sucker_mode    = SUCKER_OFF;
+		ARM_CMD_data.sucker_mode    = SUCKER_ON;
 		
     		
 	}

@@ -25,7 +25,7 @@ typedef struct
 extern DEVICE_STATE device_state_list[MAX_DEVICE_NUM];
 
 extern CM_t video_cm;//Í¼´«ÀëÏß
-
+extern CM_t rc_cm;//Ò£¿ØÀëÏß
 
 void device_init(CM_t *cm, double time_out, uint16_t device_index);
 void device_fbk(CM_t *cm);

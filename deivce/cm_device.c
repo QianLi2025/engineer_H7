@@ -1,6 +1,7 @@
 #include "cm_device.h"
 
 CM_t video_cm;//м╪╢╚юКоъ
+CM_t rc_cm;//рё©ьюКоъ
 
 DEVICE_STATE device_state_list[MAX_DEVICE_NUM];
 

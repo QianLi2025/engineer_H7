@@ -2,6 +2,7 @@ dm_h7_demo\sucker.o: ..\application\sucker.c
 dm_h7_demo\sucker.o: ..\application\sucker.h
 dm_h7_demo\sucker.o: ..\application\robot_def.h
 dm_h7_demo\sucker.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+dm_h7_demo\sucker.o: ../Core/Inc/usart.h
 dm_h7_demo\sucker.o: ../Core/Inc/main.h
 dm_h7_demo\sucker.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
 dm_h7_demo\sucker.o: ../Core/Inc/stm32h7xx_hal_conf.h
@@ -44,7 +45,6 @@ dm_h7_demo\sucker.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 dm_h7_demo\sucker.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h
 dm_h7_demo\sucker.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h
 dm_h7_demo\sucker.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
-dm_h7_demo\sucker.o: ../Core/Inc/usart.h
 dm_h7_demo\sucker.o: ../deivce/RC_remote/RC_protocol.h
 dm_h7_demo\sucker.o: ../deivce/RC_remote/struct_typedef.h
 dm_h7_demo\sucker.o: ../deivce/referee_system/referee.h
