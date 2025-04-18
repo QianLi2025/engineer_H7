@@ -49,7 +49,7 @@ void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t si
         figs[figs_num].layer = 0;                 //字符默认0层
         figs[figs_num].details_a = size;          //字体大小
         figs[figs_num].details_b = len;           //字符串长度
-        figs[figs_num].width = size;              //建议10:1的字体大小和线宽比
+        figs[figs_num].width = 2;              //建议10:1的字体大小和线宽比
         figs[figs_num].start_x = x;
         figs[figs_num].start_y = y;
     }
@@ -61,7 +61,7 @@ void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t si
         figs[figs_num].layer = 0;        //字符默认0层
         figs[figs_num].details_a = size; //字体大小
         figs[figs_num].details_b = len;  //字符串长度
-        figs[figs_num].width = size;     //建议10:1的字体大小和线宽比
+        figs[figs_num].width = 2;     //建议10:1的字体大小和线宽比
         figs[figs_num].start_x = x;
         figs[figs_num].start_y = y;
     }
@@ -72,8 +72,20 @@ void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t si
     if (id == RED_1)
     {
         rf->ui.ui_send.sender_id = 1;
-        rf->ui.ui_send.sender_id = 0x101;
+        rf->ui.ui_send.receiver_id = 0x101;
     }
+		if(id==RED_2)
+		{
+			  rf->ui.ui_send.sender_id = 2;
+        rf->ui.ui_send.receiver_id = 0x102;
+			
+		}
+		
+		if(id==BLUE_2)
+		{
+			  rf->ui.ui_send.sender_id = 102;
+        rf->ui.ui_send.receiver_id = 0x166;			
+		}
 		//要接着写
 		//其他ID
 

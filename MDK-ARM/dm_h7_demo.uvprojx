@@ -801,6 +801,11 @@
               <FileType>1</FileType>
               <FilePath>..\application\video.c</FilePath>
             </File>
+            <File>
+              <FileName>UI_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\application\UI_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

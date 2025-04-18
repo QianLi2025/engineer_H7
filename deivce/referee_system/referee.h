@@ -776,8 +776,8 @@ typedef struct
 	  
 	
 }custom_cmd_t;
-
-
+void rf_ui_upgrade(referee_t *rf);
+void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id);
 //电管数据
 extern referee_t dianguan_cmd;
 

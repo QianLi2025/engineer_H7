@@ -195,7 +195,7 @@ void ROBOT_CMD_TASK(void)
 			costum_ctrl_arm();
 		}
 		else
-        {
+    {
 		//如果在其他地方就用键鼠或拨杆控制
 		//几个电机//鼠标遥控
 		//roll //鼠标//遥控器

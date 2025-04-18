@@ -67,6 +67,7 @@
 "dm_h7_demo\robot_cmd.o"
 "dm_h7_demo\sucker.o"
 "dm_h7_demo\video.o"
+"dm_h7_demo\ui_task.o"
 "dm_h7_demo\video_decode.o"
 "dm_h7_demo\minipc_protocol.o"
 "dm_h7_demo\cm_device.o"
