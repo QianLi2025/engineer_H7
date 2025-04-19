@@ -39,7 +39,7 @@
 #include "video.h"
 #include "sucker.h"
 #include "cm_device.h"
-
+#include "UI_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -155,10 +155,12 @@ HAL_Delay(3000);
 		
 		 if(time_count%10==0)//100hz浠诲姟
     {
+			
+			UI_TASK();
 			if(shift_flag==1&&f_flag==1)
 			{
-				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
-        NVIC_SystemReset();//软件复位
+//				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
+//        NVIC_SystemReset();//软件复位
 				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);

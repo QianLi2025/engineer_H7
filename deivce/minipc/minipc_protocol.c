@@ -46,7 +46,6 @@ void minipc_upgrade(minipc_t *pc)
     if ((pack_loss + pack_ok) > 0)
         pc->pack_loss_rate = ((float)pack_loss) / ((float)(pack_loss + pack_ok));
 		
-		
     pc->mcu2minipc.header = 0x5a;//先设置帧头
     Append_CRC16_Check_Sum((uint8_t *)&(pc->mcu2minipc), sizeof(pc->mcu2minipc));//添加
     memcpy((void *)(pc->mcu2minipc_buf), (const void *)&(pc->mcu2minipc), sizeof(pc->mcu2minipc));//将帧头等发送的结构体 添加到缓冲区

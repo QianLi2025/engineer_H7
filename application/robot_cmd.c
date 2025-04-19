@@ -15,6 +15,7 @@ KeyComboCounter_t *f_counter = &rc_f_counter;
 
 
 
+void chassis_vision_ctrl_adjust(Chassis_CMD_data_t *chassis_cmd,minipc_t *minipc);
 
 static unsigned int debug_count = 0;
 
@@ -152,10 +153,13 @@ void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc);//调整�
 
 void video_offline_protect(void);//图传离线保护
 
-
+pid_type_def y_vision_ctrl_pid,x_vision_ctrl_pid;
 void ROBOT_CMD_INIT(void)
 {
     HAL_UARTEx_ReceiveToIdle_IT(&huart5,uart5_rx_buff, sizeof(uart5_rx_buff));
+	
+	  PID_init(&y_vision_ctrl_pid,PID_POSITION,1,0,0,1000,100);
+	  PID_init(&x_vision_ctrl_pid,PID_POSITION,1,0,0,1000,100);
 }
 
 //使用图传链路还是遥控呢
@@ -274,22 +278,19 @@ void ROBOT_CMD_TASK(void)
 		}
 		
 		
+		
+		
 	/***********************视觉*************************/
-	if(ctrl_flag&&v_flag)
+	if(v_counter->ctrl_press_count%2==1)
 	{
+		chassis_vision_ctrl_adjust(&Chassis_CMD_data,&minipc);
 		arm_vision_ctrl_adjust(&ARM_CMD_data, &minipc);
 		minipc_send(&minipc);	
 	}
-	else{
-		//不对target进行修改
-	}//target_angle赋值
-	
-	
-
 	
 	
 //	limit_all_angle_lift();//限幅
-			if(target_lift_speed>10&&height>=590)
+		if(target_lift_speed>10&&height>=580)
 		{target_lift_speed=-10;}
 		
 		VAL_LIMIT(target_angle1, MAXARM_MIN, MAXARM_MAX);
@@ -391,25 +392,26 @@ static void VideoControlSet(void)
 //通过直觉控制底盘速度 但是你可能用不到了
 void chassis_vision_ctrl(Chassis_CMD_data_t *chassis_cmd,minipc_t *minipc,int speed)
 {
-	switch(minipc->minipc2mcu.chassis_direction)
-	{
-		case FOR_BACK://前后模式
-			chassis_cmd->Chassis_straight_mode=STRAIGHT_Y_ON;
-		  chassis_cmd->vy=minipc->minipc2mcu.chassis_ctrl;
-		  
-		  
-			
-			break;
-		case LEFT_RIGHT://左右模式
-			chassis_cmd->Chassis_straight_mode=STRAIGHT_X_ON;
-		  chassis_cmd->vx=minipc->minipc2mcu.chassis_ctrl;
-			
-			break;
-		default:
-			
-			break;
-	}
+//	switch(minipc->minipc2mcu.chassis_direction)
+//	{
+//		case FOR_BACK://前后模式
+//			chassis_cmd->Chassis_straight_mode=STRAIGHT_Y_ON;
+//		  chassis_cmd->vy=minipc->minipc2mcu.chassis_ctrl;
+//		  
+//		  
+//			
+//			break;
+//		case LEFT_RIGHT://左右模式
+//			chassis_cmd->Chassis_straight_mode=STRAIGHT_X_ON;
+//		  chassis_cmd->vx=minipc->minipc2mcu.chassis_ctrl;
+//			
+//			break;
+//		default:
+//			
+//			break;
+//	}
 }
+
 void arm_vision_ctrl(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//视觉控制 需要控制模式和真正的角度
 {
    arm_cmd->maximal_arm_angle=minipc->minipc2mcu.max_angle_ctrl;
@@ -1390,6 +1392,11 @@ void normally_chassis_control(void)
     }
 }
 
+void chassis_vision_ctrl_adjust(Chassis_CMD_data_t *chassis_cmd,minipc_t *minipc)
+{
+	chassis_cmd->vx=PID_calc(&x_vision_ctrl_pid,minipc->minipc2mcu.x_erro,0);
+  chassis_cmd->vy=PID_calc(&y_vision_ctrl_pid,minipc->minipc2mcu.y_erro,0);
+}
 
 void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后的视觉控制
 {
@@ -1397,6 +1404,46 @@ void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后
    target_angle2=minipc->minipc2mcu.min_angle_ctrl;
 	 target_angle3=minipc->minipc2mcu.finesse_angle_ctrl;
 	 target_angle4=minipc->minipc2mcu.pitch_angle_ctrl;
+	
+	//z轴配置
+	if(minipc->minipc2mcu.z_mode==ANGLE){
+	  if(minipc->minipc2mcu.z_ctrl>=400)
+		{minipc->minipc2mcu.z_ctrl=400;}
+    if(minipc->minipc2mcu.z_ctrl<=-400)
+		{minipc->minipc2mcu.z_ctrl=-400;}
+	  lift_height_cmd(minipc->minipc2mcu.z_ctrl, &target_lift_speed);
+	}//绝对式
+	if(minipc->minipc2mcu.z_mode==SPEED){
+		float temp_target_height=height+minipc->minipc2mcu.z_ctrl;
+		lift_height_cmd(temp_target_height, &target_lift_speed);
+	}//增量式 
+	
+	
+	//roll轴配置
+	if(minipc->minipc2mcu.roll_mode==ANGLE){
+		arm_cmd->roll_mode=ROLL_ANGLE_MODE;
+	  arm_cmd->roll_angle=minipc->minipc2mcu.roll_angle_ctrl;
+	}//绝对式
+	
+	if(minipc->minipc2mcu.roll_mode==SPEED){
+	  arm_cmd->roll_mode=ROLL_ANGLE_MODE;
+		
+		if(minipc->minipc2mcu.roll_angle_ctrl>=1)
+		{minipc->minipc2mcu.roll_angle_ctrl=1;}
+		if(minipc->minipc2mcu.roll_angle_ctrl<=-1)
+		{minipc->minipc2mcu.roll_angle_ctrl=-1;}
+		
+	  arm_cmd->roll_angle+=minipc->minipc2mcu.roll_angle_ctrl;
+	}//增量式
+	
+	if(minipc->minipc2mcu.roll_mode==KEEP){
+	 arm_cmd->roll_mode=ROLL_KEEP_MODE;
+	}//保持 可能要配合增量式使用
+	
+	
+	
+	
+	 
 	
 //	 float temp_xy[2]  = {0, 0};
 //   scara_forward_kinematics(ARM_CMD_data.maximal_arm_angle, ARM_CMD_data.minimal_arm_angle, ARMLENGHT1, ARMLENGHT2, temp_xy);

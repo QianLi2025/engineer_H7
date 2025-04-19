@@ -19,31 +19,75 @@ static uint8_t figs_state[100] = {0};        // 1表示占用，0表示未被占
 
 void rf_ui_upgrade(referee_t *rf)
 {
+	
+	  
     rf->ui.ui_send.ui_header.SOF = 0xa5;
-    rf->ui.ui_send.ui_header.data_length = rf->ui.ui_send.ui_data_len;//数据发送长度
-	  Append_CRC8_Check_Sum(&(rf->ui.ui_send.ui_header), rf->ui.ui_send.ui_data_len);//校验头部数据 但是这个为什么是对整体的 存疑
+    rf->ui.ui_send.ui_header.data_length = rf->ui.ui_send.ui_data_len;//数据发送长度 这个应该是45+6
+	
+//	  Append_CRC8_Check_Sum(&(rf->ui.ui_send.ui_header), rf->ui.ui_send.ui_data_len);//校验头部数据 但是这个为什么是对整体的 存疑
+	  Append_CRC8_Check_Sum(&(rf->ui.ui_send.ui_header),sizeof(rf->ui.ui_send.ui_header));//校验头部数据 但是这个为什么是对整体的 存疑
 	  //ui_data_len==45 发送字符时
     memcpy(&uart1_dma_tx_buf[0], &rf->ui.ui_send.ui_header, sizeof(frame_header_t));//看样子这个是从后面那个数开始赋值的
 	
 	
     rf->ui.ui_send.cmd_id = 0x301;//交互数据cmdid
+	
     memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t)], rf->ui.ui_send.cmd_id, sizeof(uint16_t));//cmd_id
-    memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + sizeof(uint16_t)], rf->ui.ui_send.ui_data_buf, rf->ui.ui_send.ui_data_len);//这个是databuf
+    memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + sizeof(uint16_t)], rf->ui.ui_send.ui_data_buf, rf->ui.ui_send.ui_data_len);//这个是数据帧
 	//frameheader+cmdod+databuf 上面是将ui_data_buf放置于uart1_dma_tx_buf 下面这个是一个常规的数据格式header+cmdid+真数据+尾部校验 左CRC校验时要对整体长度做
     Append_CRC16_Check_Sum(uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t)); // header+cmd_id+data[]+crc16
-  //上面这个没啥问题  
+ 
 	  HAL_UART_Transmit_DMA(&huart3, uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t));
 }
 
-// figs_num0~99 color0~9 0红/蓝（己方颜色） 1：黄色 2：绿色3：橙色 4：紫红色 5：粉色 6：青色7：黑色8：白色
-void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id)
+
+void rf_ui_string_upgrade(referee_t *rf)
 {
+	  rf->ui.ui_send.ui_header.SOF = 0xa5;
+    rf->ui.ui_send.ui_header.data_length = 6+45;//数据发送长度 这个应该是45+6
+	
+	  Append_CRC8_Check_Sum((uint8_t *)&(rf->ui.ui_send.ui_header), sizeof(frame_header_t));//校验头部数据 但是这个为什么是对整体的 存疑
+
+    memcpy(&uart1_dma_tx_buf[0], &rf->ui.ui_send.ui_header, sizeof(frame_header_t));//frameheader
+	
+    rf->ui.ui_send.cmd_id = 0x301;//交互数据cmdid
+	
+	
+    memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t)], &rf->ui.ui_send.cmd_id, sizeof(uint16_t));//cmd_id
+	
+    memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 2], &rf->ui.ui_send.data_cmd_id, sizeof(uint16_t));//子id
+	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 4], &rf->ui.ui_send.sender_id, sizeof(uint16_t));//senderid
+	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 6], &rf->ui.ui_send.receiver_id, sizeof(uint16_t));//receiver id
+	
+	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 8], rf->ui.ui_send.ui_data_buf, 45);//这个是数据帧
+	
+	//frameheader+cmdod+databuf 上面是将ui_data_buf放置于uart1_dma_tx_buf 下面这个是一个常规的数据格式header+cmdid+真数据+尾部校验 左CRC校验时要对整体长度做
+    Append_CRC16_Check_Sum(uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t)); // header+cmd_id+data[]+crc16
+ 
+	  HAL_UART_Transmit_DMA(&huart3, uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t));
+	
+}
+
+
+
+
+// figs_num0~99 color0~9 0红/蓝（己方颜色） 1：黄色 2：绿色3：橙色 4：紫红色 5：粉色 6：青色7：黑色8：白色
+void rf_ui_write_string(referee_t *rf, char graphname[3],char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id)
+{
+	int i;
+	for (i = 0; i < 3 && graphname[i] != '\0'; i++)
+	{
+		figs[figs_num].figure_name[2-i] =graphname[i];
+	}
+	
+
+	//fig是储存所有配置的结构体数组 fignum是第几个配置
     if (figs_state[figs_num] == 0) //创建
     {
         figs_state[figs_num] = 1;
-        figs[figs_num].figure_name[0] = figs_num; //名称默认figs_num
-        figs[figs_num].figure_name[1] = figs_num; //名称默认figs_num
-        figs[figs_num].figure_name[2] = figs_num; //名称默认figs_num
+
+			
+			
         figs[figs_num].operate_tpye = 1;          //增加图形
         figs[figs_num].figure_tpye = 7;           //字符图像
         figs[figs_num].layer = 0;                 //字符默认0层
@@ -53,11 +97,14 @@ void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t si
         figs[figs_num].start_x = x;
         figs[figs_num].start_y = y;
     }
-    if (figs_state[figs_num] == 1) //修改
+		
+    if (figs_state[figs_num] !=0) //修改
     {
-        figs_state[figs_num] = 2;
-        figs[figs_num].operate_tpye = 1; //增加图形
-        figs[figs_num].figure_tpye = 7;  //字符图像  主要在这里改 	
+			
+			
+			
+        figs[figs_num].operate_tpye = 2; //修改图形
+        figs[figs_num].figure_tpye = 7;  //字符图像  
         figs[figs_num].layer = 0;        //字符默认0层
         figs[figs_num].details_a = size; //字体大小
         figs[figs_num].details_b = len;  //字符串长度
@@ -65,15 +112,13 @@ void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t si
         figs[figs_num].start_x = x;
         figs[figs_num].start_y = y;
     }
+		
+		
     rf->ui.ui_send.data_cmd_id = 0x110;//对头
 		
 		
 		//下面这个才是需要改的
-    if (id == RED_1)
-    {
-        rf->ui.ui_send.sender_id = 1;
-        rf->ui.ui_send.receiver_id = 0x101;
-    }
+
 		if(id==RED_2)
 		{
 			  rf->ui.ui_send.sender_id = 2;
@@ -89,9 +134,9 @@ void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t si
 		//要接着写
 		//其他ID
 
-    rf->ui.ui_send.ui_data_len = 45;
-    memcpy(rf->ui.ui_send.ui_data_buf, &figs[figs_num], sizeof(interaction_figure_t));
-    memcpy(&rf->ui.ui_send.ui_data_buf[15], string_, len);
+    rf->ui.ui_send.ui_data_len = 45;//
+    memcpy(rf->ui.ui_send.ui_data_buf, &figs[figs_num], sizeof(interaction_figure_t));	
+    memcpy(&rf->ui.ui_send.ui_data_buf[15], string_, len);//向真实数据帧中填充 所有要发送的字符
 }
 
 

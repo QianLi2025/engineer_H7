@@ -4,6 +4,7 @@
 
 #include "referee.h"
 
+void UI_TASK(void);
 
 
 #endif

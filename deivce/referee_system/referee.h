@@ -714,11 +714,11 @@ typedef __packed struct
         __packed struct
         {
             frame_header_t ui_header;
-            uint16_t cmd_id;
+            uint16_t cmd_id;//下面都是数据帧
             uint16_t data_cmd_id;     //子内容 ID
             uint16_t sender_id;       //发送者 ID
             uint16_t receiver_id;     //接收者 ID
-            uint8_t ui_data_buf[112]; // 0x301子内容的数据空间
+            uint8_t ui_data_buf[112]; // 0x301子内容的数据空间 
             int ui_data_len;
         } ui_send;
 				
@@ -777,7 +777,7 @@ typedef struct
 	
 }custom_cmd_t;
 void rf_ui_upgrade(referee_t *rf);
-void rf_ui_write_string(referee_t *rf, char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id);
+void rf_ui_write_string(referee_t *rf, char graphname[3],char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id);
 //电管数据
 extern referee_t dianguan_cmd;
 
@@ -788,7 +788,7 @@ extern referee_t video_cmd;
 extern custom_cmd_t custom_cmd;
 
 void referee_fbkdata(referee_t *rf, uint8_t buf[]);
-
+void rf_ui_string_upgrade(referee_t *rf);
 
 
 
