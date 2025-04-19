@@ -49,10 +49,7 @@ typedef struct
 			  Ctrl_mode_e z_mode;//0为绝对 1为增量
 			  float z_ctrl;
 			  
-			//之前那一套
-//			  chassis_direct_e chassis_direction;//底盘方向 0为前后 1为左右
-//			  uint8_t chassis_ctrl;
-			//之后继续计算
+
 			  float y_erro;//y轴差距
 			  float x_erro;//x轴差距
 			  

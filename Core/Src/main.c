@@ -103,7 +103,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 	
-HAL_Delay(3000);
+  HAL_Delay(3000);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */

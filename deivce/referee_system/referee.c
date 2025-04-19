@@ -37,7 +37,7 @@ void rf_ui_upgrade(referee_t *rf)
 	//frameheader+cmdod+databuf 上面是将ui_data_buf放置于uart1_dma_tx_buf 下面这个是一个常规的数据格式header+cmdid+真数据+尾部校验 左CRC校验时要对整体长度做
     Append_CRC16_Check_Sum(uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t)); // header+cmd_id+data[]+crc16
  
-	  HAL_UART_Transmit_DMA(&huart3, uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t));
+	  HAL_UART_Transmit_DMA(&huart10, uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t));
 }
 
 
@@ -54,7 +54,7 @@ void rf_ui_string_upgrade(referee_t *rf)
 	
 	
     memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t)], &rf->ui.ui_send.cmd_id, sizeof(uint16_t));//cmd_id
-	
+	  
     memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 2], &rf->ui.ui_send.data_cmd_id, sizeof(uint16_t));//子id
 	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 4], &rf->ui.ui_send.sender_id, sizeof(uint16_t));//senderid
 	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 6], &rf->ui.ui_send.receiver_id, sizeof(uint16_t));//receiver id
@@ -63,9 +63,9 @@ void rf_ui_string_upgrade(referee_t *rf)
 	
 	//frameheader+cmdod+databuf 上面是将ui_data_buf放置于uart1_dma_tx_buf 下面这个是一个常规的数据格式header+cmdid+真数据+尾部校验 左CRC校验时要对整体长度做
     Append_CRC16_Check_Sum(uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t)); // header+cmd_id+data[]+crc16
- 
-	  HAL_UART_Transmit_DMA(&huart3, uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t));
-	
+    
+	  HAL_UART_Transmit_DMA(&huart10, uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t));
+	  
 }
 
 
@@ -139,6 +139,73 @@ void rf_ui_write_string(referee_t *rf, char graphname[3],char string_[], uint16_
     memcpy(&rf->ui.ui_send.ui_data_buf[15], string_, len);//向真实数据帧中填充 所有要发送的字符
 }
 
+
+void rf_ui_write_float(referee_t *rf, char graphname[3],char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id)
+{
+	int i;
+	for (i = 0; i < 3 && graphname[i] != '\0'; i++)
+	{
+		figs[figs_num].figure_name[2-i] =graphname[i];
+	}
+	
+
+	//fig是储存所有配置的结构体数组 fignum是第几个配置
+    if (figs_state[figs_num] == 0) //创建
+    {
+        figs_state[figs_num] = 1;
+
+			
+			
+        figs[figs_num].operate_tpye = 1;          //增加图形
+        figs[figs_num].figure_tpye = 7;           //字符图像
+        figs[figs_num].layer = 0;                 //字符默认0层
+        figs[figs_num].details_a = size;          //字体大小
+        figs[figs_num].details_b = len;           //字符串长度
+        figs[figs_num].width = 2;              //建议10:1的字体大小和线宽比
+        figs[figs_num].start_x = x;
+        figs[figs_num].start_y = y;
+    }
+		
+    if (figs_state[figs_num] !=0) //修改
+    {
+			
+			
+			
+        figs[figs_num].operate_tpye = 2; //修改图形
+        figs[figs_num].figure_tpye = 7;  //字符图像  
+        figs[figs_num].layer = 0;        //字符默认0层
+        figs[figs_num].details_a = size; //字体大小
+        figs[figs_num].details_b = len;  //字符串长度
+        figs[figs_num].width = 2;     //建议10:1的字体大小和线宽比
+        figs[figs_num].start_x = x;
+        figs[figs_num].start_y = y;
+    }
+		
+		
+    rf->ui.ui_send.data_cmd_id = 0x110;//对头
+		
+		
+		//下面这个才是需要改的
+
+		if(id==RED_2)
+		{
+			  rf->ui.ui_send.sender_id = 2;
+        rf->ui.ui_send.receiver_id = 0x102;
+			
+		}
+		
+		if(id==BLUE_2)
+		{
+			  rf->ui.ui_send.sender_id = 102;
+        rf->ui.ui_send.receiver_id = 0x166;			
+		}
+		//要接着写
+		//其他ID
+
+    rf->ui.ui_send.ui_data_len = 45;//
+    memcpy(rf->ui.ui_send.ui_data_buf, &figs[figs_num], sizeof(interaction_figure_t));	
+    memcpy(&rf->ui.ui_send.ui_data_buf[15], string_, len);//向真实数据帧中填充 所有要发送的字符
+}
 
 
 void referee_fbkdata(referee_t *rf, uint8_t buf[])

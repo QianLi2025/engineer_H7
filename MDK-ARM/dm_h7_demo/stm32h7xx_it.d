@@ -68,4 +68,14 @@ dm_h7_demo\stm32h7xx_it.o: ../deivce/M3508/M3508motors.h
 dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_fdcan.h
 dm_h7_demo\stm32h7xx_it.o: ../deivce/M2006/M2006motors.h
 dm_h7_demo\stm32h7xx_it.o: ../algorithm/scara_kinematics.h
+dm_h7_demo\stm32h7xx_it.o: ../USB_DEVICE/App/usbd_cdc_if.h
+dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
+dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+dm_h7_demo\stm32h7xx_it.o: ../USB_DEVICE/Target/usbd_conf.h
+dm_h7_demo\stm32h7xx_it.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+dm_h7_demo\stm32h7xx_it.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/tim.h

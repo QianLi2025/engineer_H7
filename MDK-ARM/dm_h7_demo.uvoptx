@@ -880,6 +880,21 @@
           <WinNumber>1</WinNumber>
           <ItemText>video_cmd</ItemText>
         </Ww>
+        <Ww>
+          <count>144</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Buf</ItemText>
+        </Ww>
+        <Ww>
+          <count>145</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>buff_test</ItemText>
+        </Ww>
+        <Ww>
+          <count>146</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>minipc</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>

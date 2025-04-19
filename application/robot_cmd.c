@@ -281,7 +281,7 @@ void ROBOT_CMD_TASK(void)
 		
 		
 	/***********************视觉*************************/
-	if(v_counter->ctrl_press_count%2==1)
+	if(v_counter->ctrl_press_count%2==0)
 	{
 		chassis_vision_ctrl_adjust(&Chassis_CMD_data,&minipc);
 		arm_vision_ctrl_adjust(&ARM_CMD_data, &minipc);
@@ -458,6 +458,7 @@ void minipc_send(minipc_t* pc)
 	pc->mcu2minipc.z_realheight=(float)height;
 	
 	minipc_upgrade(pc);//发送函数
+	CDC_Transmit_HS(pc->mcu2minipc_buf,sizeof(pc->mcu2minipc));
 }
 
 

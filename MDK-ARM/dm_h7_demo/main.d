@@ -75,6 +75,12 @@ dm_h7_demo\main.o: ../application/robot_cmd.h
 dm_h7_demo\main.o: ../deivce/minipc/minipc_protocol.h
 dm_h7_demo\main.o: ../algorithm/scara_kinematics.h
 dm_h7_demo\main.o: ../deivce/cm_device.h
+dm_h7_demo\main.o: ../USB_DEVICE/App/usbd_cdc_if.h
+dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
+dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 dm_h7_demo\main.o: ../application/video.h
 dm_h7_demo\main.o: ../application/sucker.h
 dm_h7_demo\main.o: ../application/UI_task.h

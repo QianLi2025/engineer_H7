@@ -14,7 +14,7 @@
 #include "bsp_fdcan.h"
 #include "referee.h"
 #include "cm_device.h"
-
+#include "usbd_cdc_if.h"
 
 // uint16_t 类型的按键标志
 

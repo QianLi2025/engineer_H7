@@ -14,15 +14,15 @@ void minipc_rec(minipc_t *pc, uint8_t pc_data_buf[])
     // crc校验
 	  size=sizeof(pc->minipc2mcu);
 	  memcpy(buff_test, (const void *)pc_data_buf,sizeof(pc->minipc2mcu));
-    if (Verify_CRC16_Check_Sum(pc_data_buf, sizeof(pc->minipc2mcu)))
-    {
-        pc->rx_pack_state[0] = 1;
+//    if (Verify_CRC16_Check_Sum(pc_data_buf, sizeof(pc->minipc2mcu)))
+//    {
+//        pc->rx_pack_state[0] = 1;
         memcpy((void *)&(pc->minipc2mcu), (const void *)pc_data_buf, sizeof(pc->minipc2mcu));
-    }
-    else
-    pc->rx_pack_state[0] = 2;
-    pc->no_data_time = 0;
-    DWT_GetDeltaT(&(pc->minipc_count)); //更新记时点
+//    }
+//    else
+//    pc->rx_pack_state[0] = 2;
+//    pc->no_data_time = 0;
+//    DWT_GetDeltaT(&(pc->minipc_count)); //更新记时点
 }
 
 
