@@ -87,7 +87,7 @@ void rf_ui_write_string(referee_t *rf, char graphname[3],char string_[], uint16_
         figs_state[figs_num] = 1;
 
 			
-			
+			  figs[figs_num].color = color;
         figs[figs_num].operate_tpye = 1;          //增加图形
         figs[figs_num].figure_tpye = 7;           //字符图像
         figs[figs_num].layer = 0;                 //字符默认0层
@@ -102,7 +102,7 @@ void rf_ui_write_string(referee_t *rf, char graphname[3],char string_[], uint16_
     {
 			
 			
-			
+			  figs[figs_num].color = color;
         figs[figs_num].operate_tpye = 2; //修改图形
         figs[figs_num].figure_tpye = 7;  //字符图像  
         figs[figs_num].layer = 0;        //字符默认0层
@@ -140,7 +140,7 @@ void rf_ui_write_string(referee_t *rf, char graphname[3],char string_[], uint16_
 }
 
 
-void rf_ui_write_float(referee_t *rf, char graphname[3],char string_[], uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id)
+void rf_ui_write_float(referee_t *rf, char graphname[3],int32_t	input_float, uint16_t len, uint16_t size, uint8_t color, int x, int y, int figs_num, ROBOT_ID id)
 {
 	int i;
 	for (i = 0; i < 3 && graphname[i] != '\0'; i++)
@@ -155,30 +155,39 @@ void rf_ui_write_float(referee_t *rf, char graphname[3],char string_[], uint16_t
         figs_state[figs_num] = 1;
 
 			
-			
+			  figs[figs_num].color = color;
         figs[figs_num].operate_tpye = 1;          //增加图形
-        figs[figs_num].figure_tpye = 7;           //字符图像
+        figs[figs_num].figure_tpye = 5;           //浮点图像
         figs[figs_num].layer = 0;                 //字符默认0层
         figs[figs_num].details_a = size;          //字体大小
-        figs[figs_num].details_b = len;           //字符串长度
+//        figs[figs_num].details_b = len;           //字符串长度
         figs[figs_num].width = 2;              //建议10:1的字体大小和线宽比
         figs[figs_num].start_x = x;
         figs[figs_num].start_y = y;
+			
+			  figs[figs_num].details_c = (input_float) & 0x3FF;
+			  figs[figs_num].details_d = (input_float >> 10) & 0x7FF;
+			  figs[figs_num].details_e = (input_float >> 21) & 0x7FF;
     }
 		
     if (figs_state[figs_num] !=0) //修改
     {
 			
 			
-			
+			  figs[figs_num].color = color;
         figs[figs_num].operate_tpye = 2; //修改图形
-        figs[figs_num].figure_tpye = 7;  //字符图像  
+        figs[figs_num].figure_tpye = 5;  //浮点图像  
         figs[figs_num].layer = 0;        //字符默认0层
         figs[figs_num].details_a = size; //字体大小
-        figs[figs_num].details_b = len;  //字符串长度
+//        figs[figs_num].details_b = len;  //字符串长度
         figs[figs_num].width = 2;     //建议10:1的字体大小和线宽比
         figs[figs_num].start_x = x;
         figs[figs_num].start_y = y;
+			
+			
+				figs[figs_num].details_c = (input_float) & 0x3FF;
+			  figs[figs_num].details_d = (input_float >> 10) & 0x7FF;
+			  figs[figs_num].details_e = (input_float >> 21) & 0x7FF;
     }
 		
 		
@@ -204,7 +213,7 @@ void rf_ui_write_float(referee_t *rf, char graphname[3],char string_[], uint16_t
 
     rf->ui.ui_send.ui_data_len = 45;//
     memcpy(rf->ui.ui_send.ui_data_buf, &figs[figs_num], sizeof(interaction_figure_t));	
-    memcpy(&rf->ui.ui_send.ui_data_buf[15], string_, len);//向真实数据帧中填充 所有要发送的字符
+//    memcpy(&rf->ui.ui_send.ui_data_buf[15],input_float , len);//向真实数据帧中填充 所有要发送的字符
 }
 
 

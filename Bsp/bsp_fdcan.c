@@ -125,6 +125,8 @@ void fdcan1_rx_callback(void)
     M3508_fbkdata(&motor_rf,rx_data1);
     if(rec_id1==motor_rb.id)
     M3508_fbkdata(&motor_rb,rx_data1);
+		
+		
 	/*user decode fcn end*/
 }
 uint8_t rx_data2[8] = {0};

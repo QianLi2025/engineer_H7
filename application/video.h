@@ -18,7 +18,7 @@
 #define RE_RX_BUFFER_SIZE 40u 
 
 extern uint8_t uart7_rx_buff[RE_RX_BUFFER_SIZE];
-extern uint8_t uart10_rx_buff[40];
+extern uint8_t uart10_rx_buff[255];
 void VIDEO_INIT(void);
 
 

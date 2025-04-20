@@ -136,7 +136,8 @@ int main(void)
   ARM_INIT();
 	VIDEO_INIT();
 	SUCKER_INIT();
-	
+	HAL_UARTEx_ReceiveToIdle_IT(&huart10,uart10_rx_buff, sizeof(uart10_rx_buff));
+
 	device_init(&video_cm, 0.3,  1);//初始化图传设备超时时间
 	device_init(&rc_cm, 0.3,  2);//初始化图传设备超时时间
   

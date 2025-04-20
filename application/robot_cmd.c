@@ -281,7 +281,7 @@ void ROBOT_CMD_TASK(void)
 		
 		
 	/***********************视觉*************************/
-	if(v_counter->ctrl_press_count%2==0)
+	if(v_counter->ctrl_press_count%2==1)
 	{
 		chassis_vision_ctrl_adjust(&Chassis_CMD_data,&minipc);
 		arm_vision_ctrl_adjust(&ARM_CMD_data, &minipc);

@@ -34,7 +34,7 @@
 extern uint8_t uart5_rx_buff[REMOTE_BUFF_SIZE];
 extern uint8_t uart7_rx_buff[RE_RX_BUFFER_SIZE];
 
-extern uint8_t uart10_rx_buff[RE_RX_BUFFER_SIZE];
+extern uint8_t uart10_rx_buff[255];
 
 
 /* USER CODE END TD */

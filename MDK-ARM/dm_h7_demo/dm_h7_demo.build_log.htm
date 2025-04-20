@@ -27,74 +27,7 @@ Project File Date:  04/19/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'dm_h7_demo'
-compiling referee.c...
-..\deivce\referee_system\referee.c(28): warning:  #167-D: argument of type "frame_header_t *" is incompatible with parameter of type "uint8_t *"
-  	  Append_CRC8_Check_Sum(&(rf->ui.ui_send.ui_header),sizeof(rf->ui.ui_send.ui_header));//校验头部数据 但是这个为什么是对整体的 存疑
-..\deivce\referee_system\referee.c(35): warning:  #167-D: argument of type "uint16_t" is incompatible with parameter of type "const void *__restrict__"
-      memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t)], rf->ui.ui_send.cmd_id, sizeof(uint16_t));//cmd_id
-..\deivce\referee_system\referee.c(56): warning:  #167-D: argument of type "__packed uint16_t *" is incompatible with parameter of type "const void *__restrict__"
-      memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t)], &rf->ui.ui_send.cmd_id, sizeof(uint16_t));//cmd_id
-..\deivce\referee_system\referee.c(58): warning:  #167-D: argument of type "__packed uint16_t *" is incompatible with parameter of type "const void *__restrict__"
-      memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 2], &rf->ui.ui_send.data_cmd_id, sizeof(uint16_t));//子id
-..\deivce\referee_system\referee.c(59): warning:  #167-D: argument of type "__packed uint16_t *" is incompatible with parameter of type "const void *__restrict__"
-  	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 4], &rf->ui.ui_send.sender_id, sizeof(uint16_t));//senderid
-..\deivce\referee_system\referee.c(60): warning:  #167-D: argument of type "__packed uint16_t *" is incompatible with parameter of type "const void *__restrict__"
-  	  memcpy(&uart1_dma_tx_buf[sizeof(frame_header_t) + 6], &rf->ui.ui_send.receiver_id, sizeof(uint16_t));//receiver id
-..\deivce\referee_system\referee.c(364): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(364): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(364): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_v_counter = {0,0,0, key_v, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(366): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(366): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(366): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_b_counter = {0,0,0, key_b, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(368): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(368): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(368): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_g_counter = {0,0,0, key_g, key_shift, key_ctrl,0,0,0};                      // 单独v�?
-..\deivce\referee_system\referee.c(370): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(370): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(370): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_x_counter = {0,0,0, key_x, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(373): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(373): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(373): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_z_counter = {0,0,0, key_z, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(375): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(375): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(375): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_c_counter = {0,0,0, key_c, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(377): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(377): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(377): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_r_counter = {0,0,0, key_r, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(379): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(379): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(379): warning:  #188-D: enumerated type mixed with another type
-  KeyComboCounter_t rf_f_counter = {0,0,0, key_f, key_shift, key_ctrl,0,0,0};                      // 单独b�?
-..\deivce\referee_system\referee.c(526): warning:  #1-D: last line of file ends without a newline
-  //}
-..\deivce\referee_system\referee.c: 31 warnings, 0 errors
-linking...
-Program Size: Code=92718 RO-data=2570 RW-data=2500 ZI-data=72508  
-FromELF: creating hex file...
-"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 31 Warning(s).
+"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -117,7 +50,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:17
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
