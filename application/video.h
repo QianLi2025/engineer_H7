@@ -15,7 +15,7 @@
 #define LAST 1
 #define TEMP 0
 
-#define RE_RX_BUFFER_SIZE 40u 
+#define RE_RX_BUFFER_SIZE 255u 
 
 extern uint8_t uart7_rx_buff[RE_RX_BUFFER_SIZE];
 extern uint8_t uart10_rx_buff[255];

@@ -71,6 +71,7 @@ extern FDCAN_HandleTypeDef hfdcan2;
 extern FDCAN_HandleTypeDef hfdcan3;
 extern DMA_HandleTypeDef hdma_uart5_rx;
 extern DMA_HandleTypeDef hdma_uart5_tx;
+extern DMA_HandleTypeDef hdma_uart7_tx;
 extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
 extern DMA_HandleTypeDef hdma_usart3_rx;
@@ -421,6 +422,20 @@ void EXTI15_10_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 stream7 global interrupt.
+  */
+void DMA1_Stream7_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Stream7_IRQn 0 */
+
+  /* USER CODE END DMA1_Stream7_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_uart7_tx);
+  /* USER CODE BEGIN DMA1_Stream7_IRQn 1 */
+
+  /* USER CODE END DMA1_Stream7_IRQn 1 */
+}
+
+/**
   * @brief This function handles UART5 global interrupt.
   */
 void UART5_IRQHandler(void)
@@ -462,15 +477,15 @@ void UART7_IRQHandler(void)
   /* USER CODE END UART7_IRQn 0 */
   HAL_UART_IRQHandler(&huart7);
   /* USER CODE BEGIN UART7_IRQn 1 */
-	referee_fbkdata(&video_cmd,uart7_rx_buff);
-	referee_rc_decode(&video_cmd);//图传遥控
-	
-	device_fbk(&video_cm);//更新离线时间
+
+
 	
 	
-	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
+	
+	referee_fbkdata(&dianguan_cmd,uart7_rx_buff);
+	 
+	
 	HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
-	
 
   /* USER CODE END UART7_IRQn 1 */
 }
@@ -485,11 +500,11 @@ void USART10_IRQHandler(void)
   /* USER CODE END USART10_IRQn 0 */
   HAL_UART_IRQHandler(&huart10);
   /* USER CODE BEGIN USART10_IRQn 1 */
-	
-	referee_fbkdata(&dianguan_cmd,uart10_rx_buff);
-	 
-	
+		referee_fbkdata(&video_cmd,uart10_rx_buff);
 	HAL_UARTEx_ReceiveToIdle_IT(&huart10,uart10_rx_buff, sizeof(uart10_rx_buff));
+	
+	device_fbk(&video_cm);//更新离线时间
+
 
   /* USER CODE END USART10_IRQn 1 */
 }

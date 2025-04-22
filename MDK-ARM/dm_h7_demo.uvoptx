@@ -158,24 +158,7 @@
           <Name>-U-O142 -O2254 -SF10000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP (ARM Core") -D00(6BA02477) -L00(0) -TO131090 -TC10000000 -TT10000000 -TP21 -TDS8000 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32H72x-73x_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32H723VGTx$CMSIS\Flash\STM32H72x-73x_1024.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>7</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\application\video.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -927,6 +910,41 @@
           <WinNumber>1</WinNumber>
           <ItemText>uart1_dma_tx_buf</ItemText>
         </Ww>
+        <Ww>
+          <count>150</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>uart5_rx_buff</ItemText>
+        </Ww>
+        <Ww>
+          <count>151</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ARM_CMD_data</ItemText>
+        </Ww>
+        <Ww>
+          <count>152</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>custom_robot_data</ItemText>
+        </Ww>
+        <Ww>
+          <count>153</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>video_cmd</ItemText>
+        </Ww>
+        <Ww>
+          <count>154</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>uart7_rx_buff</ItemText>
+        </Ww>
+        <Ww>
+          <count>155</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>uart10_rx_buff</ItemText>
+        </Ww>
+        <Ww>
+          <count>156</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>custom_cmd</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -1316,7 +1334,7 @@
 
   <Group>
     <GroupName>Application/User/USB_DEVICE/App</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

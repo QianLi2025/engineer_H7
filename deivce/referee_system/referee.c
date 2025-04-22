@@ -37,7 +37,7 @@ void rf_ui_upgrade(referee_t *rf)
 	//frameheader+cmdod+databuf 上面是将ui_data_buf放置于uart1_dma_tx_buf 下面这个是一个常规的数据格式header+cmdid+真数据+尾部校验 左CRC校验时要对整体长度做
     Append_CRC16_Check_Sum(uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t)); // header+cmd_id+data[]+crc16
  
-	  HAL_UART_Transmit_DMA(&huart10, uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t));
+	  HAL_UART_Transmit_DMA(&huart7, uart1_dma_tx_buf, sizeof(frame_header_t) + sizeof(uint16_t) + rf->ui.ui_send.ui_data_len + sizeof(uint16_t));
 }
 
 
@@ -64,7 +64,7 @@ void rf_ui_string_upgrade(referee_t *rf)
 	//frameheader+cmdod+databuf 上面是将ui_data_buf放置于uart1_dma_tx_buf 下面这个是一个常规的数据格式header+cmdid+真数据+尾部校验 左CRC校验时要对整体长度做
     Append_CRC16_Check_Sum(uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t)); // header+cmd_id+data[]+crc16
     
-	  HAL_UART_Transmit_DMA(&huart10, uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t));
+	  HAL_UART_Transmit_DMA(&huart7, uart1_dma_tx_buf, sizeof(frame_header_t) + 8+45 + sizeof(uint16_t));
 	  
 }
 

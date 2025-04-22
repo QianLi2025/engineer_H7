@@ -103,7 +103,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 	
-  HAL_Delay(3000);
+//  HAL_Delay(3000);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -166,6 +166,20 @@ int main(void)
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
         enable_motor_mode(&hfdcan3, 2, POS_MODE);
+				
+				clear_err(&hfdcan2,  1,  MIT_MODE);
+				clear_err(&hfdcan2,  2,  POS_MODE);
+				clear_err(&hfdcan3,  1,  POS_MODE);
+				clear_err(&hfdcan3,  2,  POS_MODE);
+				
+				
+			}
+			
+				if(ctrl_flag==1&&shift_flag==1&&f_flag==1)
+			{
+				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
+        NVIC_SystemReset();//软件复位
+	
 			}
     }
  

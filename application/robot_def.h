@@ -38,7 +38,7 @@
 #define FINE_MAX      1.7f
 #define FINE_MIN2     -1.3f
 #define FINE_MAX2     1.7f
-#define PITCH_MIN     -1.55f
+#define PITCH_MIN     -1.69f
 #define PITCH_MAX     1.00f
 //#define HEIGHT_MIN    -550.f
 //#define HEIGHT_MAX    560.f // 50

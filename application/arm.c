@@ -156,7 +156,7 @@ void ARM_INIT(void)
 	M3508_init(&lift_motor,1,0.3 * 187 / 3591);
 //    PID_init(&roll_pid_angle,PID_POSITION,20,0,1,10000,150);//6
 //	PID_init(&roll_pid_speed,PID_POSITION,12,0.1,0,10000,200);
-	PID_init(&roll_pid_angle,PID_POSITION,60,0,0,10000,150);//6
+	PID_init(&roll_pid_angle,PID_POSITION,90,0,0,10000,150);//60
 	PID_init(&roll_pid_speed,PID_POSITION,120,0.1,0,1200,200);
 
 	PID_init(&lift_pid_angle,PID_POSITION,12,0,0,10000,15000);//5
@@ -219,10 +219,10 @@ void ARM_TASK(void)
     switch (ARM_CMD_data.trans_mode)
     {
     case GET://取
-        trans_speed_control(700);//控制传送带速度
+        trans_speed_control(900);//控制传送带速度
         break;
     case OUTPUT://兑矿
-        trans_speed_control(-700);//控制传送带速度
+        trans_speed_control(-900);//控制传送带速度
         break;
 		case STOP:
 			  trans_speed_control(0);
@@ -280,12 +280,13 @@ void ARM_TASK(void)
     {
     case ROLL_KEEP_MODE://停止
 
-//        if (last_roll_mode != LIFT_KEEP_MODE) // 如果是第一次进入该模式
-//        {
-//            temp_roll = roll_real; // 这里的计算还需要好好改
-//        }
-//        control_roll_angle(temp_roll);
-	    	control_roll_speed(0);
+        if (last_roll_mode != LIFT_KEEP_MODE) // 如果是第一次进入该模式
+        {
+            temp_roll = roll_real; // 这里的计算还需要好好改
+        }
+        control_roll_angle(temp_roll);
+		
+//	    	control_roll_speed(0);
         break;
 
     case ROLL_ANGLE_MODE://增量式到达某处
@@ -297,7 +298,7 @@ void ARM_TASK(void)
     default:
         break;
     }
-//    last_roll_mode = ARM_CMD_data.roll_mode;
+    last_roll_mode = ARM_CMD_data.roll_mode;
     
 		
 		
@@ -521,7 +522,7 @@ static void trans_speed_control(double trans_speed_ref)
 {
 //  height       = -(lift_motor.total_angle - 0)/1.7 ;//height是初始化后的
 //	height = -(lift_motor.total_angle - 0)*0.796 ;//height是初始化后的
-	height = -(lift_motor.total_angle - 0)*0.37 ;//height是初始化后的
+	height = -(lift_motor.total_angle - 0)*0.40 ;//height是初始化后的 37
 }
 
 

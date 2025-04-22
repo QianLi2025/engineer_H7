@@ -90,6 +90,8 @@ void limit_all_angle_lift(void);//设置限幅
 //将电机值返回给minipc
 void minipc_send(minipc_t* pc);
 	
+//传送带手动控制
+void trans_single_control(void);
 //解算数组
 float res_scara_angle[2]; //第一个为大臂，第二个为小臂
 static float rc_mode_xy[2]             = {0, 0}; // 目标x,y坐标
@@ -125,6 +127,8 @@ uint32_t count_for_step8     = 0;
 uint32_t count_for_step9     = 0;
 
 uint32_t use_custom_flag =0;
+
+uint32_t use_absolute_flag=1;//绝对模式控制
 
 float target_angle1     = 0;
 float target_angle2     = 0;
@@ -168,6 +172,11 @@ void	remote_cmd_choose(void);
 //roll和loft直接由此控制
 void ROBOT_CMD_TASK(void)
 {
+	
+	referee_rc_decode(&video_cmd);//图传遥控
+
+	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
+	
 	remote_cmd_choose();
 	
 	//0点设置
@@ -204,7 +213,7 @@ void ROBOT_CMD_TASK(void)
 		//几个电机//鼠标遥控
 		//roll //鼠标//遥控器
 		//抬升 //鼠标//遥控器
-		real_handle_mode();
+		  real_handle_mode();
 		//模式预备
 		//低头到银矿距离
      
@@ -217,7 +226,7 @@ void ROBOT_CMD_TASK(void)
 
         //口朝右
 	    //准备好喽！！！！！！！！！！
-		get_ready_auto();
+		  get_ready_auto();
 		 //取金矿模式锁机械臂
         lock_arm();
 		 //推矿模式
@@ -273,7 +282,9 @@ void ROBOT_CMD_TASK(void)
 		if(use_custom_flag==0)
 		{
     // yaw轴旋转量转换到关节电机角度 这个是一定会做的
-    yaw_absolute_ctrl();//得到target_angle3
+			if(use_absolute_flag==1){
+        yaw_absolute_ctrl();//得到target_angle3
+				}
 
 		}
 		
@@ -673,12 +684,16 @@ void real_handle_mode(void)//真手动模式
         }
 				
 				
+
+				//控制传送带
+				trans_single_control();
+				
 }
 
 //发送所有消息
 void normally_set_all_data(void)
 {
-	  ARM_CMD_data.maximal_arm_angle = -0.087f + target_angle1;//1.05
+	  ARM_CMD_data.maximal_arm_angle = -0.27f + target_angle1;//1.05
     ARM_CMD_data.minimal_arm_angle = -0.009f + target_angle2;//-2.28
     ARM_CMD_data.finesse_angle     = 0.042f + target_angle3;//target_angle3;//向右-6.8~2.74向左  //最右-3.1最左6.08
     ARM_CMD_data.pitch_arm_angle   = -0.094f + target_angle4;//向下-1.4~0.78向上   //roll-180,+180
@@ -777,10 +792,10 @@ void lock_arm(void)
             c_counter->ctrl_press_count = 0; //伸直机械臂命令清零
         }
         if (z_counter->shift_press_count % 3 == 1) {
-            lift_height_cmd(65, &target_lift_speed);
+            lift_height_cmd(80, &target_lift_speed);
             rc_mode_xy[0]       = 330;
             rc_mode_xy[1]       = 0;
-            target_angle4       = 0;
+            target_angle4       = -0.15;
             yaw_absolute        = 0;
             count_for_modeShift = 0;
             //伸直机械臂
@@ -788,7 +803,7 @@ void lock_arm(void)
                 target_angle1 = 0;
                 target_angle2 = 0;
                 yaw_absolute  = 0;
-                target_angle4 = 0;
+                target_angle4 = -0.15;
                 if_solve_flag = 0; //机械臂不解算
             }
         }
@@ -888,6 +903,12 @@ void auto_get_silver(void)
                 lift_height_cmd(590, &target_lift_speed); 
                 target_angle1     = PI / 2;
                 target_angle2     = 0.41921f;
+							
+							  use_absolute_flag=0;//不要绝对控制
+							
+							  target_angle3            =-0.5;
+							
+							
                 backback_count0_5++;
                 if (backback_count0_5 > 170) {
                     backback_step = 1;
@@ -917,6 +938,8 @@ void auto_get_silver(void)
                 lift_height_cmd(350, &target_lift_speed); 
                 target_angle1            = 1.42956f;
                 target_angle2            = 2.15921f;
+							
+							  
                 count_for_drop++;
                 if (count_for_drop > 300) {
                     backback_step = 4;
@@ -927,6 +950,8 @@ void auto_get_silver(void)
                 lift_height_cmd(590, &target_lift_speed); 
                 rc_mode_xy[0]     = 250;
                 rc_mode_xy[1]     = 200;
+							
+							  use_absolute_flag=1;//不要绝对控制
                 float temp_xy[2]  = {0, 0};
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
                 if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {
@@ -958,9 +983,9 @@ void auto_get_silver(void)
             rc_mode_xy[1]     = (200 - 270);
             yaw_absolute      = 0;
             target_angle4     = -PI / 2;
-            lift_height_cmd(20, &target_lift_speed); 
+            lift_height_cmd(0, &target_lift_speed); 
             count_for_step3++;
-            if (count_for_step3 > 500) {
+            if (count_for_step3 > 700) {
                 silver_mode_step = 4;
             }
         }
@@ -1004,6 +1029,10 @@ void auto_get_silver(void)
                 lift_height_cmd(600, &target_lift_speed); 
                 target_angle1     = PI / 2;
                 target_angle2     = 0.41921f;
+							
+								use_absolute_flag=0;//不要绝对控制
+							
+							  target_angle3            =-0.5;
                 backback_count0_5++;
                 if (backback_count0_5 > 170) {
                     backback_step = 1;
@@ -1043,6 +1072,7 @@ void auto_get_silver(void)
                 lift_height_cmd(590, &target_lift_speed); 
                 rc_mode_xy[0]     = 250;
                 rc_mode_xy[1]     = 200;
+							  use_absolute_flag=1;//不要绝对控制
                 float temp_xy[2]  = {0, 0};
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
                 if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {
@@ -1167,9 +1197,9 @@ void auto_fetch_block(void)
             count_for_suck    = 0;
         }
         ARM_CMD_data.trans_mode = OUTPUT;
-        target_angle4               = -PI / 2 - 0.08;
+        target_angle4               = -PI / 2 - 0.14;
         ARM_CMD_data.sucker_mode    = SUCKER_ON;
-        if (height < 300) //在危险高度以下
+        if (height < 230) //在危险高度以下
         {
             target_lift_speed = 500;
         } else { //可以开始收回
@@ -1183,21 +1213,21 @@ void auto_fetch_block(void)
                 if_solve_flag = 1; //机械臂解算
             }
             if (backget_step == 1) {
-							  lift_height_cmd(450, &target_lift_speed); 
+							  lift_height_cmd(400, &target_lift_speed); 
                 target_angle1     = 1.42956f;
                 target_angle2     = 2.11921f;
-                if (fabs(min_motor.para.pos - 2.11921f) < 0.3) {
+                if (fabs(min_motor.para.pos - 2.11921f) < 0.15) {
                     backget_step = 2;
                 }
                 if_solve_flag = 0; //机械臂不解算
             }
             if (backget_step == 2) {
-							  lift_height_cmd(250, &target_lift_speed); 
+							  lift_height_cmd(260, &target_lift_speed); 
                 
                 target_angle1     = 1.42956f;
                 target_angle2     = 2.11921f;
                 count_for_suck++;
-                if (count_for_suck > 200) {
+                if (count_for_suck > 400) {
                     backget_step = 3;
                 }
                 if_solve_flag = 0; //机械臂不解算
@@ -1256,7 +1286,7 @@ void auto_put_block(void)//自动放东西
         ARM_CMD_data.trans_mode = GET;
 //        target_angle4               = -PI / 2;
 				target_angle4               = -PI / 2 - 0.08;
-        if (height < 300) //在危险高度以下
+        if (height < 250) //在危险高度以下
         {
             target_lift_speed = 500;
         } else { //可以开始收回
@@ -1275,6 +1305,11 @@ void auto_put_block(void)//自动放东西
                 
                 target_angle1     = 0.90956f;
                 target_angle2     = 2.41921f;
+							
+							  use_absolute_flag=0;//不要绝对控制
+							
+							  target_angle3            =-0.5;
+							
                 if (fabs(min_motor.para.pos- 2.41921f) < 0.15) {
                     backback_step = 2;
                 }
@@ -1284,6 +1319,8 @@ void auto_put_block(void)//自动放东西
 							lift_height_cmd(550, &target_lift_speed); 
                 target_angle1     = 1.42956f;
                 target_angle2     = 2.15921f;
+
+							
                 if (fabs(min_motor.para.pos - 2.15921f) < 0.15) {
                     backback_step = 3;
                 }
@@ -1291,9 +1328,11 @@ void auto_put_block(void)//自动放东西
             }
             if (backback_step == 3) {
                 ARM_CMD_data.sucker_mode = SUCKER_OFF;
-                lift_height_cmd(350, &target_lift_speed); 
+                lift_height_cmd(375, &target_lift_speed); 
                 target_angle1            = 1.42956f;
                 target_angle2            = 2.15921f;
+							  
+							
                 count_for_drop++;
                 if (count_for_drop > 300) {
                     backback_step = 4;
@@ -1304,6 +1343,9 @@ void auto_put_block(void)//自动放东西
                 lift_height_cmd(590, &target_lift_speed); 
                 rc_mode_xy[0]     = 250;
                 rc_mode_xy[1]     = 0;
+							
+							  use_absolute_flag=1;
+							
                 float temp_xy[2]  = {0, 0};
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
                 if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {//坐标差小于一定程度
@@ -1322,7 +1364,7 @@ void normally_chassis_control(void)
 {
 	 //底盘非自动模式
     if (chassis_auto_flag == 0) {
-        float speed_scale = 0.08f;
+        float speed_scale = 0.14f;
 			
 			
         //平移缓启动
@@ -1344,10 +1386,10 @@ void normally_chassis_control(void)
 				
         //前进缓启动
         if ((w_flag && (!s_flag))) {
-            target_forward += 10 * speed_scale;
+            target_forward += 6 * speed_scale;
         }
         if ((s_flag && (!w_flag))) {
-            target_forward -= 10 * speed_scale;
+            target_forward -= 6 * speed_scale;
         }
         if ((!s_flag) && (!w_flag))  {
             target_forward = 0;
@@ -1408,16 +1450,27 @@ void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后
 	
 	//z轴配置
 	if(minipc->minipc2mcu.z_mode==ANGLE){
-	  if(minipc->minipc2mcu.z_ctrl>=400)
-		{minipc->minipc2mcu.z_ctrl=400;}
-    if(minipc->minipc2mcu.z_ctrl<=-400)
-		{minipc->minipc2mcu.z_ctrl=-400;}
+//	  if(minipc->minipc2mcu.z_ctrl>=400)
+//		{minipc->minipc2mcu.z_ctrl=400;}
+//    if(minipc->minipc2mcu.z_ctrl<=-400)
+//		{minipc->minipc2mcu.z_ctrl=-400;}
+		
 	  lift_height_cmd(minipc->minipc2mcu.z_ctrl, &target_lift_speed);
 	}//绝对式
+	
+	
 	if(minipc->minipc2mcu.z_mode==SPEED){
-		float temp_target_height=height+minipc->minipc2mcu.z_ctrl;
-		lift_height_cmd(temp_target_height, &target_lift_speed);
+		
+//		float temp_target_height=height+minipc->minipc2mcu.z_ctrl;
+//		lift_height_cmd(temp_target_height, &target_lift_speed);
+		lift_height_cmd(minipc->minipc2mcu.z_ctrl, &target_lift_speed);
+		
 	}//增量式 
+	
+	
+	
+	
+	
 	
 	
 	//roll轴配置
@@ -1498,7 +1551,7 @@ void limit_all_angle_lift(void)//设置限幅
 		
     VAL_LIMIT(target_angle4, PITCH_MIN, PITCH_MAX);
 		
-		if(target_lift_speed>10&&height>=570)
+		if(target_lift_speed>10&&height>=550)
 		{target_lift_speed=-10;}
 //		if(target_lift_speed<-10&&height<=20)//高度限幅 这个没必要
 //		{target_lift_speed=10;}
@@ -1682,5 +1735,22 @@ void video_offline_protect(void)//图传离线保护
 		
     		
 	}
+}
+//传送带手动控制
+void trans_single_control(void)
+{
+	if(z_counter->single_press_count%3==0)
+	{
+		ARM_CMD_data.trans_mode=STOP;
+	}
+	if(z_counter->single_press_count%3==1)
+	{
+		ARM_CMD_data.trans_mode=GET;
+	}
+	if(z_counter->single_press_count%3==2)
+	{
+		ARM_CMD_data.trans_mode=OUTPUT;
+	}
+		
 }
 //如果在算法库中直接return后就可以跳过错误的值而不执行
