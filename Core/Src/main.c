@@ -40,6 +40,7 @@
 #include "sucker.h"
 #include "cm_device.h"
 #include "UI_task.h"
+#include "ui.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -124,6 +125,9 @@ int main(void)
   MX_USART10_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  ui_init_g();
+	
+	
   DWT_Init(480);
 
 	kf_imu_init();
@@ -157,7 +161,7 @@ int main(void)
 		 if(time_count%10==0)//100hz浠诲姟
     {
 			
-			UI_TASK();
+			
 			if(shift_flag==1&&f_flag==1)
 			{
 //				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
@@ -214,6 +218,14 @@ int main(void)
     if(time_count%200==0)//5hz浠诲姟
     {
 //      offline_check();//绂荤嚎妫?娴?
+			if(g_flag)
+			{
+				UI_UPLOAD();//更新信息
+				 ui_init_g();//刷新UI
+			}
+				
+			 ui_update_g();
+//			 UI_TASK();
     }
 		
 		 if(time_count%1000==0)//1hz浠诲姟

@@ -172,6 +172,7 @@ void	remote_cmd_choose(void);
 //roll和loft直接由此控制
 void ROBOT_CMD_TASK(void)
 {
+	ROBOT_STATE=NORMAL;
 	
 	referee_rc_decode(&video_cmd);//图传遥控
 
@@ -206,6 +207,7 @@ void ROBOT_CMD_TASK(void)
 		if((rc_ctrl.rc.s[0]==2)&&rc_cm.state==DEVICE_OK)
 		{
 			costum_ctrl_arm();
+			ROBOT_STATE=CUSTOM;
 		}
 		else
     {
@@ -893,7 +895,7 @@ void auto_get_silver(void)
             if (backback_step == 0) {
                 lift_height_cmd(590, &target_lift_speed); 
                 rc_mode_xy[0]     = 220;
-                rc_mode_xy[1] += 1;
+                rc_mode_xy[1] += 4;
                 if (rc_mode_xy[1] >= 400) {
                     backback_step = 0.5f;
                 }
@@ -1019,7 +1021,7 @@ void auto_get_silver(void)
             if (backback_step == 0) {
                 lift_height_cmd(590, &target_lift_speed); 
                 rc_mode_xy[0]     = 220;
-                rc_mode_xy[1] += 1;
+                rc_mode_xy[1] += 4;
                 if (rc_mode_xy[1] >= 400) {
                     backback_step = 0.5f;
                 }
@@ -1551,7 +1553,7 @@ void limit_all_angle_lift(void)//设置限幅
 		
     VAL_LIMIT(target_angle4, PITCH_MIN, PITCH_MAX);
 		
-		if(target_lift_speed>10&&height>=550)
+		if(target_lift_speed>10&&height>=MAX_HEIGHT)
 		{target_lift_speed=-10;}
 //		if(target_lift_speed<-10&&height<=20)//高度限幅 这个没必要
 //		{target_lift_speed=10;}

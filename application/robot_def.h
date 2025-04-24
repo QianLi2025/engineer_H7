@@ -15,6 +15,8 @@
 #define HEIGHT_MINIMUN 0
 #define REMOTE_CONTROL
 
+#define MAX_HEIGHT 550
+
 //#define TEST_MODE
 
 // 机器人底盘修改的参数,单位为mm(毫米)
@@ -50,6 +52,9 @@
 #define LB_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE + CENTER_GIMBAL_OFFSET_Y) * DEGREE_2_RAD)
 #define RB_CENTER ((HALF_TRACK_WIDTH - CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE + CENTER_GIMBAL_OFFSET_Y) * DEGREE_2_RAD)
 
+
+
+
 #define VAL_LIMIT(val, min, max)     \
     do {                             \
         if ((val) <= (min)) {        \
@@ -58,6 +63,16 @@
             (val) = (max);           \
         }                            \
     } while (0)
+
+typedef enum
+{
+    NORMAL=0,
+    CUSTOM,
+    VISION
+
+}ROBOT_STATE_e;//机器人状态		
+		
+
 
 typedef enum
 {

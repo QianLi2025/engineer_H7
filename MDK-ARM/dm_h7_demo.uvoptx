@@ -945,6 +945,26 @@
           <WinNumber>1</WinNumber>
           <ItemText>custom_cmd</ItemText>
         </Ww>
+        <Ww>
+          <count>157</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ui_dirty_figure</ItemText>
+        </Ww>
+        <Ww>
+          <count>158</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>_ui_string_frame</ItemText>
+        </Ww>
+        <Ww>
+          <count>159</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>_ui_string_frame</ItemText>
+        </Ww>
+        <Ww>
+          <count>160</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>uart1_dma_tx_buf</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -1139,7 +1159,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -2207,6 +2227,38 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\deivce\cm_device.c</PathWithFileName>
       <FilenameWithoutPath>cm_device.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>UI_real</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>20</GroupNumber>
+      <FileNumber>74</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\deivce\UI\ui_g.c</PathWithFileName>
+      <FilenameWithoutPath>ui_g.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>20</GroupNumber>
+      <FileNumber>75</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\deivce\UI\ui_interface.c</PathWithFileName>
+      <FilenameWithoutPath>ui_interface.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -363,24 +363,16 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     __HAL_RCC_UART7_CLK_ENABLE();
 
     __HAL_RCC_GPIOE_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
     /**UART7 GPIO Configuration
     PE7     ------> UART7_RX
-    PA15(JTDI)     ------> UART7_TX
+    PE8     ------> UART7_TX
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_7;
+    GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF7_UART7;
     HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_15;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF11_UART7;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* UART7 DMA Init */
     /* UART7_TX Init */
@@ -673,11 +665,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
     /**UART7 GPIO Configuration
     PE7     ------> UART7_RX
-    PA15(JTDI)     ------> UART7_TX
+    PE8     ------> UART7_TX
     */
-    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_7);
-
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_15);
+    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_7|GPIO_PIN_8);
 
     /* UART7 DMA DeInit */
     HAL_DMA_DeInit(uartHandle->hdmatx);

@@ -16,4 +16,6 @@ void Append_CRC16_Check_Sum(uint8_t *pchMessage, uint32_t dwLength);
 uint32_t Verify_CRC16_Check_Sum(uint8_t *pchMessage, uint32_t dwLength);
 uint16_t Get_CRC16_Check_Sum(uint8_t *pchMessage, uint32_t dwLength, uint16_t wCRC);
 
+extern const uint8_t CRC8_TAB[256] ;
+extern const uint16_t wCRC_Table[256];
 #endif
