@@ -48,9 +48,9 @@ void UI_UPLOAD(void)//ÉÏ´«
 	if(ROBOT_STATE==CUSTOM){
 	strcpy(ui_g_Ungroup_ROBOT_STATE->string, "CUSTOM");}
 	
-	if(ARM_CMD_data.sucker_mode==OFF){
-	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "OFF");}
-		if(ARM_CMD_data.sucker_mode==ON){
-	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "ON ");}
+//	if(ARM_CMD_data.sucker_mode==OFF){
+//	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "OFF");}
+//		if(ARM_CMD_data.sucker_mode==ON){
+//	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "ON ");}
 
 }

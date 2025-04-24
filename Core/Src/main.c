@@ -220,10 +220,10 @@ int main(void)
 //      offline_check();//绂荤嚎妫?娴?
 			if(g_flag)
 			{
-				UI_UPLOAD();//更新信息
+				
 				 ui_init_g();//刷新UI
 			}
-				
+				UI_UPLOAD();//更新信息
 			 ui_update_g();
 //			 UI_TASK();
     }

@@ -83,8 +83,7 @@ void push_block(void);
 
 void auto_fetch_block(void);
 
-void auto_put_block(void);//自动放东西
-
+void auto_put_block(void);//自动收矿
 void limit_all_angle_lift(void);//设置限幅
 
 //将电机值返回给minipc

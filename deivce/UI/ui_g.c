@@ -131,7 +131,7 @@ void ui_init_g() {
     ui_g_Ungroup_SUCKER_STATE->layer = 0;
     ui_g_Ungroup_SUCKER_STATE->font_size = 20;
     ui_g_Ungroup_SUCKER_STATE->start_x = 1018;
-    ui_g_Ungroup_SUCKER_STATE->start_y = 902;
+    ui_g_Ungroup_SUCKER_STATE->start_y = 550;
     ui_g_Ungroup_SUCKER_STATE->color = 3;
     ui_g_Ungroup_SUCKER_STATE->str_length = 3;
     ui_g_Ungroup_SUCKER_STATE->width = 2;
