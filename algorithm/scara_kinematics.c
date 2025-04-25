@@ -135,7 +135,7 @@ void check_boundary_scara_lefthand(float x, float y, float res_xy[2])
 //    double polyval_p3 = polyval_calc(p3_left, y, 8);
 //    double polyval_p4 = polyval_calc(p4_left, y, 6);
 		
-		double polyval_p1 = polyval_calc(p1_left, y, 12)  +100;//有点意思 加上去又会如何呢
+		double polyval_p1 = polyval_calc(p1_left, y, 12)+100;//有点意思 加上去又会如何呢
     double polyval_p2 = polyval_calc(p2_left, y, 8)-35;
     double polyval_p3 = polyval_calc(p3_left, y, 8)-35;
     double polyval_p4 = polyval_calc(p4_left, y, 6)-35;

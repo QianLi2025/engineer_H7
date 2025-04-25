@@ -48,9 +48,17 @@ void UI_UPLOAD(void)//上传
 	if(ROBOT_STATE==CUSTOM){
 	strcpy(ui_g_Ungroup_ROBOT_STATE->string, "CUSTOM");}
 	
-//	if(ARM_CMD_data.sucker_mode==OFF){
-//	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "OFF");}
-//		if(ARM_CMD_data.sucker_mode==ON){
-//	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "ON ");}
+	
+	ui_g_Ungroup_REAL_HEIGHT->number =height;//高度真实
+	
+	
+	ui_g_Ungroup_heigth_index->start_y =(uint32_t)(430+ height*(826-430)/(MAX_HEIGHT-0));//高度索引
+	
+	
+	
+	if(ARM_CMD_data.sucker_mode==SUCKER_OFF){
+	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "OFF");}
+		if(ARM_CMD_data.sucker_mode==SUCKER_ON){
+	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "ON ");}
 
 }

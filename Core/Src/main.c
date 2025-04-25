@@ -169,10 +169,10 @@ int main(void)
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
         enable_motor_mode(&hfdcan3, 2, POS_MODE);
 				
-				clear_err(&hfdcan2,  1,  MIT_MODE);
-				clear_err(&hfdcan2,  2,  POS_MODE);
-				clear_err(&hfdcan3,  1,  POS_MODE);
-				clear_err(&hfdcan3,  2,  POS_MODE);
+//				clear_err(&hfdcan2,  1,  MIT_MODE);
+//				clear_err(&hfdcan2,  2,  POS_MODE);
+//				clear_err(&hfdcan3,  1,  POS_MODE);
+//				clear_err(&hfdcan3,  2,  POS_MODE);
 				
 				
 			}
