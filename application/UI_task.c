@@ -8,6 +8,7 @@ uint8_t temp_id=2;
 
 uint8_t is_inited;
 
+int height_test;
 void UI_INIT(void)
 {
 	//搜索ID
@@ -49,10 +50,10 @@ void UI_UPLOAD(void)//上传
 	strcpy(ui_g_Ungroup_ROBOT_STATE->string, "CUSTOM");}
 	
 	
-	ui_g_Ungroup_REAL_HEIGHT->number =height;//高度真实
+	ui_g_Ungroup_REAL_HEIGHT->number =height_test;//高度真实
 	
 	
-	ui_g_Ungroup_heigth_index->start_y =(uint32_t)(430+ height*(826-430)/(MAX_HEIGHT-0));//高度索引
+	ui_g_Ungroup_heigth_index->start_y =(uint32_t)(430+ height_test*(826-430)/(MAX_HEIGHT-0));//高度索引
 	
 	
 	

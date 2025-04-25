@@ -27,7 +27,22 @@ Project File Date:  04/24/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'dm_h7_demo'
-"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 0 Warning(s).
+compiling UI_task.c...
+..\application\UI_task.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\deivce\UI\ui_g.h(54): warning:  #1295-D: Deprecated declaration ui_init_g - give arg types
+  void ui_init_g();
+..\deivce\UI\ui_g.h(55): warning:  #1295-D: Deprecated declaration ui_update_g - give arg types
+  void ui_update_g();
+..\application\UI_task.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\application\UI_task.c(38): warning:  #188-D: enumerated type mixed with another type
+  	 rf_ui_write_string(&dianguan_cmd, "sd1", str1,  strlen(str1),  15,  5,  250,  250,  1,  temp_id);
+..\application\UI_task.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=94226 RO-data=2566 RW-data=2524 ZI-data=73356  
+FromELF: creating hex file...
+"dm_h7_demo\dm_h7_demo.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +65,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:12
 </pre>
 </body>
 </html>
