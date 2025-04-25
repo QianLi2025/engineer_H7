@@ -35,7 +35,7 @@
 #define MAXARM_MIN    -0.24f
 #define MAXARM_MAX    2.3f
 #define MINARM_MIN    -2.45f
-#define MINARM_MAX    2.4f
+#define MINARM_MAX    3.1f//2.4
 #define FINE_MIN      -1.3f // -1.16
 #define FINE_MAX      1.7f
 #define FINE_MIN2     -1.3f

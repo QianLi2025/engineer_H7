@@ -7,7 +7,7 @@
 #include "ui_interface.h"
 #include "ui_g.h"
 
-#define TOTAL_FIGURE 11
+#define TOTAL_FIGURE 16
 #define TOTAL_STRING 5
 
 ui_interface_figure_t ui_g_now_figures[TOTAL_FIGURE];
@@ -64,39 +64,12 @@ void ui_init_g() {
     ui_g_Ungroup_REAL_HEIGHT->number = 0;
     ui_g_Ungroup_REAL_HEIGHT->width = 2;
 
-    ui_g_Ungroup_SOURCE_LINE1->figure_tpye = 0;
-    ui_g_Ungroup_SOURCE_LINE1->layer = 0;
-    ui_g_Ungroup_SOURCE_LINE1->start_x = 733;
-    ui_g_Ungroup_SOURCE_LINE1->start_y = 125;
-    ui_g_Ungroup_SOURCE_LINE1->end_x = 789;
-    ui_g_Ungroup_SOURCE_LINE1->end_y = 451;
-    ui_g_Ungroup_SOURCE_LINE1->color = 2;
-    ui_g_Ungroup_SOURCE_LINE1->width = 3;
-
-    ui_g_Ungroup_SOURCE_LINE2->figure_tpye = 0;
-    ui_g_Ungroup_SOURCE_LINE2->layer = 0;
-    ui_g_Ungroup_SOURCE_LINE2->start_x = 1181;
-    ui_g_Ungroup_SOURCE_LINE2->start_y = 112;
-    ui_g_Ungroup_SOURCE_LINE2->end_x = 1108;
-    ui_g_Ungroup_SOURCE_LINE2->end_y = 443;
-    ui_g_Ungroup_SOURCE_LINE2->color = 2;
-    ui_g_Ungroup_SOURCE_LINE2->width = 3;
-
-    ui_g_Ungroup_SILVER1_LOCATION->figure_tpye = 0;
-    ui_g_Ungroup_SILVER1_LOCATION->layer = 0;
-    ui_g_Ungroup_SILVER1_LOCATION->start_x = 442;
-    ui_g_Ungroup_SILVER1_LOCATION->start_y = 419;
-    ui_g_Ungroup_SILVER1_LOCATION->end_x = 559;
-    ui_g_Ungroup_SILVER1_LOCATION->end_y = 419;
-    ui_g_Ungroup_SILVER1_LOCATION->color = 1;
-    ui_g_Ungroup_SILVER1_LOCATION->width = 4;
-
     ui_g_Ungroup_SILVER2_LOCATION->figure_tpye = 0;
     ui_g_Ungroup_SILVER2_LOCATION->layer = 0;
     ui_g_Ungroup_SILVER2_LOCATION->start_x = 889;
-    ui_g_Ungroup_SILVER2_LOCATION->start_y = 421;
+    ui_g_Ungroup_SILVER2_LOCATION->start_y = 435;
     ui_g_Ungroup_SILVER2_LOCATION->end_x = 1006;
-    ui_g_Ungroup_SILVER2_LOCATION->end_y = 421;
+    ui_g_Ungroup_SILVER2_LOCATION->end_y = 435;
     ui_g_Ungroup_SILVER2_LOCATION->color = 1;
     ui_g_Ungroup_SILVER2_LOCATION->width = 4;
 
@@ -111,11 +84,88 @@ void ui_init_g() {
     ui_g_Ungroup_SOURCE_HEIGHT->figure_tpye = 0;
     ui_g_Ungroup_SOURCE_HEIGHT->layer = 0;
     ui_g_Ungroup_SOURCE_HEIGHT->start_x = 820;
-    ui_g_Ungroup_SOURCE_HEIGHT->start_y = 746;
+    ui_g_Ungroup_SOURCE_HEIGHT->start_y = 663;
     ui_g_Ungroup_SOURCE_HEIGHT->end_x = 1097;
-    ui_g_Ungroup_SOURCE_HEIGHT->end_y = 746;
+    ui_g_Ungroup_SOURCE_HEIGHT->end_y = 663;
     ui_g_Ungroup_SOURCE_HEIGHT->color = 0;
     ui_g_Ungroup_SOURCE_HEIGHT->width = 4;
+
+    ui_g_Ungroup_BOUNDARY_rec->figure_tpye = 1;
+    ui_g_Ungroup_BOUNDARY_rec->layer = 0;
+    ui_g_Ungroup_BOUNDARY_rec->start_x = 110;
+    ui_g_Ungroup_BOUNDARY_rec->start_y = 614;
+    ui_g_Ungroup_BOUNDARY_rec->color = 1;
+    ui_g_Ungroup_BOUNDARY_rec->width = 1;
+    ui_g_Ungroup_BOUNDARY_rec->end_x = 444;
+    ui_g_Ungroup_BOUNDARY_rec->end_y = 870;
+
+    ui_g_Ungroup_BOUNDARY1->figure_tpye = 4;
+    ui_g_Ungroup_BOUNDARY1->layer = 0;
+    ui_g_Ungroup_BOUNDARY1->rx = 163;
+    ui_g_Ungroup_BOUNDARY1->ry = 130;
+    ui_g_Ungroup_BOUNDARY1->start_x = 278;
+    ui_g_Ungroup_BOUNDARY1->start_y = 733;
+    ui_g_Ungroup_BOUNDARY1->color = 2;
+    ui_g_Ungroup_BOUNDARY1->width = 1;
+    ui_g_Ungroup_BOUNDARY1->start_angle = 90;
+    ui_g_Ungroup_BOUNDARY1->end_angle = 270;
+
+    ui_g_Ungroup_BOUNDARY2->figure_tpye = 4;
+    ui_g_Ungroup_BOUNDARY2->layer = 0;
+    ui_g_Ungroup_BOUNDARY2->rx = 74;
+    ui_g_Ungroup_BOUNDARY2->ry = 51;
+    ui_g_Ungroup_BOUNDARY2->start_x = 366;
+    ui_g_Ungroup_BOUNDARY2->start_y = 745;
+    ui_g_Ungroup_BOUNDARY2->color = 2;
+    ui_g_Ungroup_BOUNDARY2->width = 1;
+    ui_g_Ungroup_BOUNDARY2->start_angle = 0;
+    ui_g_Ungroup_BOUNDARY2->end_angle = 90;
+
+    ui_g_Ungroup_BOUNDARY3->figure_tpye = 4;
+    ui_g_Ungroup_BOUNDARY3->layer = 0;
+    ui_g_Ungroup_BOUNDARY3->rx = 50;
+    ui_g_Ungroup_BOUNDARY3->ry = 108;
+    ui_g_Ungroup_BOUNDARY3->start_x = 165;
+    ui_g_Ungroup_BOUNDARY3->start_y = 734;
+    ui_g_Ungroup_BOUNDARY3->color = 2;
+    ui_g_Ungroup_BOUNDARY3->width = 1;
+    ui_g_Ungroup_BOUNDARY3->start_angle = 270;
+    ui_g_Ungroup_BOUNDARY3->end_angle = 0;
+
+    ui_g_Ungroup_rxy_index->figure_tpye = 2;
+    ui_g_Ungroup_rxy_index->layer = 0;
+    ui_g_Ungroup_rxy_index->r = 7;
+    ui_g_Ungroup_rxy_index->start_x = 273;
+    ui_g_Ungroup_rxy_index->start_y = 622;
+    ui_g_Ungroup_rxy_index->color = 6;
+    ui_g_Ungroup_rxy_index->width = 10;
+
+    ui_g_Ungroup_SOURCELine1->figure_tpye = 0;
+    ui_g_Ungroup_SOURCELine1->layer = 0;
+    ui_g_Ungroup_SOURCELine1->start_x = 850;
+    ui_g_Ungroup_SOURCELine1->start_y = 650;
+    ui_g_Ungroup_SOURCELine1->end_x = 850;
+    ui_g_Ungroup_SOURCELine1->end_y = 731;
+    ui_g_Ungroup_SOURCELine1->color = 0;
+    ui_g_Ungroup_SOURCELine1->width = 3;
+
+    ui_g_Ungroup_SOURCELine2->figure_tpye = 0;
+    ui_g_Ungroup_SOURCELine2->layer = 0;
+    ui_g_Ungroup_SOURCELine2->start_x = 1055;
+    ui_g_Ungroup_SOURCELine2->start_y = 654;
+    ui_g_Ungroup_SOURCELine2->end_x = 1055;
+    ui_g_Ungroup_SOURCELine2->end_y = 735;
+    ui_g_Ungroup_SOURCELine2->color = 0;
+    ui_g_Ungroup_SOURCELine2->width = 3;
+
+    ui_g_Ungroup_SILVERLine->figure_tpye = 0;
+    ui_g_Ungroup_SILVERLine->layer = 0;
+    ui_g_Ungroup_SILVERLine->start_x = 969;
+    ui_g_Ungroup_SILVERLine->start_y = 478;
+    ui_g_Ungroup_SILVERLine->end_x = 973;
+    ui_g_Ungroup_SILVERLine->end_y = 572;
+    ui_g_Ungroup_SILVERLine->color = 6;
+    ui_g_Ungroup_SILVERLine->width = 1;
 
     ui_g_Ungroup_SUCKER->figure_tpye = 7;
     ui_g_Ungroup_SUCKER->layer = 0;
@@ -131,7 +181,7 @@ void ui_init_g() {
     ui_g_Ungroup_SUCKER_STATE->layer = 0;
     ui_g_Ungroup_SUCKER_STATE->font_size = 20;
     ui_g_Ungroup_SUCKER_STATE->start_x = 1018;
-    ui_g_Ungroup_SUCKER_STATE->start_y = 550;
+    ui_g_Ungroup_SUCKER_STATE->start_y = 902;
     ui_g_Ungroup_SUCKER_STATE->color = 3;
     ui_g_Ungroup_SUCKER_STATE->str_length = 3;
     ui_g_Ungroup_SUCKER_STATE->width = 2;

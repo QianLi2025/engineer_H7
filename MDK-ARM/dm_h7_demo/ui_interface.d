@@ -52,3 +52,5 @@ dm_h7_demo\ui_interface.o: ../application/robot_def.h
 dm_h7_demo\ui_interface.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 dm_h7_demo\ui_interface.o: ..\deivce\UI\ui_interface.h
 dm_h7_demo\ui_interface.o: ..\deivce\UI\ui_types.h
+dm_h7_demo\ui_interface.o: ../Bsp/bsp_uart.h
+dm_h7_demo\ui_interface.o: ../Bsp/bsp_dwt.h

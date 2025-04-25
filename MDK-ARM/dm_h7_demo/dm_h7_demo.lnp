@@ -47,6 +47,7 @@
 "dm_h7_demo\usbd_cdc.o"
 "dm_h7_demo\bsp_dwt.o"
 "dm_h7_demo\bsp_fdcan.o"
+"dm_h7_demo\bsp_uart.o"
 "dm_h7_demo\crc8_crc16.o"
 "dm_h7_demo\kalman_filter.o"
 "dm_h7_demo\kf_imu.o"

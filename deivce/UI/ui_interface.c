@@ -10,6 +10,12 @@
 uint8_t seq = 0;
 int ui_self_id = 2;
 
+//ui_string_frame_t _ui_string_frame;
+//__attribute__((at(0x2400CCC6 + 0))) ui_1_frame_t _ui_1_frame;
+//__attribute__((at(0x2400CCC6 + sizeof(_ui_1_frame))))ui_2_frame_t _ui_2_frame;
+//__attribute__((at(0x2400CCC6 + sizeof(_ui_1_frame)+sizeof(_ui_2_frame))))ui_5_frame_t _ui_5_frame;
+//__attribute__((at(0x2400CCC6 + sizeof(_ui_1_frame)+sizeof(_ui_2_frame)+sizeof(_ui_5_frame))))ui_7_frame_t _ui_7_frame;
+
 ui_string_frame_t _ui_string_frame;
 ui_1_frame_t _ui_1_frame;
 ui_2_frame_t _ui_2_frame;

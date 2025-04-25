@@ -81,3 +81,4 @@ dm_h7_demo\ui_task.o: ..\application\UI_task.h
 dm_h7_demo\ui_task.o: ..\deivce\UI\ui_g.h
 dm_h7_demo\ui_task.o: ..\deivce\UI\ui_interface.h
 dm_h7_demo\ui_task.o: ..\deivce\UI\ui_types.h
+dm_h7_demo\ui_task.o: ../Bsp/bsp_uart.h

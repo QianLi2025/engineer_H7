@@ -41,6 +41,7 @@
 #include "cm_device.h"
 #include "UI_task.h"
 #include "ui.h"
+#include "bsp_uart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -223,6 +224,7 @@ int main(void)
 			}
 				UI_UPLOAD();//更新信息
 			 ui_update_g();
+			 uart7_tx_refresh();
 //			 UI_TASK();
     }
 		
