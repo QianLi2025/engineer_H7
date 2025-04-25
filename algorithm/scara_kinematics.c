@@ -128,21 +128,26 @@ void check_boundary_scara_lefthand(float x, float y, float res_xy[2])
     if (y > y_limit_left[1]) {
         y = y_limit_left[1];
     }
-    //算基本值
+    //算基本值粗粗地限位
 
-    double polyval_p1 = polyval_calc(p1_left, y, 12) - 20;
-    double polyval_p2 = polyval_calc(p2_left, y, 8);
-    double polyval_p3 = polyval_calc(p3_left, y, 8);
-    double polyval_p4 = polyval_calc(p4_left, y, 6);
+//    double polyval_p1 = polyval_calc(p1_left, y, 12) - 20;//有点意思 加上去又会如何呢
+//    double polyval_p2 = polyval_calc(p2_left, y, 8);
+//    double polyval_p3 = polyval_calc(p3_left, y, 8);
+//    double polyval_p4 = polyval_calc(p4_left, y, 6);
+		
+		double polyval_p1 = polyval_calc(p1_left, y, 12)  +10;//有点意思 加上去又会如何呢
+    double polyval_p2 = polyval_calc(p2_left, y, 8)-8;
+    double polyval_p3 = polyval_calc(p3_left, y, 8)-8;
+    double polyval_p4 = polyval_calc(p4_left, y, 6)-8;
 
-    if (x > polyval_p1) {
+    if (x > polyval_p1) {//最外侧
         // ProjectOnCurve(x,y,res_xy,polyval_p1);
         res_xy[1] = y;
         res_xy[0] = polyval_p1;
     } else {
-        if (y >= -y_limit_left[0] && y < -170 && x < polyval_p4) { x = polyval_p4; }
-        if (y >= -170 && y < 100 && x < polyval_p3) { x = polyval_p3; }
-        if (y >= 100 && y <= y_limit_left[1] && x < polyval_p2) { x = polyval_p2; }
+        if (y >= -y_limit_left[0] && y < -170 && x < polyval_p4) { x = polyval_p4; }//不同的y区域有不同的限制//写bug了？
+        if (y >= -170 && y < 100 && x < polyval_p3) { x = polyval_p3; }//大概是避免碰到内侧
+        if (y >= 100 && y <= y_limit_left[1] && x < polyval_p2) { x = polyval_p2; }//总体看下来只有外侧需要修改
         res_xy[0] = x;
         res_xy[1] = y;
     }

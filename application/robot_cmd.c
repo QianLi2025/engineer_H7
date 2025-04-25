@@ -286,7 +286,6 @@ void ROBOT_CMD_TASK(void)
 			if(use_absolute_flag==1){
         yaw_absolute_ctrl();//得到target_angle3
 				}
-
 		}
 		
 		
@@ -764,6 +763,8 @@ void normally_tranverse(void)
         if (rc_mode_xy[1] < -228) {
             rc_mode_xy[1] = -228;
         }
+				//总体粗限位
+				
         check_boundary_scara_lefthand(rc_mode_xy[0], rc_mode_xy[1], rc_mode_xy_after_check);
         rc_mode_xy[0] = rc_mode_xy_after_check[0];
         rc_mode_xy[1] = rc_mode_xy_after_check[1];

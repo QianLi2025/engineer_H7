@@ -126,8 +126,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   ui_init_g();
-	
-	
   DWT_Init(480);
 
 	kf_imu_init();

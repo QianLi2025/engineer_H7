@@ -4302,144 +4302,144 @@ Image Symbol Table
     i.can_filter_init                        0x08011c3c   Section        0  bsp_fdcan.o(i.can_filter_init)
     i.chassis_vision_ctrl_adjust             0x08011c80   Section        0  robot_cmd.o(i.chassis_vision_ctrl_adjust)
     i.check_boundary_scara_lefthand          0x08011cc8   Section        0  scara_kinematics.o(i.check_boundary_scara_lefthand)
-    i.clear_err                              0x08011e30   Section        0  damiaomotors.o(i.clear_err)
-    i.control_all_arm                        0x08011e74   Section        0  arm.o(i.control_all_arm)
-    control_all_arm                          0x08011e75   Thumb Code   104  arm.o(i.control_all_arm)
-    i.control_roll_angle                     0x08011eec   Section        0  arm.o(i.control_roll_angle)
-    control_roll_angle                       0x08011eed   Thumb Code   108  arm.o(i.control_roll_angle)
-    i.costum_ctrl_arm                        0x08011f70   Section        0  robot_cmd.o(i.costum_ctrl_arm)
-    i.device_fbk                             0x08012084   Section        0  cm_device.o(i.device_fbk)
-    i.device_init                            0x080120a0   Section        0  cm_device.o(i.device_init)
-    i.device_refresh                         0x080120b8   Section        0  cm_device.o(i.device_refresh)
-    i.dm_fdkdata                             0x0801212c   Section        0  damiaomotors.o(i.dm_fdkdata)
-    i.enable_allmotor                        0x080121d0   Section        0  arm.o(i.enable_allmotor)
-    enable_allmotor                          0x080121d1   Thumb Code    50  arm.o(i.enable_allmotor)
-    i.enable_motor_mode                      0x0801220c   Section        0  damiaomotors.o(i.enable_motor_mode)
-    i.euler2quaternion                       0x0801224e   Section        0  kf_imu.o(i.euler2quaternion)
-    i.fabs                                   0x08012356   Section        0  fabs.o(i.fabs)
-    i.fdcan1_rx_callback                     0x08012370   Section        0  bsp_fdcan.o(i.fdcan1_rx_callback)
-    i.fdcan2_rx_callback                     0x0801241c   Section        0  bsp_fdcan.o(i.fdcan2_rx_callback)
-    i.fdcan3_rx_callback                     0x08012460   Section        0  bsp_fdcan.o(i.fdcan3_rx_callback)
-    i.fdcanx_receive                         0x080124bc   Section        0  bsp_fdcan.o(i.fdcanx_receive)
-    i.fdcanx_send_data                       0x08012524   Section        0  bsp_fdcan.o(i.fdcanx_send_data)
-    i.float_to_uint                          0x080125a0   Section        0  damiaomotors.o(i.float_to_uint)
-    i.get_ready_auto                         0x080125d4   Section        0  robot_cmd.o(i.get_ready_auto)
-    i.get_x_minus                            0x08012708   Section        0  kf_imu.o(i.get_x_minus)
-    get_x_minus                              0x08012709   Thumb Code   476  kf_imu.o(i.get_x_minus)
-    i.imu_process                            0x080128e8   Section        0  kf_imu.o(i.imu_process)
-    imu_process                              0x080128e9   Thumb Code   288  kf_imu.o(i.imu_process)
-    i.is_key_held                            0x08012a44   Section        0  rc_protocol.o(i.is_key_held)
-    is_key_held                              0x08012a45   Thumb Code    12  rc_protocol.o(i.is_key_held)
-    i.is_key_held                            0x08012a50   Section        0  referee.o(i.is_key_held)
-    is_key_held                              0x08012a51   Thumb Code    12  referee.o(i.is_key_held)
-    i.is_key_pressed                         0x08012a5c   Section        0  rc_protocol.o(i.is_key_pressed)
-    i.is_key_pressed                         0x08012a7a   Section        0  referee.o(i.is_key_pressed)
-    is_key_pressed                           0x08012a7b   Thumb Code    30  referee.o(i.is_key_pressed)
-    i.kf_copy                                0x08012a98   Section        0  kalman_filter.o(i.kf_copy)
-    i.kf_get_K                               0x08012af4   Section        0  kalman_filter.o(i.kf_get_K)
-    i.kf_get_P                               0x08012b6c   Section        0  kalman_filter.o(i.kf_get_P)
-    i.kf_get_P_minus                         0x08012ba8   Section        0  kalman_filter.o(i.kf_get_P_minus)
-    i.kf_get_x_hat                           0x08012bf4   Section        0  kalman_filter.o(i.kf_get_x_hat)
-    i.kf_imu_init                            0x08012c3c   Section        0  kf_imu.o(i.kf_imu_init)
-    i.kf_imu_upgrade                         0x08012d2c   Section        0  kf_imu.o(i.kf_imu_upgrade)
-    i.lift_height_cmd                        0x0801317c   Section        0  arm.o(i.lift_height_cmd)
-    i.lift_speed_control                     0x080131b0   Section        0  arm.o(i.lift_speed_control)
-    i.lock_arm                               0x08013230   Section        0  robot_cmd.o(i.lock_arm)
-    i.main                                   0x0801339c   Section        0  main.o(i.main)
-    i.minipc_rec                             0x0801360c   Section        0  minipc_protocol.o(i.minipc_rec)
-    i.minipc_send                            0x08013654   Section        0  robot_cmd.o(i.minipc_send)
-    i.minipc_upgrade                         0x080136c4   Section        0  minipc_protocol.o(i.minipc_upgrade)
-    i.mit_ctrl                               0x08013754   Section        0  damiaomotors.o(i.mit_ctrl)
-    i.normally_chassis_control               0x08013854   Section        0  robot_cmd.o(i.normally_chassis_control)
-    i.normally_set_all_data                  0x08013ac4   Section        0  robot_cmd.o(i.normally_set_all_data)
-    i.normally_tranverse                     0x08013b4c   Section        0  robot_cmd.o(i.normally_tranverse)
-    i.polyval_calc                           0x08013c50   Section        0  scara_kinematics.o(i.polyval_calc)
-    i.pos_speed_ctrl                         0x08013cb0   Section        0  damiaomotors.o(i.pos_speed_ctrl)
-    i.push_block                             0x08013d0c   Section        0  robot_cmd.o(i.push_block)
-    i.quaternion2euler                       0x08013fa8   Section        0  kf_imu.o(i.quaternion2euler)
-    i.real_handle_mode                       0x080140f4   Section        0  robot_cmd.o(i.real_handle_mode)
-    i.recieve_all_data                       0x08014474   Section        0  arm.o(i.recieve_all_data)
-    i.referee_fbkdata                        0x080144ec   Section        0  referee.o(i.referee_fbkdata)
-    i.referee_rc_decode                      0x08014784   Section        0  referee.o(i.referee_rc_decode)
-    i.remote_cmd_choose                      0x080149dc   Section        0  robot_cmd.o(i.remote_cmd_choose)
-    i.scara_forward_kinematics               0x08014f28   Section        0  scara_kinematics.o(i.scara_forward_kinematics)
-    i.scara_inverse_kinematics               0x08015024   Section        0  scara_kinematics.o(i.scara_inverse_kinematics)
-    i.send_wheel_can_data                    0x08015210   Section        0  chassis.o(i.send_wheel_can_data)
-    send_wheel_can_data                      0x08015211   Thumb Code   248  chassis.o(i.send_wheel_can_data)
-    i.splitAndStoreSignals                   0x08015350   Section        0  arm.o(i.splitAndStoreSignals)
-    splitAndStoreSignals                     0x08015351   Thumb Code    30  arm.o(i.splitAndStoreSignals)
-    i.splitAndStoreSignals                   0x0801536e   Section        0  chassis.o(i.splitAndStoreSignals)
-    splitAndStoreSignals                     0x0801536f   Thumb Code    30  chassis.o(i.splitAndStoreSignals)
-    i.sqrt                                   0x0801538c   Section        0  sqrt.o(i.sqrt)
-    i.sucker_ctrl                            0x080153f8   Section        0  robot_cmd.o(i.sucker_ctrl)
-    i.trans_single_control                   0x08015424   Section        0  robot_cmd.o(i.trans_single_control)
-    i.trans_speed_control                    0x0801547c   Section        0  arm.o(i.trans_speed_control)
-    trans_speed_control                      0x0801547d   Thumb Code    50  arm.o(i.trans_speed_control)
-    i.ui_init_g                              0x080154bc   Section        0  ui_g.o(i.ui_init_g)
-    i.ui_proc_1_frame                        0x08015ea8   Section        0  ui_interface.o(i.ui_proc_1_frame)
-    i.ui_proc_2_frame                        0x08015f08   Section        0  ui_interface.o(i.ui_proc_2_frame)
-    i.ui_proc_5_frame                        0x08015f68   Section        0  ui_interface.o(i.ui_proc_5_frame)
-    i.ui_proc_7_frame                        0x08015fc8   Section        0  ui_interface.o(i.ui_proc_7_frame)
-    i.ui_proc_string_frame                   0x08016028   Section        0  ui_interface.o(i.ui_proc_string_frame)
-    i.ui_scan_and_send                       0x0801609c   Section        0  ui_interface.o(i.ui_scan_and_send)
-    i.ui_update_g                            0x080162d0   Section        0  ui_g.o(i.ui_update_g)
-    i.uint_to_float                          0x0801638c   Section        0  damiaomotors.o(i.uint_to_float)
-    i.update_combo_counter                   0x080163c0   Section        0  rc_protocol.o(i.update_combo_counter)
-    update_combo_counter                     0x080163c1   Thumb Code   152  rc_protocol.o(i.update_combo_counter)
-    i.update_combo_counter                   0x08016458   Section        0  referee.o(i.update_combo_counter)
-    update_combo_counter                     0x08016459   Thumb Code   152  referee.o(i.update_combo_counter)
-    i.user_mat_add                           0x080164f0   Section        0  user_mat.o(i.user_mat_add)
-    i.user_mat_inverse                       0x080166cc   Section        0  user_mat.o(i.user_mat_inverse)
-    i.user_mat_multiply                      0x08016c5c   Section        0  user_mat.o(i.user_mat_multiply)
-    i.user_mat_subtract                      0x08016df8   Section        0  user_mat.o(i.user_mat_subtract)
-    i.user_mat_transpose                     0x0801703c   Section        0  user_mat.o(i.user_mat_transpose)
-    i.video_angle_ctrl                       0x0801711c   Section        0  robot_cmd.o(i.video_angle_ctrl)
-    i.video_offline_protect                  0x0801714c   Section        0  robot_cmd.o(i.video_offline_protect)
-    i.yaw_absolute_ctrl                      0x08017198   Section        0  robot_cmd.o(i.yaw_absolute_ctrl)
-    x$fpl$dcheck1                            0x080171cc   Section       16  dcheck1.o(x$fpl$dcheck1)
-    $v0                                      0x080171cc   Number         0  dcheck1.o(x$fpl$dcheck1)
-    x$fpl$fpinit                             0x080171dc   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x080171dc   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$retnan                             0x080171e6   Section      100  retnan.o(x$fpl$retnan)
-    $v0                                      0x080171e6   Number         0  retnan.o(x$fpl$retnan)
-    x$fpl$scalbn                             0x0801724a   Section       92  scalbn.o(x$fpl$scalbn)
-    $v0                                      0x0801724a   Number         0  scalbn.o(x$fpl$scalbn)
-    x$fpl$trapveneer                         0x080172a6   Section       48  trapv.o(x$fpl$trapveneer)
-    $v0                                      0x080172a6   Number         0  trapv.o(x$fpl$trapveneer)
-    .constdata                               0x080172d6   Section        8  stm32h7xx_hal_dma.o(.constdata)
-    x$fpl$usenofp                            0x080172d6   Section        0  usenofp.o(x$fpl$usenofp)
-    flagBitshiftOffset                       0x080172d6   Data           8  stm32h7xx_hal_dma.o(.constdata)
-    .constdata                               0x080172e0   Section       92  stm32h7xx_hal_fdcan.o(.constdata)
-    DLCtoBytes                               0x080172e0   Data          16  stm32h7xx_hal_fdcan.o(.constdata)
-    .constdata                               0x0801733c   Section       24  stm32h7xx_hal_uart.o(.constdata)
-    .constdata                               0x08017354   Section       16  stm32h7xx_hal_uart_ex.o(.constdata)
-    numerator                                0x08017354   Data           8  stm32h7xx_hal_uart_ex.o(.constdata)
-    denominator                              0x0801735c   Data           8  stm32h7xx_hal_uart_ex.o(.constdata)
-    .constdata                               0x08017364   Section       16  system_stm32h7xx.o(.constdata)
-    .constdata                               0x08017374   Section      770  crc8_crc16.o(.constdata)
-    .constdata                               0x08017678   Section      192  kf_imu.o(.constdata)
-    .constdata                               0x08017738   Section       80  asin.o(.constdata)
-    pS                                       0x08017738   Data          48  asin.o(.constdata)
-    qS                                       0x08017768   Data          32  asin.o(.constdata)
-    .constdata                               0x08017788   Section      136  pow.o(.constdata)
-    bp                                       0x08017788   Data          16  pow.o(.constdata)
-    dp_h                                     0x08017798   Data          16  pow.o(.constdata)
-    dp_l                                     0x080177a8   Data          16  pow.o(.constdata)
-    L                                        0x080177b8   Data          48  pow.o(.constdata)
-    P                                        0x080177e8   Data          40  pow.o(.constdata)
-    .constdata                               0x08017810   Section      152  atan.o(.constdata)
-    atanhi                                   0x08017810   Data          32  atan.o(.constdata)
-    atanlo                                   0x08017830   Data          32  atan.o(.constdata)
-    aTodd                                    0x08017850   Data          40  atan.o(.constdata)
-    aTeven                                   0x08017878   Data          48  atan.o(.constdata)
-    .constdata                               0x080178a8   Section       48  cos_i.o(.constdata)
-    C                                        0x080178a8   Data          48  cos_i.o(.constdata)
-    .constdata                               0x080178d8   Section        8  qnan.o(.constdata)
-    .constdata                               0x080178e0   Section      200  rred.o(.constdata)
-    pio2s                                    0x080178e0   Data          48  rred.o(.constdata)
-    twooverpi                                0x08017910   Data         152  rred.o(.constdata)
-    .constdata                               0x080179a8   Section       40  sin_i.o(.constdata)
-    S                                        0x080179a8   Data          40  sin_i.o(.constdata)
+    i.clear_err                              0x08011e3c   Section        0  damiaomotors.o(i.clear_err)
+    i.control_all_arm                        0x08011e80   Section        0  arm.o(i.control_all_arm)
+    control_all_arm                          0x08011e81   Thumb Code   104  arm.o(i.control_all_arm)
+    i.control_roll_angle                     0x08011ef8   Section        0  arm.o(i.control_roll_angle)
+    control_roll_angle                       0x08011ef9   Thumb Code   108  arm.o(i.control_roll_angle)
+    i.costum_ctrl_arm                        0x08011f7c   Section        0  robot_cmd.o(i.costum_ctrl_arm)
+    i.device_fbk                             0x08012090   Section        0  cm_device.o(i.device_fbk)
+    i.device_init                            0x080120ac   Section        0  cm_device.o(i.device_init)
+    i.device_refresh                         0x080120c4   Section        0  cm_device.o(i.device_refresh)
+    i.dm_fdkdata                             0x08012138   Section        0  damiaomotors.o(i.dm_fdkdata)
+    i.enable_allmotor                        0x080121dc   Section        0  arm.o(i.enable_allmotor)
+    enable_allmotor                          0x080121dd   Thumb Code    50  arm.o(i.enable_allmotor)
+    i.enable_motor_mode                      0x08012218   Section        0  damiaomotors.o(i.enable_motor_mode)
+    i.euler2quaternion                       0x0801225a   Section        0  kf_imu.o(i.euler2quaternion)
+    i.fabs                                   0x08012362   Section        0  fabs.o(i.fabs)
+    i.fdcan1_rx_callback                     0x0801237c   Section        0  bsp_fdcan.o(i.fdcan1_rx_callback)
+    i.fdcan2_rx_callback                     0x08012428   Section        0  bsp_fdcan.o(i.fdcan2_rx_callback)
+    i.fdcan3_rx_callback                     0x0801246c   Section        0  bsp_fdcan.o(i.fdcan3_rx_callback)
+    i.fdcanx_receive                         0x080124c8   Section        0  bsp_fdcan.o(i.fdcanx_receive)
+    i.fdcanx_send_data                       0x08012530   Section        0  bsp_fdcan.o(i.fdcanx_send_data)
+    i.float_to_uint                          0x080125ac   Section        0  damiaomotors.o(i.float_to_uint)
+    i.get_ready_auto                         0x080125e0   Section        0  robot_cmd.o(i.get_ready_auto)
+    i.get_x_minus                            0x08012714   Section        0  kf_imu.o(i.get_x_minus)
+    get_x_minus                              0x08012715   Thumb Code   476  kf_imu.o(i.get_x_minus)
+    i.imu_process                            0x080128f4   Section        0  kf_imu.o(i.imu_process)
+    imu_process                              0x080128f5   Thumb Code   288  kf_imu.o(i.imu_process)
+    i.is_key_held                            0x08012a50   Section        0  rc_protocol.o(i.is_key_held)
+    is_key_held                              0x08012a51   Thumb Code    12  rc_protocol.o(i.is_key_held)
+    i.is_key_held                            0x08012a5c   Section        0  referee.o(i.is_key_held)
+    is_key_held                              0x08012a5d   Thumb Code    12  referee.o(i.is_key_held)
+    i.is_key_pressed                         0x08012a68   Section        0  rc_protocol.o(i.is_key_pressed)
+    i.is_key_pressed                         0x08012a86   Section        0  referee.o(i.is_key_pressed)
+    is_key_pressed                           0x08012a87   Thumb Code    30  referee.o(i.is_key_pressed)
+    i.kf_copy                                0x08012aa4   Section        0  kalman_filter.o(i.kf_copy)
+    i.kf_get_K                               0x08012b00   Section        0  kalman_filter.o(i.kf_get_K)
+    i.kf_get_P                               0x08012b78   Section        0  kalman_filter.o(i.kf_get_P)
+    i.kf_get_P_minus                         0x08012bb4   Section        0  kalman_filter.o(i.kf_get_P_minus)
+    i.kf_get_x_hat                           0x08012c00   Section        0  kalman_filter.o(i.kf_get_x_hat)
+    i.kf_imu_init                            0x08012c48   Section        0  kf_imu.o(i.kf_imu_init)
+    i.kf_imu_upgrade                         0x08012d38   Section        0  kf_imu.o(i.kf_imu_upgrade)
+    i.lift_height_cmd                        0x08013188   Section        0  arm.o(i.lift_height_cmd)
+    i.lift_speed_control                     0x080131bc   Section        0  arm.o(i.lift_speed_control)
+    i.lock_arm                               0x0801323c   Section        0  robot_cmd.o(i.lock_arm)
+    i.main                                   0x080133a8   Section        0  main.o(i.main)
+    i.minipc_rec                             0x08013618   Section        0  minipc_protocol.o(i.minipc_rec)
+    i.minipc_send                            0x08013660   Section        0  robot_cmd.o(i.minipc_send)
+    i.minipc_upgrade                         0x080136d0   Section        0  minipc_protocol.o(i.minipc_upgrade)
+    i.mit_ctrl                               0x08013760   Section        0  damiaomotors.o(i.mit_ctrl)
+    i.normally_chassis_control               0x08013860   Section        0  robot_cmd.o(i.normally_chassis_control)
+    i.normally_set_all_data                  0x08013ad0   Section        0  robot_cmd.o(i.normally_set_all_data)
+    i.normally_tranverse                     0x08013b58   Section        0  robot_cmd.o(i.normally_tranverse)
+    i.polyval_calc                           0x08013c5c   Section        0  scara_kinematics.o(i.polyval_calc)
+    i.pos_speed_ctrl                         0x08013cbc   Section        0  damiaomotors.o(i.pos_speed_ctrl)
+    i.push_block                             0x08013d18   Section        0  robot_cmd.o(i.push_block)
+    i.quaternion2euler                       0x08013fb4   Section        0  kf_imu.o(i.quaternion2euler)
+    i.real_handle_mode                       0x08014100   Section        0  robot_cmd.o(i.real_handle_mode)
+    i.recieve_all_data                       0x08014480   Section        0  arm.o(i.recieve_all_data)
+    i.referee_fbkdata                        0x080144f8   Section        0  referee.o(i.referee_fbkdata)
+    i.referee_rc_decode                      0x08014790   Section        0  referee.o(i.referee_rc_decode)
+    i.remote_cmd_choose                      0x080149e8   Section        0  robot_cmd.o(i.remote_cmd_choose)
+    i.scara_forward_kinematics               0x08014f34   Section        0  scara_kinematics.o(i.scara_forward_kinematics)
+    i.scara_inverse_kinematics               0x08015030   Section        0  scara_kinematics.o(i.scara_inverse_kinematics)
+    i.send_wheel_can_data                    0x0801521c   Section        0  chassis.o(i.send_wheel_can_data)
+    send_wheel_can_data                      0x0801521d   Thumb Code   248  chassis.o(i.send_wheel_can_data)
+    i.splitAndStoreSignals                   0x0801535c   Section        0  arm.o(i.splitAndStoreSignals)
+    splitAndStoreSignals                     0x0801535d   Thumb Code    30  arm.o(i.splitAndStoreSignals)
+    i.splitAndStoreSignals                   0x0801537a   Section        0  chassis.o(i.splitAndStoreSignals)
+    splitAndStoreSignals                     0x0801537b   Thumb Code    30  chassis.o(i.splitAndStoreSignals)
+    i.sqrt                                   0x08015398   Section        0  sqrt.o(i.sqrt)
+    i.sucker_ctrl                            0x08015404   Section        0  robot_cmd.o(i.sucker_ctrl)
+    i.trans_single_control                   0x08015430   Section        0  robot_cmd.o(i.trans_single_control)
+    i.trans_speed_control                    0x08015488   Section        0  arm.o(i.trans_speed_control)
+    trans_speed_control                      0x08015489   Thumb Code    50  arm.o(i.trans_speed_control)
+    i.ui_init_g                              0x080154c8   Section        0  ui_g.o(i.ui_init_g)
+    i.ui_proc_1_frame                        0x08015eb4   Section        0  ui_interface.o(i.ui_proc_1_frame)
+    i.ui_proc_2_frame                        0x08015f14   Section        0  ui_interface.o(i.ui_proc_2_frame)
+    i.ui_proc_5_frame                        0x08015f74   Section        0  ui_interface.o(i.ui_proc_5_frame)
+    i.ui_proc_7_frame                        0x08015fd4   Section        0  ui_interface.o(i.ui_proc_7_frame)
+    i.ui_proc_string_frame                   0x08016034   Section        0  ui_interface.o(i.ui_proc_string_frame)
+    i.ui_scan_and_send                       0x080160a8   Section        0  ui_interface.o(i.ui_scan_and_send)
+    i.ui_update_g                            0x080162dc   Section        0  ui_g.o(i.ui_update_g)
+    i.uint_to_float                          0x08016398   Section        0  damiaomotors.o(i.uint_to_float)
+    i.update_combo_counter                   0x080163cc   Section        0  rc_protocol.o(i.update_combo_counter)
+    update_combo_counter                     0x080163cd   Thumb Code   152  rc_protocol.o(i.update_combo_counter)
+    i.update_combo_counter                   0x08016464   Section        0  referee.o(i.update_combo_counter)
+    update_combo_counter                     0x08016465   Thumb Code   152  referee.o(i.update_combo_counter)
+    i.user_mat_add                           0x080164fc   Section        0  user_mat.o(i.user_mat_add)
+    i.user_mat_inverse                       0x080166d8   Section        0  user_mat.o(i.user_mat_inverse)
+    i.user_mat_multiply                      0x08016c68   Section        0  user_mat.o(i.user_mat_multiply)
+    i.user_mat_subtract                      0x08016e04   Section        0  user_mat.o(i.user_mat_subtract)
+    i.user_mat_transpose                     0x08017048   Section        0  user_mat.o(i.user_mat_transpose)
+    i.video_angle_ctrl                       0x08017128   Section        0  robot_cmd.o(i.video_angle_ctrl)
+    i.video_offline_protect                  0x08017158   Section        0  robot_cmd.o(i.video_offline_protect)
+    i.yaw_absolute_ctrl                      0x080171a4   Section        0  robot_cmd.o(i.yaw_absolute_ctrl)
+    x$fpl$dcheck1                            0x080171d8   Section       16  dcheck1.o(x$fpl$dcheck1)
+    $v0                                      0x080171d8   Number         0  dcheck1.o(x$fpl$dcheck1)
+    x$fpl$fpinit                             0x080171e8   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x080171e8   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$retnan                             0x080171f2   Section      100  retnan.o(x$fpl$retnan)
+    $v0                                      0x080171f2   Number         0  retnan.o(x$fpl$retnan)
+    x$fpl$scalbn                             0x08017256   Section       92  scalbn.o(x$fpl$scalbn)
+    $v0                                      0x08017256   Number         0  scalbn.o(x$fpl$scalbn)
+    x$fpl$trapveneer                         0x080172b2   Section       48  trapv.o(x$fpl$trapveneer)
+    $v0                                      0x080172b2   Number         0  trapv.o(x$fpl$trapveneer)
+    .constdata                               0x080172e2   Section        8  stm32h7xx_hal_dma.o(.constdata)
+    x$fpl$usenofp                            0x080172e2   Section        0  usenofp.o(x$fpl$usenofp)
+    flagBitshiftOffset                       0x080172e2   Data           8  stm32h7xx_hal_dma.o(.constdata)
+    .constdata                               0x080172ec   Section       92  stm32h7xx_hal_fdcan.o(.constdata)
+    DLCtoBytes                               0x080172ec   Data          16  stm32h7xx_hal_fdcan.o(.constdata)
+    .constdata                               0x08017348   Section       24  stm32h7xx_hal_uart.o(.constdata)
+    .constdata                               0x08017360   Section       16  stm32h7xx_hal_uart_ex.o(.constdata)
+    numerator                                0x08017360   Data           8  stm32h7xx_hal_uart_ex.o(.constdata)
+    denominator                              0x08017368   Data           8  stm32h7xx_hal_uart_ex.o(.constdata)
+    .constdata                               0x08017370   Section       16  system_stm32h7xx.o(.constdata)
+    .constdata                               0x08017380   Section      770  crc8_crc16.o(.constdata)
+    .constdata                               0x08017688   Section      192  kf_imu.o(.constdata)
+    .constdata                               0x08017748   Section       80  asin.o(.constdata)
+    pS                                       0x08017748   Data          48  asin.o(.constdata)
+    qS                                       0x08017778   Data          32  asin.o(.constdata)
+    .constdata                               0x08017798   Section      136  pow.o(.constdata)
+    bp                                       0x08017798   Data          16  pow.o(.constdata)
+    dp_h                                     0x080177a8   Data          16  pow.o(.constdata)
+    dp_l                                     0x080177b8   Data          16  pow.o(.constdata)
+    L                                        0x080177c8   Data          48  pow.o(.constdata)
+    P                                        0x080177f8   Data          40  pow.o(.constdata)
+    .constdata                               0x08017820   Section      152  atan.o(.constdata)
+    atanhi                                   0x08017820   Data          32  atan.o(.constdata)
+    atanlo                                   0x08017840   Data          32  atan.o(.constdata)
+    aTodd                                    0x08017860   Data          40  atan.o(.constdata)
+    aTeven                                   0x08017888   Data          48  atan.o(.constdata)
+    .constdata                               0x080178b8   Section       48  cos_i.o(.constdata)
+    C                                        0x080178b8   Data          48  cos_i.o(.constdata)
+    .constdata                               0x080178e8   Section        8  qnan.o(.constdata)
+    .constdata                               0x080178f0   Section      200  rred.o(.constdata)
+    pio2s                                    0x080178f0   Data          48  rred.o(.constdata)
+    twooverpi                                0x08017920   Data         152  rred.o(.constdata)
+    .constdata                               0x080179b8   Section       40  sin_i.o(.constdata)
+    S                                        0x080179b8   Data          40  sin_i.o(.constdata)
     .data                                    0x20000000   Section        4  fdcan.o(.data)
     HAL_RCC_FDCAN_CLK_ENABLED                0x20000000   Data           4  fdcan.o(.data)
     .data                                    0x20000004   Section       94  usbd_desc.o(.data)
@@ -5133,89 +5133,89 @@ Image Symbol Table
     calc_crc8                                0x08011c19   Thumb Code    30  ui_interface.o(i.calc_crc8)
     can_filter_init                          0x08011c3d   Thumb Code    62  bsp_fdcan.o(i.can_filter_init)
     chassis_vision_ctrl_adjust               0x08011c81   Thumb Code    60  robot_cmd.o(i.chassis_vision_ctrl_adjust)
-    check_boundary_scara_lefthand            0x08011cc9   Thumb Code   332  scara_kinematics.o(i.check_boundary_scara_lefthand)
-    clear_err                                0x08011e31   Thumb Code    66  damiaomotors.o(i.clear_err)
-    costum_ctrl_arm                          0x08011f71   Thumb Code   224  robot_cmd.o(i.costum_ctrl_arm)
-    device_fbk                               0x08012085   Thumb Code    20  cm_device.o(i.device_fbk)
-    device_init                              0x080120a1   Thumb Code    24  cm_device.o(i.device_init)
-    device_refresh                           0x080120b9   Thumb Code   110  cm_device.o(i.device_refresh)
-    dm_fdkdata                               0x0801212d   Thumb Code   146  damiaomotors.o(i.dm_fdkdata)
-    enable_motor_mode                        0x0801220d   Thumb Code    66  damiaomotors.o(i.enable_motor_mode)
-    euler2quaternion                         0x0801224f   Thumb Code   264  kf_imu.o(i.euler2quaternion)
-    fabs                                     0x08012357   Thumb Code    24  fabs.o(i.fabs)
-    fdcan1_rx_callback                       0x08012371   Thumb Code   134  bsp_fdcan.o(i.fdcan1_rx_callback)
-    fdcan2_rx_callback                       0x0801241d   Thumb Code    46  bsp_fdcan.o(i.fdcan2_rx_callback)
-    fdcan3_rx_callback                       0x08012461   Thumb Code    66  bsp_fdcan.o(i.fdcan3_rx_callback)
-    fdcanx_receive                           0x080124bd   Thumb Code   104  bsp_fdcan.o(i.fdcanx_receive)
-    fdcanx_send_data                         0x08012525   Thumb Code   124  bsp_fdcan.o(i.fdcanx_send_data)
-    float_to_uint                            0x080125a1   Thumb Code    50  damiaomotors.o(i.float_to_uint)
-    get_ready_auto                           0x080125d5   Thumb Code   236  robot_cmd.o(i.get_ready_auto)
-    is_key_pressed                           0x08012a5d   Thumb Code    30  rc_protocol.o(i.is_key_pressed)
-    kf_copy                                  0x08012a99   Thumb Code    92  kalman_filter.o(i.kf_copy)
-    kf_get_K                                 0x08012af5   Thumb Code   120  kalman_filter.o(i.kf_get_K)
-    kf_get_P                                 0x08012b6d   Thumb Code    60  kalman_filter.o(i.kf_get_P)
-    kf_get_P_minus                           0x08012ba9   Thumb Code    76  kalman_filter.o(i.kf_get_P_minus)
-    kf_get_x_hat                             0x08012bf5   Thumb Code    72  kalman_filter.o(i.kf_get_x_hat)
-    kf_imu_init                              0x08012c3d   Thumb Code   200  kf_imu.o(i.kf_imu_init)
-    kf_imu_upgrade                           0x08012d2d   Thumb Code   976  kf_imu.o(i.kf_imu_upgrade)
-    lift_height_cmd                          0x0801317d   Thumb Code    42  arm.o(i.lift_height_cmd)
-    lift_speed_control                       0x080131b1   Thumb Code   108  arm.o(i.lift_speed_control)
-    lock_arm                                 0x08013231   Thumb Code   294  robot_cmd.o(i.lock_arm)
-    main                                     0x0801339d   Thumb Code   546  main.o(i.main)
-    minipc_rec                               0x0801360d   Thumb Code    62  minipc_protocol.o(i.minipc_rec)
-    minipc_send                              0x08013655   Thumb Code    88  robot_cmd.o(i.minipc_send)
-    minipc_upgrade                           0x080136c5   Thumb Code   144  minipc_protocol.o(i.minipc_upgrade)
-    mit_ctrl                                 0x08013755   Thumb Code   232  damiaomotors.o(i.mit_ctrl)
-    normally_chassis_control                 0x08013855   Thumb Code   550  robot_cmd.o(i.normally_chassis_control)
-    normally_set_all_data                    0x08013ac5   Thumb Code    94  robot_cmd.o(i.normally_set_all_data)
-    normally_tranverse                       0x08013b4d   Thumb Code   218  robot_cmd.o(i.normally_tranverse)
-    polyval_calc                             0x08013c51   Thumb Code    86  scara_kinematics.o(i.polyval_calc)
-    pos_speed_ctrl                           0x08013cb1   Thumb Code    92  damiaomotors.o(i.pos_speed_ctrl)
-    push_block                               0x08013d0d   Thumb Code   586  robot_cmd.o(i.push_block)
-    quaternion2euler                         0x08013fa9   Thumb Code   332  kf_imu.o(i.quaternion2euler)
-    real_handle_mode                         0x080140f5   Thumb Code   808  robot_cmd.o(i.real_handle_mode)
-    recieve_all_data                         0x08014475   Thumb Code    88  arm.o(i.recieve_all_data)
-    referee_fbkdata                          0x080144ed   Thumb Code   664  referee.o(i.referee_fbkdata)
-    referee_rc_decode                        0x08014785   Thumb Code   488  referee.o(i.referee_rc_decode)
-    remote_cmd_choose                        0x080149dd   Thumb Code  1338  robot_cmd.o(i.remote_cmd_choose)
-    scara_forward_kinematics                 0x08014f29   Thumb Code   250  scara_kinematics.o(i.scara_forward_kinematics)
-    scara_inverse_kinematics                 0x08015025   Thumb Code   484  scara_kinematics.o(i.scara_inverse_kinematics)
-    sqrt                                     0x0801538d   Thumb Code   106  sqrt.o(i.sqrt)
-    sucker_ctrl                              0x080153f9   Thumb Code    36  robot_cmd.o(i.sucker_ctrl)
-    trans_single_control                     0x08015425   Thumb Code    80  robot_cmd.o(i.trans_single_control)
-    ui_init_g                                0x080154bd   Thumb Code  2508  ui_g.o(i.ui_init_g)
-    ui_proc_1_frame                          0x08015ea9   Thumb Code    86  ui_interface.o(i.ui_proc_1_frame)
-    ui_proc_2_frame                          0x08015f09   Thumb Code    88  ui_interface.o(i.ui_proc_2_frame)
-    ui_proc_5_frame                          0x08015f69   Thumb Code    88  ui_interface.o(i.ui_proc_5_frame)
-    ui_proc_7_frame                          0x08015fc9   Thumb Code    88  ui_interface.o(i.ui_proc_7_frame)
-    ui_proc_string_frame                     0x08016029   Thumb Code   106  ui_interface.o(i.ui_proc_string_frame)
-    ui_scan_and_send                         0x0801609d   Thumb Code   538  ui_interface.o(i.ui_scan_and_send)
-    ui_update_g                              0x080162d1   Thumb Code   164  ui_g.o(i.ui_update_g)
-    uint_to_float                            0x0801638d   Thumb Code    52  damiaomotors.o(i.uint_to_float)
-    user_mat_add                             0x080164f1   Thumb Code   466  user_mat.o(i.user_mat_add)
-    user_mat_inverse                         0x080166cd   Thumb Code  1422  user_mat.o(i.user_mat_inverse)
-    user_mat_multiply                        0x08016c5d   Thumb Code   404  user_mat.o(i.user_mat_multiply)
-    user_mat_subtract                        0x08016df9   Thumb Code   570  user_mat.o(i.user_mat_subtract)
-    user_mat_transpose                       0x0801703d   Thumb Code   216  user_mat.o(i.user_mat_transpose)
-    video_angle_ctrl                         0x0801711d   Thumb Code    40  robot_cmd.o(i.video_angle_ctrl)
-    video_offline_protect                    0x0801714d   Thumb Code    50  robot_cmd.o(i.video_offline_protect)
-    yaw_absolute_ctrl                        0x08017199   Thumb Code    34  robot_cmd.o(i.yaw_absolute_ctrl)
-    __fpl_dcheck_NaN1                        0x080171cd   Thumb Code    10  dcheck1.o(x$fpl$dcheck1)
-    _fp_init                                 0x080171dd   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x080171e5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x080171e5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fpl_return_NaN                         0x080171e7   Thumb Code   100  retnan.o(x$fpl$retnan)
-    __ARM_scalbn                             0x0801724b   Thumb Code    92  scalbn.o(x$fpl$scalbn)
-    __fpl_cmpreturn                          0x080172a7   Thumb Code    48  trapv.o(x$fpl$trapveneer)
-    __I$use$fp                               0x080172d6   Number         0  usenofp.o(x$fpl$usenofp)
-    UARTPrescTable                           0x0801733c   Data          24  stm32h7xx_hal_uart.o(.constdata)
-    D1CorePrescTable                         0x08017364   Data          16  system_stm32h7xx.o(.constdata)
-    CRC8_INIT                                0x08017374   Data           1  crc8_crc16.o(.constdata)
-    CRC8_TAB                                 0x08017375   Data         256  crc8_crc16.o(.constdata)
-    wCRC_Table                               0x08017476   Data         512  crc8_crc16.o(.constdata)
-    __mathlib_zero                           0x080178d8   Data           8  qnan.o(.constdata)
-    Region$$Table$$Base                      0x080179d0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08017a10   Number         0  anon$$obj.o(Region$$Table)
+    check_boundary_scara_lefthand            0x08011cc9   Thumb Code   344  scara_kinematics.o(i.check_boundary_scara_lefthand)
+    clear_err                                0x08011e3d   Thumb Code    66  damiaomotors.o(i.clear_err)
+    costum_ctrl_arm                          0x08011f7d   Thumb Code   224  robot_cmd.o(i.costum_ctrl_arm)
+    device_fbk                               0x08012091   Thumb Code    20  cm_device.o(i.device_fbk)
+    device_init                              0x080120ad   Thumb Code    24  cm_device.o(i.device_init)
+    device_refresh                           0x080120c5   Thumb Code   110  cm_device.o(i.device_refresh)
+    dm_fdkdata                               0x08012139   Thumb Code   146  damiaomotors.o(i.dm_fdkdata)
+    enable_motor_mode                        0x08012219   Thumb Code    66  damiaomotors.o(i.enable_motor_mode)
+    euler2quaternion                         0x0801225b   Thumb Code   264  kf_imu.o(i.euler2quaternion)
+    fabs                                     0x08012363   Thumb Code    24  fabs.o(i.fabs)
+    fdcan1_rx_callback                       0x0801237d   Thumb Code   134  bsp_fdcan.o(i.fdcan1_rx_callback)
+    fdcan2_rx_callback                       0x08012429   Thumb Code    46  bsp_fdcan.o(i.fdcan2_rx_callback)
+    fdcan3_rx_callback                       0x0801246d   Thumb Code    66  bsp_fdcan.o(i.fdcan3_rx_callback)
+    fdcanx_receive                           0x080124c9   Thumb Code   104  bsp_fdcan.o(i.fdcanx_receive)
+    fdcanx_send_data                         0x08012531   Thumb Code   124  bsp_fdcan.o(i.fdcanx_send_data)
+    float_to_uint                            0x080125ad   Thumb Code    50  damiaomotors.o(i.float_to_uint)
+    get_ready_auto                           0x080125e1   Thumb Code   236  robot_cmd.o(i.get_ready_auto)
+    is_key_pressed                           0x08012a69   Thumb Code    30  rc_protocol.o(i.is_key_pressed)
+    kf_copy                                  0x08012aa5   Thumb Code    92  kalman_filter.o(i.kf_copy)
+    kf_get_K                                 0x08012b01   Thumb Code   120  kalman_filter.o(i.kf_get_K)
+    kf_get_P                                 0x08012b79   Thumb Code    60  kalman_filter.o(i.kf_get_P)
+    kf_get_P_minus                           0x08012bb5   Thumb Code    76  kalman_filter.o(i.kf_get_P_minus)
+    kf_get_x_hat                             0x08012c01   Thumb Code    72  kalman_filter.o(i.kf_get_x_hat)
+    kf_imu_init                              0x08012c49   Thumb Code   200  kf_imu.o(i.kf_imu_init)
+    kf_imu_upgrade                           0x08012d39   Thumb Code   976  kf_imu.o(i.kf_imu_upgrade)
+    lift_height_cmd                          0x08013189   Thumb Code    42  arm.o(i.lift_height_cmd)
+    lift_speed_control                       0x080131bd   Thumb Code   108  arm.o(i.lift_speed_control)
+    lock_arm                                 0x0801323d   Thumb Code   294  robot_cmd.o(i.lock_arm)
+    main                                     0x080133a9   Thumb Code   546  main.o(i.main)
+    minipc_rec                               0x08013619   Thumb Code    62  minipc_protocol.o(i.minipc_rec)
+    minipc_send                              0x08013661   Thumb Code    88  robot_cmd.o(i.minipc_send)
+    minipc_upgrade                           0x080136d1   Thumb Code   144  minipc_protocol.o(i.minipc_upgrade)
+    mit_ctrl                                 0x08013761   Thumb Code   232  damiaomotors.o(i.mit_ctrl)
+    normally_chassis_control                 0x08013861   Thumb Code   550  robot_cmd.o(i.normally_chassis_control)
+    normally_set_all_data                    0x08013ad1   Thumb Code    94  robot_cmd.o(i.normally_set_all_data)
+    normally_tranverse                       0x08013b59   Thumb Code   218  robot_cmd.o(i.normally_tranverse)
+    polyval_calc                             0x08013c5d   Thumb Code    86  scara_kinematics.o(i.polyval_calc)
+    pos_speed_ctrl                           0x08013cbd   Thumb Code    92  damiaomotors.o(i.pos_speed_ctrl)
+    push_block                               0x08013d19   Thumb Code   586  robot_cmd.o(i.push_block)
+    quaternion2euler                         0x08013fb5   Thumb Code   332  kf_imu.o(i.quaternion2euler)
+    real_handle_mode                         0x08014101   Thumb Code   808  robot_cmd.o(i.real_handle_mode)
+    recieve_all_data                         0x08014481   Thumb Code    88  arm.o(i.recieve_all_data)
+    referee_fbkdata                          0x080144f9   Thumb Code   664  referee.o(i.referee_fbkdata)
+    referee_rc_decode                        0x08014791   Thumb Code   488  referee.o(i.referee_rc_decode)
+    remote_cmd_choose                        0x080149e9   Thumb Code  1338  robot_cmd.o(i.remote_cmd_choose)
+    scara_forward_kinematics                 0x08014f35   Thumb Code   250  scara_kinematics.o(i.scara_forward_kinematics)
+    scara_inverse_kinematics                 0x08015031   Thumb Code   484  scara_kinematics.o(i.scara_inverse_kinematics)
+    sqrt                                     0x08015399   Thumb Code   106  sqrt.o(i.sqrt)
+    sucker_ctrl                              0x08015405   Thumb Code    36  robot_cmd.o(i.sucker_ctrl)
+    trans_single_control                     0x08015431   Thumb Code    80  robot_cmd.o(i.trans_single_control)
+    ui_init_g                                0x080154c9   Thumb Code  2508  ui_g.o(i.ui_init_g)
+    ui_proc_1_frame                          0x08015eb5   Thumb Code    86  ui_interface.o(i.ui_proc_1_frame)
+    ui_proc_2_frame                          0x08015f15   Thumb Code    88  ui_interface.o(i.ui_proc_2_frame)
+    ui_proc_5_frame                          0x08015f75   Thumb Code    88  ui_interface.o(i.ui_proc_5_frame)
+    ui_proc_7_frame                          0x08015fd5   Thumb Code    88  ui_interface.o(i.ui_proc_7_frame)
+    ui_proc_string_frame                     0x08016035   Thumb Code   106  ui_interface.o(i.ui_proc_string_frame)
+    ui_scan_and_send                         0x080160a9   Thumb Code   538  ui_interface.o(i.ui_scan_and_send)
+    ui_update_g                              0x080162dd   Thumb Code   164  ui_g.o(i.ui_update_g)
+    uint_to_float                            0x08016399   Thumb Code    52  damiaomotors.o(i.uint_to_float)
+    user_mat_add                             0x080164fd   Thumb Code   466  user_mat.o(i.user_mat_add)
+    user_mat_inverse                         0x080166d9   Thumb Code  1422  user_mat.o(i.user_mat_inverse)
+    user_mat_multiply                        0x08016c69   Thumb Code   404  user_mat.o(i.user_mat_multiply)
+    user_mat_subtract                        0x08016e05   Thumb Code   570  user_mat.o(i.user_mat_subtract)
+    user_mat_transpose                       0x08017049   Thumb Code   216  user_mat.o(i.user_mat_transpose)
+    video_angle_ctrl                         0x08017129   Thumb Code    40  robot_cmd.o(i.video_angle_ctrl)
+    video_offline_protect                    0x08017159   Thumb Code    50  robot_cmd.o(i.video_offline_protect)
+    yaw_absolute_ctrl                        0x080171a5   Thumb Code    34  robot_cmd.o(i.yaw_absolute_ctrl)
+    __fpl_dcheck_NaN1                        0x080171d9   Thumb Code    10  dcheck1.o(x$fpl$dcheck1)
+    _fp_init                                 0x080171e9   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x080171f1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x080171f1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fpl_return_NaN                         0x080171f3   Thumb Code   100  retnan.o(x$fpl$retnan)
+    __ARM_scalbn                             0x08017257   Thumb Code    92  scalbn.o(x$fpl$scalbn)
+    __fpl_cmpreturn                          0x080172b3   Thumb Code    48  trapv.o(x$fpl$trapveneer)
+    __I$use$fp                               0x080172e2   Number         0  usenofp.o(x$fpl$usenofp)
+    UARTPrescTable                           0x08017348   Data          24  stm32h7xx_hal_uart.o(.constdata)
+    D1CorePrescTable                         0x08017370   Data          16  system_stm32h7xx.o(.constdata)
+    CRC8_INIT                                0x08017380   Data           1  crc8_crc16.o(.constdata)
+    CRC8_TAB                                 0x08017381   Data         256  crc8_crc16.o(.constdata)
+    wCRC_Table                               0x08017482   Data         512  crc8_crc16.o(.constdata)
+    __mathlib_zero                           0x080178e8   Data           8  qnan.o(.constdata)
+    Region$$Table$$Base                      0x080179e0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08017a20   Number         0  anon$$obj.o(Region$$Table)
     HS_Desc                                  0x20000004   Data          32  usbd_desc.o(.data)
     USBD_HS_DeviceDesc                       0x20000024   Data          18  usbd_desc.o(.data)
     USBD_HS_BOSDesc                          0x20000038   Data          12  usbd_desc.o(.data)
@@ -5511,9 +5511,9 @@ Memory Map of the image
 
   Image Entry point : 0x080002cd
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000183e4, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x00017cdc])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000183f4, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x00017cec])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00017a10, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00017a20, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -6006,119 +6006,119 @@ Memory Map of the image
     0x08011c18   0x08011c18   0x00000024   Code   RO         9591    i.calc_crc8         ui_interface.o
     0x08011c3c   0x08011c3c   0x00000044   Code   RO         7527    i.can_filter_init   bsp_fdcan.o
     0x08011c80   0x08011c80   0x00000048   Code   RO         8944    i.chassis_vision_ctrl_adjust  robot_cmd.o
-    0x08011cc8   0x08011cc8   0x00000168   Code   RO         7849    i.check_boundary_scara_lefthand  scara_kinematics.o
-    0x08011e30   0x08011e30   0x00000042   Code   RO         8209    i.clear_err         damiaomotors.o
-    0x08011e72   0x08011e72   0x00000002   PAD
-    0x08011e74   0x08011e74   0x00000078   Code   RO         8707    i.control_all_arm   arm.o
-    0x08011eec   0x08011eec   0x00000084   Code   RO         8708    i.control_roll_angle  arm.o
-    0x08011f70   0x08011f70   0x00000114   Code   RO         8945    i.costum_ctrl_arm   robot_cmd.o
-    0x08012084   0x08012084   0x0000001c   Code   RO         9523    i.device_fbk        cm_device.o
-    0x080120a0   0x080120a0   0x00000018   Code   RO         9524    i.device_init       cm_device.o
-    0x080120b8   0x080120b8   0x00000074   Code   RO         9525    i.device_refresh    cm_device.o
-    0x0801212c   0x0801212c   0x000000a4   Code   RO         8211    i.dm_fdkdata        damiaomotors.o
-    0x080121d0   0x080121d0   0x0000003c   Code   RO         8710    i.enable_allmotor   arm.o
-    0x0801220c   0x0801220c   0x00000042   Code   RO         8212    i.enable_motor_mode  damiaomotors.o
-    0x0801224e   0x0801224e   0x00000108   Code   RO         7725    i.euler2quaternion  kf_imu.o
-    0x08012356   0x08012356   0x00000018   Code   RO         9890    i.fabs              m_wv.l(fabs.o)
-    0x0801236e   0x0801236e   0x00000002   PAD
-    0x08012370   0x08012370   0x000000ac   Code   RO         7528    i.fdcan1_rx_callback  bsp_fdcan.o
-    0x0801241c   0x0801241c   0x00000044   Code   RO         7529    i.fdcan2_rx_callback  bsp_fdcan.o
-    0x08012460   0x08012460   0x0000005c   Code   RO         7530    i.fdcan3_rx_callback  bsp_fdcan.o
-    0x080124bc   0x080124bc   0x00000068   Code   RO         7531    i.fdcanx_receive    bsp_fdcan.o
-    0x08012524   0x08012524   0x0000007c   Code   RO         7532    i.fdcanx_send_data  bsp_fdcan.o
-    0x080125a0   0x080125a0   0x00000032   Code   RO         8213    i.float_to_uint     damiaomotors.o
-    0x080125d2   0x080125d2   0x00000002   PAD
-    0x080125d4   0x080125d4   0x00000134   Code   RO         8946    i.get_ready_auto    robot_cmd.o
-    0x08012708   0x08012708   0x000001e0   Code   RO         7726    i.get_x_minus       kf_imu.o
-    0x080128e8   0x080128e8   0x0000015c   Code   RO         7727    i.imu_process       kf_imu.o
-    0x08012a44   0x08012a44   0x0000000c   Code   RO         8324    i.is_key_held       rc_protocol.o
-    0x08012a50   0x08012a50   0x0000000c   Code   RO         8477    i.is_key_held       referee.o
-    0x08012a5c   0x08012a5c   0x0000001e   Code   RO         8325    i.is_key_pressed    rc_protocol.o
-    0x08012a7a   0x08012a7a   0x0000001e   Code   RO         8478    i.is_key_pressed    referee.o
-    0x08012a98   0x08012a98   0x0000005c   Code   RO         7664    i.kf_copy           kalman_filter.o
-    0x08012af4   0x08012af4   0x00000078   Code   RO         7665    i.kf_get_K          kalman_filter.o
-    0x08012b6c   0x08012b6c   0x0000003c   Code   RO         7666    i.kf_get_P          kalman_filter.o
-    0x08012ba8   0x08012ba8   0x0000004c   Code   RO         7667    i.kf_get_P_minus    kalman_filter.o
-    0x08012bf4   0x08012bf4   0x00000048   Code   RO         7668    i.kf_get_x_hat      kalman_filter.o
-    0x08012c3c   0x08012c3c   0x000000f0   Code   RO         7728    i.kf_imu_init       kf_imu.o
-    0x08012d2c   0x08012d2c   0x00000450   Code   RO         7729    i.kf_imu_upgrade    kf_imu.o
-    0x0801317c   0x0801317c   0x00000034   Code   RO         8712    i.lift_height_cmd   arm.o
-    0x080131b0   0x080131b0   0x00000080   Code   RO         8714    i.lift_speed_control  arm.o
-    0x08013230   0x08013230   0x0000016c   Code   RO         8949    i.lock_arm          robot_cmd.o
-    0x0801339c   0x0801339c   0x00000270   Code   RO           15    i.main              main.o
-    0x0801360c   0x0801360c   0x00000048   Code   RO         9486    i.minipc_rec        minipc_protocol.o
-    0x08013654   0x08013654   0x00000070   Code   RO         8950    i.minipc_send       robot_cmd.o
-    0x080136c4   0x080136c4   0x00000090   Code   RO         9487    i.minipc_upgrade    minipc_protocol.o
-    0x08013754   0x08013754   0x00000100   Code   RO         8214    i.mit_ctrl          damiaomotors.o
-    0x08013854   0x08013854   0x00000270   Code   RO         8951    i.normally_chassis_control  robot_cmd.o
-    0x08013ac4   0x08013ac4   0x00000088   Code   RO         8952    i.normally_set_all_data  robot_cmd.o
-    0x08013b4c   0x08013b4c   0x00000104   Code   RO         8953    i.normally_tranverse  robot_cmd.o
-    0x08013c50   0x08013c50   0x00000060   Code   RO         7850    i.polyval_calc      scara_kinematics.o
-    0x08013cb0   0x08013cb0   0x0000005c   Code   RO         8215    i.pos_speed_ctrl    damiaomotors.o
-    0x08013d0c   0x08013d0c   0x0000029c   Code   RO         8954    i.push_block        robot_cmd.o
-    0x08013fa8   0x08013fa8   0x0000014c   Code   RO         7730    i.quaternion2euler  kf_imu.o
-    0x080140f4   0x080140f4   0x00000380   Code   RO         8955    i.real_handle_mode  robot_cmd.o
-    0x08014474   0x08014474   0x00000078   Code   RO         8719    i.recieve_all_data  arm.o
-    0x080144ec   0x080144ec   0x00000298   Code   RO         8479    i.referee_fbkdata   referee.o
-    0x08014784   0x08014784   0x00000258   Code   RO         8480    i.referee_rc_decode  referee.o
-    0x080149dc   0x080149dc   0x0000054c   Code   RO         8956    i.remote_cmd_choose  robot_cmd.o
-    0x08014f28   0x08014f28   0x000000fa   Code   RO         7851    i.scara_forward_kinematics  scara_kinematics.o
-    0x08015022   0x08015022   0x00000002   PAD
-    0x08015024   0x08015024   0x000001ec   Code   RO         7852    i.scara_inverse_kinematics  scara_kinematics.o
-    0x08015210   0x08015210   0x00000140   Code   RO         8866    i.send_wheel_can_data  chassis.o
-    0x08015350   0x08015350   0x0000001e   Code   RO         8723    i.splitAndStoreSignals  arm.o
-    0x0801536e   0x0801536e   0x0000001e   Code   RO         8868    i.splitAndStoreSignals  chassis.o
-    0x0801538c   0x0801538c   0x0000006a   Code   RO         9826    i.sqrt              m_wv.l(sqrt.o)
-    0x080153f6   0x080153f6   0x00000002   PAD
-    0x080153f8   0x080153f8   0x0000002c   Code   RO         8958    i.sucker_ctrl       robot_cmd.o
-    0x08015424   0x08015424   0x00000058   Code   RO         8959    i.trans_single_control  robot_cmd.o
-    0x0801547c   0x0801547c   0x00000040   Code   RO         8724    i.trans_speed_control  arm.o
-    0x080154bc   0x080154bc   0x000009ec   Code   RO         9562    i.ui_init_g         ui_g.o
-    0x08015ea8   0x08015ea8   0x00000060   Code   RO         9594    i.ui_proc_1_frame   ui_interface.o
-    0x08015f08   0x08015f08   0x00000060   Code   RO         9595    i.ui_proc_2_frame   ui_interface.o
-    0x08015f68   0x08015f68   0x00000060   Code   RO         9596    i.ui_proc_5_frame   ui_interface.o
-    0x08015fc8   0x08015fc8   0x00000060   Code   RO         9597    i.ui_proc_7_frame   ui_interface.o
-    0x08016028   0x08016028   0x00000074   Code   RO         9599    i.ui_proc_string_frame  ui_interface.o
-    0x0801609c   0x0801609c   0x00000234   Code   RO         9600    i.ui_scan_and_send  ui_interface.o
-    0x080162d0   0x080162d0   0x000000bc   Code   RO         9563    i.ui_update_g       ui_g.o
-    0x0801638c   0x0801638c   0x00000034   Code   RO         8218    i.uint_to_float     damiaomotors.o
-    0x080163c0   0x080163c0   0x00000098   Code   RO         8326    i.update_combo_counter  rc_protocol.o
-    0x08016458   0x08016458   0x00000098   Code   RO         8485    i.update_combo_counter  referee.o
-    0x080164f0   0x080164f0   0x000001dc   Code   RO         7929    i.user_mat_add      user_mat.o
-    0x080166cc   0x080166cc   0x0000058e   Code   RO         7930    i.user_mat_inverse  user_mat.o
-    0x08016c5a   0x08016c5a   0x00000002   PAD
-    0x08016c5c   0x08016c5c   0x0000019c   Code   RO         7931    i.user_mat_multiply  user_mat.o
-    0x08016df8   0x08016df8   0x00000244   Code   RO         7933    i.user_mat_subtract  user_mat.o
-    0x0801703c   0x0801703c   0x000000e0   Code   RO         7934    i.user_mat_transpose  user_mat.o
-    0x0801711c   0x0801711c   0x00000030   Code   RO         8960    i.video_angle_ctrl  robot_cmd.o
-    0x0801714c   0x0801714c   0x0000004c   Code   RO         8961    i.video_offline_protect  robot_cmd.o
-    0x08017198   0x08017198   0x00000034   Code   RO         8962    i.yaw_absolute_ctrl  robot_cmd.o
-    0x080171cc   0x080171cc   0x00000010   Code   RO         9948    x$fpl$dcheck1       fz_wv.l(dcheck1.o)
-    0x080171dc   0x080171dc   0x0000000a   Code   RO        10170    x$fpl$fpinit        fz_wv.l(fpinit.o)
-    0x080171e6   0x080171e6   0x00000064   Code   RO        10114    x$fpl$retnan        fz_wv.l(retnan.o)
-    0x0801724a   0x0801724a   0x0000005c   Code   RO         9854    x$fpl$scalbn        fz_wv.l(scalbn.o)
-    0x080172a6   0x080172a6   0x00000030   Code   RO        10172    x$fpl$trapveneer    fz_wv.l(trapv.o)
-    0x080172d6   0x080172d6   0x00000000   Code   RO         9856    x$fpl$usenofp       fz_wv.l(usenofp.o)
-    0x080172d6   0x080172d6   0x00000008   Data   RO         2653    .constdata          stm32h7xx_hal_dma.o
-    0x080172de   0x080172de   0x00000002   PAD
-    0x080172e0   0x080172e0   0x0000005c   Data   RO         4535    .constdata          stm32h7xx_hal_fdcan.o
-    0x0801733c   0x0801733c   0x00000018   Data   RO         6487    .constdata          stm32h7xx_hal_uart.o
-    0x08017354   0x08017354   0x00000010   Data   RO         6858    .constdata          stm32h7xx_hal_uart_ex.o
-    0x08017364   0x08017364   0x00000010   Data   RO         6967    .constdata          system_stm32h7xx.o
-    0x08017374   0x08017374   0x00000302   Data   RO         7616    .constdata          crc8_crc16.o
-    0x08017676   0x08017676   0x00000002   PAD
-    0x08017678   0x08017678   0x000000c0   Data   RO         7732    .constdata          kf_imu.o
-    0x08017738   0x08017738   0x00000050   Data   RO         9763    .constdata          m_wv.l(asin.o)
-    0x08017788   0x08017788   0x00000088   Data   RO         9801    .constdata          m_wv.l(pow.o)
-    0x08017810   0x08017810   0x00000098   Data   RO         9860    .constdata          m_wv.l(atan.o)
-    0x080178a8   0x080178a8   0x00000030   Data   RO         9872    .constdata          m_wv.l(cos_i.o)
-    0x080178d8   0x080178d8   0x00000008   Data   RO         9898    .constdata          m_wv.l(qnan.o)
-    0x080178e0   0x080178e0   0x000000c8   Data   RO         9901    .constdata          m_wv.l(rred.o)
-    0x080179a8   0x080179a8   0x00000028   Data   RO         9905    .constdata          m_wv.l(sin_i.o)
-    0x080179d0   0x080179d0   0x00000040   Data   RO        10251    Region$$Table       anon$$obj.o
+    0x08011cc8   0x08011cc8   0x00000174   Code   RO         7849    i.check_boundary_scara_lefthand  scara_kinematics.o
+    0x08011e3c   0x08011e3c   0x00000042   Code   RO         8209    i.clear_err         damiaomotors.o
+    0x08011e7e   0x08011e7e   0x00000002   PAD
+    0x08011e80   0x08011e80   0x00000078   Code   RO         8707    i.control_all_arm   arm.o
+    0x08011ef8   0x08011ef8   0x00000084   Code   RO         8708    i.control_roll_angle  arm.o
+    0x08011f7c   0x08011f7c   0x00000114   Code   RO         8945    i.costum_ctrl_arm   robot_cmd.o
+    0x08012090   0x08012090   0x0000001c   Code   RO         9523    i.device_fbk        cm_device.o
+    0x080120ac   0x080120ac   0x00000018   Code   RO         9524    i.device_init       cm_device.o
+    0x080120c4   0x080120c4   0x00000074   Code   RO         9525    i.device_refresh    cm_device.o
+    0x08012138   0x08012138   0x000000a4   Code   RO         8211    i.dm_fdkdata        damiaomotors.o
+    0x080121dc   0x080121dc   0x0000003c   Code   RO         8710    i.enable_allmotor   arm.o
+    0x08012218   0x08012218   0x00000042   Code   RO         8212    i.enable_motor_mode  damiaomotors.o
+    0x0801225a   0x0801225a   0x00000108   Code   RO         7725    i.euler2quaternion  kf_imu.o
+    0x08012362   0x08012362   0x00000018   Code   RO         9890    i.fabs              m_wv.l(fabs.o)
+    0x0801237a   0x0801237a   0x00000002   PAD
+    0x0801237c   0x0801237c   0x000000ac   Code   RO         7528    i.fdcan1_rx_callback  bsp_fdcan.o
+    0x08012428   0x08012428   0x00000044   Code   RO         7529    i.fdcan2_rx_callback  bsp_fdcan.o
+    0x0801246c   0x0801246c   0x0000005c   Code   RO         7530    i.fdcan3_rx_callback  bsp_fdcan.o
+    0x080124c8   0x080124c8   0x00000068   Code   RO         7531    i.fdcanx_receive    bsp_fdcan.o
+    0x08012530   0x08012530   0x0000007c   Code   RO         7532    i.fdcanx_send_data  bsp_fdcan.o
+    0x080125ac   0x080125ac   0x00000032   Code   RO         8213    i.float_to_uint     damiaomotors.o
+    0x080125de   0x080125de   0x00000002   PAD
+    0x080125e0   0x080125e0   0x00000134   Code   RO         8946    i.get_ready_auto    robot_cmd.o
+    0x08012714   0x08012714   0x000001e0   Code   RO         7726    i.get_x_minus       kf_imu.o
+    0x080128f4   0x080128f4   0x0000015c   Code   RO         7727    i.imu_process       kf_imu.o
+    0x08012a50   0x08012a50   0x0000000c   Code   RO         8324    i.is_key_held       rc_protocol.o
+    0x08012a5c   0x08012a5c   0x0000000c   Code   RO         8477    i.is_key_held       referee.o
+    0x08012a68   0x08012a68   0x0000001e   Code   RO         8325    i.is_key_pressed    rc_protocol.o
+    0x08012a86   0x08012a86   0x0000001e   Code   RO         8478    i.is_key_pressed    referee.o
+    0x08012aa4   0x08012aa4   0x0000005c   Code   RO         7664    i.kf_copy           kalman_filter.o
+    0x08012b00   0x08012b00   0x00000078   Code   RO         7665    i.kf_get_K          kalman_filter.o
+    0x08012b78   0x08012b78   0x0000003c   Code   RO         7666    i.kf_get_P          kalman_filter.o
+    0x08012bb4   0x08012bb4   0x0000004c   Code   RO         7667    i.kf_get_P_minus    kalman_filter.o
+    0x08012c00   0x08012c00   0x00000048   Code   RO         7668    i.kf_get_x_hat      kalman_filter.o
+    0x08012c48   0x08012c48   0x000000f0   Code   RO         7728    i.kf_imu_init       kf_imu.o
+    0x08012d38   0x08012d38   0x00000450   Code   RO         7729    i.kf_imu_upgrade    kf_imu.o
+    0x08013188   0x08013188   0x00000034   Code   RO         8712    i.lift_height_cmd   arm.o
+    0x080131bc   0x080131bc   0x00000080   Code   RO         8714    i.lift_speed_control  arm.o
+    0x0801323c   0x0801323c   0x0000016c   Code   RO         8949    i.lock_arm          robot_cmd.o
+    0x080133a8   0x080133a8   0x00000270   Code   RO           15    i.main              main.o
+    0x08013618   0x08013618   0x00000048   Code   RO         9486    i.minipc_rec        minipc_protocol.o
+    0x08013660   0x08013660   0x00000070   Code   RO         8950    i.minipc_send       robot_cmd.o
+    0x080136d0   0x080136d0   0x00000090   Code   RO         9487    i.minipc_upgrade    minipc_protocol.o
+    0x08013760   0x08013760   0x00000100   Code   RO         8214    i.mit_ctrl          damiaomotors.o
+    0x08013860   0x08013860   0x00000270   Code   RO         8951    i.normally_chassis_control  robot_cmd.o
+    0x08013ad0   0x08013ad0   0x00000088   Code   RO         8952    i.normally_set_all_data  robot_cmd.o
+    0x08013b58   0x08013b58   0x00000104   Code   RO         8953    i.normally_tranverse  robot_cmd.o
+    0x08013c5c   0x08013c5c   0x00000060   Code   RO         7850    i.polyval_calc      scara_kinematics.o
+    0x08013cbc   0x08013cbc   0x0000005c   Code   RO         8215    i.pos_speed_ctrl    damiaomotors.o
+    0x08013d18   0x08013d18   0x0000029c   Code   RO         8954    i.push_block        robot_cmd.o
+    0x08013fb4   0x08013fb4   0x0000014c   Code   RO         7730    i.quaternion2euler  kf_imu.o
+    0x08014100   0x08014100   0x00000380   Code   RO         8955    i.real_handle_mode  robot_cmd.o
+    0x08014480   0x08014480   0x00000078   Code   RO         8719    i.recieve_all_data  arm.o
+    0x080144f8   0x080144f8   0x00000298   Code   RO         8479    i.referee_fbkdata   referee.o
+    0x08014790   0x08014790   0x00000258   Code   RO         8480    i.referee_rc_decode  referee.o
+    0x080149e8   0x080149e8   0x0000054c   Code   RO         8956    i.remote_cmd_choose  robot_cmd.o
+    0x08014f34   0x08014f34   0x000000fa   Code   RO         7851    i.scara_forward_kinematics  scara_kinematics.o
+    0x0801502e   0x0801502e   0x00000002   PAD
+    0x08015030   0x08015030   0x000001ec   Code   RO         7852    i.scara_inverse_kinematics  scara_kinematics.o
+    0x0801521c   0x0801521c   0x00000140   Code   RO         8866    i.send_wheel_can_data  chassis.o
+    0x0801535c   0x0801535c   0x0000001e   Code   RO         8723    i.splitAndStoreSignals  arm.o
+    0x0801537a   0x0801537a   0x0000001e   Code   RO         8868    i.splitAndStoreSignals  chassis.o
+    0x08015398   0x08015398   0x0000006a   Code   RO         9826    i.sqrt              m_wv.l(sqrt.o)
+    0x08015402   0x08015402   0x00000002   PAD
+    0x08015404   0x08015404   0x0000002c   Code   RO         8958    i.sucker_ctrl       robot_cmd.o
+    0x08015430   0x08015430   0x00000058   Code   RO         8959    i.trans_single_control  robot_cmd.o
+    0x08015488   0x08015488   0x00000040   Code   RO         8724    i.trans_speed_control  arm.o
+    0x080154c8   0x080154c8   0x000009ec   Code   RO         9562    i.ui_init_g         ui_g.o
+    0x08015eb4   0x08015eb4   0x00000060   Code   RO         9594    i.ui_proc_1_frame   ui_interface.o
+    0x08015f14   0x08015f14   0x00000060   Code   RO         9595    i.ui_proc_2_frame   ui_interface.o
+    0x08015f74   0x08015f74   0x00000060   Code   RO         9596    i.ui_proc_5_frame   ui_interface.o
+    0x08015fd4   0x08015fd4   0x00000060   Code   RO         9597    i.ui_proc_7_frame   ui_interface.o
+    0x08016034   0x08016034   0x00000074   Code   RO         9599    i.ui_proc_string_frame  ui_interface.o
+    0x080160a8   0x080160a8   0x00000234   Code   RO         9600    i.ui_scan_and_send  ui_interface.o
+    0x080162dc   0x080162dc   0x000000bc   Code   RO         9563    i.ui_update_g       ui_g.o
+    0x08016398   0x08016398   0x00000034   Code   RO         8218    i.uint_to_float     damiaomotors.o
+    0x080163cc   0x080163cc   0x00000098   Code   RO         8326    i.update_combo_counter  rc_protocol.o
+    0x08016464   0x08016464   0x00000098   Code   RO         8485    i.update_combo_counter  referee.o
+    0x080164fc   0x080164fc   0x000001dc   Code   RO         7929    i.user_mat_add      user_mat.o
+    0x080166d8   0x080166d8   0x0000058e   Code   RO         7930    i.user_mat_inverse  user_mat.o
+    0x08016c66   0x08016c66   0x00000002   PAD
+    0x08016c68   0x08016c68   0x0000019c   Code   RO         7931    i.user_mat_multiply  user_mat.o
+    0x08016e04   0x08016e04   0x00000244   Code   RO         7933    i.user_mat_subtract  user_mat.o
+    0x08017048   0x08017048   0x000000e0   Code   RO         7934    i.user_mat_transpose  user_mat.o
+    0x08017128   0x08017128   0x00000030   Code   RO         8960    i.video_angle_ctrl  robot_cmd.o
+    0x08017158   0x08017158   0x0000004c   Code   RO         8961    i.video_offline_protect  robot_cmd.o
+    0x080171a4   0x080171a4   0x00000034   Code   RO         8962    i.yaw_absolute_ctrl  robot_cmd.o
+    0x080171d8   0x080171d8   0x00000010   Code   RO         9948    x$fpl$dcheck1       fz_wv.l(dcheck1.o)
+    0x080171e8   0x080171e8   0x0000000a   Code   RO        10170    x$fpl$fpinit        fz_wv.l(fpinit.o)
+    0x080171f2   0x080171f2   0x00000064   Code   RO        10114    x$fpl$retnan        fz_wv.l(retnan.o)
+    0x08017256   0x08017256   0x0000005c   Code   RO         9854    x$fpl$scalbn        fz_wv.l(scalbn.o)
+    0x080172b2   0x080172b2   0x00000030   Code   RO        10172    x$fpl$trapveneer    fz_wv.l(trapv.o)
+    0x080172e2   0x080172e2   0x00000000   Code   RO         9856    x$fpl$usenofp       fz_wv.l(usenofp.o)
+    0x080172e2   0x080172e2   0x00000008   Data   RO         2653    .constdata          stm32h7xx_hal_dma.o
+    0x080172ea   0x080172ea   0x00000002   PAD
+    0x080172ec   0x080172ec   0x0000005c   Data   RO         4535    .constdata          stm32h7xx_hal_fdcan.o
+    0x08017348   0x08017348   0x00000018   Data   RO         6487    .constdata          stm32h7xx_hal_uart.o
+    0x08017360   0x08017360   0x00000010   Data   RO         6858    .constdata          stm32h7xx_hal_uart_ex.o
+    0x08017370   0x08017370   0x00000010   Data   RO         6967    .constdata          system_stm32h7xx.o
+    0x08017380   0x08017380   0x00000302   Data   RO         7616    .constdata          crc8_crc16.o
+    0x08017682   0x08017682   0x00000006   PAD
+    0x08017688   0x08017688   0x000000c0   Data   RO         7732    .constdata          kf_imu.o
+    0x08017748   0x08017748   0x00000050   Data   RO         9763    .constdata          m_wv.l(asin.o)
+    0x08017798   0x08017798   0x00000088   Data   RO         9801    .constdata          m_wv.l(pow.o)
+    0x08017820   0x08017820   0x00000098   Data   RO         9860    .constdata          m_wv.l(atan.o)
+    0x080178b8   0x080178b8   0x00000030   Data   RO         9872    .constdata          m_wv.l(cos_i.o)
+    0x080178e8   0x080178e8   0x00000008   Data   RO         9898    .constdata          m_wv.l(qnan.o)
+    0x080178f0   0x080178f0   0x000000c8   Data   RO         9901    .constdata          m_wv.l(rred.o)
+    0x080179b8   0x080179b8   0x00000028   Data   RO         9905    .constdata          m_wv.l(sin_i.o)
+    0x080179e0   0x080179e0   0x00000040   Data   RO        10251    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08017a10, Size: 0x000050a8, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x000001c0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08017a20, Size: 0x000050a8, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x000001c0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -6150,7 +6150,7 @@ Memory Map of the image
     0x200010a8        -       0x00004000   Zero   RW            1    STACK               startup_stm32h723xx.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x24000000, Load base: 0x08017bd0, Size: 0x0000d7b8, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x0000010c])
+    Execution Region RW_IRAM2 (Exec base: 0x24000000, Load base: 0x08017be0, Size: 0x0000d7b8, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x0000010c])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -6221,7 +6221,7 @@ Image component sizes
       1050        114          0        168         24      10371   rc_protocol.o
       1458        126          0        134       3748      17152   referee.o
      11464       1978          0        240        252      22003   robot_cmd.o
-      1198         46          0        280          0       6145   scara_kinematics.o
+      1210         46          0        280          0       6149   scara_kinematics.o
        548         44          0          0        272       2682   spi.o
         64         26        716          0      20480        856   startup_stm32h723xx.o
        260         48          0          9          0      23773   stm32h7xx_hal.o
@@ -6261,9 +6261,9 @@ Image component sizes
         92         24          0          0        510       1677   video.o
 
     ----------------------------------------------------------------------
-     86954       5958       1902       2516      73256    1809254   Object Totals
+     86966       5958       1906       2516      73256    1809258   Object Totals
          0          0         64          0          0          0   (incl. Generated)
-        56          4          4         20      34391          0   (incl. Padding)
+        56          4          8         20      34391          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -6342,15 +6342,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     94218       6848       2566       2516      73356    1767538   Grand Totals
-     94218       6848       2566        716      73356    1767538   ELF Image Totals (compressed)
-     94218       6848       2566        716          0          0   ROM Totals
+     94230       6848       2570       2516      73356    1767542   Grand Totals
+     94230       6848       2570        716      73356    1767542   ELF Image Totals (compressed)
+     94230       6848       2570        716          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                96784 (  94.52kB)
+    Total RO  Size (Code + RO Data)                96800 (  94.53kB)
     Total RW  Size (RW Data + ZI Data)             75872 (  74.09kB)
-    Total ROM Size (Code + RO Data + RW Data)      97500 (  95.21kB)
+    Total ROM Size (Code + RO Data + RW Data)      97516 (  95.23kB)
 
 ==============================================================================
 
