@@ -773,6 +773,12 @@ typedef struct
 	  roll_cmd_e roll_cmd_direction; //roll目标值
 	  sucker_switch_cmd_e sucker_cmd;//吸盘
 	  lift_cmd_e lift_cmd;//z轴
+	
+	  int16_t vx;
+	  int16_t vy;
+	  int16_t vw;
+	
+	  
 	  
 	
 }custom_cmd_t;

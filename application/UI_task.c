@@ -61,5 +61,11 @@ void UI_UPLOAD(void)//ÉÏ´«
 	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "OFF");}
 		if(ARM_CMD_data.sucker_mode==SUCKER_ON){
 	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "ON ");}
+		
+	
+	
+	  ui_g_Ungroup_rxy_index->start_x = (uint32_t)(105+ rc_mode_xy_after_check[1]*(463-113)/(-228-400));
+    ui_g_Ungroup_rxy_index->start_y = (uint32_t)(610+ rc_mode_xy_after_check[0]*(860-610)/(500-0));
+	
 
 }

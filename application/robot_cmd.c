@@ -94,7 +94,7 @@ void trans_single_control(void);
 //解算数组
 float res_scara_angle[2]; //第一个为大臂，第二个为小臂
 static float rc_mode_xy[2]             = {0, 0}; // 目标x,y坐标
-static float rc_mode_xy_after_check[2] = {0, 0};//被检查过的
+float rc_mode_xy_after_check[2] = {0, 0};//被检查过的
 
 float target_forward = 0; //目标前进速度开根号
 
@@ -175,7 +175,9 @@ void ROBOT_CMD_TASK(void)
 	
 	referee_rc_decode(&video_cmd);//图传遥控
 
-	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
+//	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
+
+	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 25);//专门针对自定义控制器解码
 	
 	remote_cmd_choose();
 	
@@ -262,7 +264,11 @@ void ROBOT_CMD_TASK(void)
 	   if (chassis_auto_flag == 0) {
 				//判断是否有w轴			
 				//没有欧米伽就是纯横移
-			 normally_chassis_control();
+
+			   normally_chassis_control();
+
+			 
+
 			 
 			 
     }
@@ -596,10 +602,20 @@ void real_handle_mode(void)//真手动模式
 	 /******************手动部分********************/
         // xy命令获取
         //鼠标控
+	      #ifndef NEW_REMOTE
         if ((!shift_flag)&&(!ctrl_flag) && (!(press_left && press_right)) ){
             rc_mode_xy[1] -= rc_ctrl.mouse.x / 50;
             rc_mode_xy[0] -= rc_ctrl.mouse.y / 30;
         }
+				#endif
+	
+	
+	      #ifdef NEW_REMOTE
+        if ((!shift_flag)&&(!ctrl_flag) && (!(press_left && press_right)) ){
+            rc_mode_xy[1] -= rc_ctrl.mouse.x / 50;
+            rc_mode_xy[0] += rc_ctrl.mouse.y / 30;
+        }
+				#endif
 				
         //遥控器控
         if (rc_ctrl.rc.ch[0] > 100) {//上下
@@ -619,6 +635,8 @@ void real_handle_mode(void)//真手动模式
         //末端三轴
         // yaw pitch,按住ctrl鼠标控制shift？
 				//ctrl+两个按键下摁
+				
+				#ifndef NEW_REMOTE
         if ((!shift_flag)&&(!(press_left && press_right))&& (ctrl_flag)) {
             if (rc_ctrl.mouse.x > 2) {
                 yaw_absolute -= 0.0001 * rc_ctrl.mouse.x;
@@ -633,6 +651,28 @@ void real_handle_mode(void)//真手动模式
                 target_angle4 -= 0.0002 * rc_ctrl.mouse.y;
             }
         }
+				#endif
+				
+				
+				#ifdef NEW_REMOTE
+        if ((!shift_flag)&&(!(press_left && press_right))&& (ctrl_flag)) {
+            if (rc_ctrl.mouse.x > 2) {
+                yaw_absolute -= 0.0001 * rc_ctrl.mouse.x;
+            }
+            if (rc_ctrl.mouse.x < -2) {
+                yaw_absolute -= 0.0001 * rc_ctrl.mouse.x;
+            }
+            if (rc_ctrl.mouse.y > 2) {
+                target_angle4 += 0.0002 * rc_ctrl.mouse.y;
+            }
+            if (rc_ctrl.mouse.y < -2) {
+                target_angle4 += 0.0002 * rc_ctrl.mouse.y;
+            }
+        }
+				#endif				
+				
+				
+				
 
 
 
@@ -928,9 +968,9 @@ void auto_get_silver(void)
             }
             if (backback_step == 2) {
                 lift_height_cmd(590, &target_lift_speed); 
-                target_angle1     = 1.42956f;
-                target_angle2     = 2.15921f;
-                if (fabs(min_motor.para.pos- 2.15921f) < 0.15) {
+                target_angle1     = 1.22956f;//42956f
+                target_angle2     = 2.27921f;//15921f
+                if (fabs(min_motor.para.pos- 2.27921f) < 0.15) {
                     backback_step = 3;
                 }
                 if_solve_flag = 0; //机械臂不解算
@@ -938,8 +978,8 @@ void auto_get_silver(void)
             if (backback_step == 3) {
                 ARM_CMD_data.sucker_mode = SUCKER_OFF;
                 lift_height_cmd(350, &target_lift_speed); 
-                target_angle1            = 1.42956f;
-                target_angle2            = 2.15921f;
+                target_angle1     = 1.22956f;//42956f
+                target_angle2     = 2.27921f;//15921f
 							
 							  
                 count_for_drop++;
@@ -1053,9 +1093,9 @@ void auto_get_silver(void)
 						
             if (backback_step == 2) {
                 lift_height_cmd(590, &target_lift_speed); 
-                target_angle1     = 1.42956f;
-                target_angle2     = 2.15921f;
-                if (fabs(min_motor.para.pos - 2.15921f) < 0.15) {
+                target_angle1     = 1.22956f;//42956f
+                target_angle2     = 2.27921f;//15921f
+                if (fabs(min_motor.para.pos - 2.27921f) < 0.15) {
                     backback_step = 3;
                 }
                 if_solve_flag = 0; //机械臂不解算
@@ -1063,8 +1103,8 @@ void auto_get_silver(void)
             if (backback_step == 3) {
                 ARM_CMD_data.sucker_mode = SUCKER_OFF;
                 lift_height_cmd(350, &target_lift_speed);
-                target_angle1            = 1.42956f;
-                target_angle2            = 2.15921f;
+                target_angle1     = 1.22956f;//42956f
+                target_angle2     = 2.27921f;//15921f
                 count_for_drop++;
                 if (count_for_drop > 300) {
                     backback_step = 4;
@@ -1549,6 +1589,10 @@ void auto_put_block(void)//自动放东西
             }
         }
 }
+
+
+
+
 //正常控制底盘
 void normally_chassis_control(void)
 {
@@ -1558,13 +1602,13 @@ void normally_chassis_control(void)
 			
 			
         //平移缓启动
-        if ((d_flag && (!a_flag)) ) {
+        if (((d_flag && (!a_flag)))|| custom_cmd.vx>30 ) {
             Chassis_CMD_data.vx += 17 * speed_scale;
         }
-        if ((a_flag && (!d_flag)) ) {
+        if (((a_flag && (!d_flag)))|| custom_cmd.vx<30 ) {
             Chassis_CMD_data.vx -= 17 * speed_scale;//10
         }
-        if ((!a_flag) && (!d_flag)) {
+        if (((!a_flag) && (!d_flag))||abs(custom_cmd.vx)<30) {
             Chassis_CMD_data.vx = 0;
         }
         if (Chassis_CMD_data.vx > 2000 * speed_scale) {
@@ -1605,9 +1649,16 @@ void normally_chassis_control(void)
 				
         if (press_right && press_left) {
             Chassis_CMD_data.vw = -(float)rc_ctrl.mouse.x * 1 * (target_forward / 13 + 1);
-        } else  {
+        } 
+				else if(abs(custom_cmd.vw)<30)
+				{
             Chassis_CMD_data.vw = 0;
         } 
+				else
+				{
+					  Chassis_CMD_data.vw = custom_cmd.vw;
+					
+				}
 				//打算改成自动化的那种
 //        switch(f_counter.shift_press_count%3){
 //					case 0:

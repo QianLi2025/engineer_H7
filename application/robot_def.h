@@ -9,6 +9,9 @@
 #define ROLL_OFFSET 35.07f
 
 
+#define NEW_REMOTE
+
+
 #define MOTOR_ENABLE_TIMEOUT_MS 100
 
 #define HEIGHT_MAXIMUN 600

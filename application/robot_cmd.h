@@ -31,4 +31,7 @@ void ROBOT_CMD_INIT(void);
 
 void ROBOT_CMD_TASK(void);
 
+
+extern float rc_mode_xy_after_check[2];
+
 #endif // CMD_H

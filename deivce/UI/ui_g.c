@@ -7,7 +7,7 @@
 #include "ui_interface.h"
 #include "ui_g.h"
 
-#define TOTAL_FIGURE 16
+#define TOTAL_FIGURE 13
 #define TOTAL_STRING 5
 
 ui_interface_figure_t ui_g_now_figures[TOTAL_FIGURE];
@@ -92,50 +92,17 @@ void ui_init_g() {
 
     ui_g_Ungroup_BOUNDARY_rec->figure_tpye = 1;
     ui_g_Ungroup_BOUNDARY_rec->layer = 0;
-    ui_g_Ungroup_BOUNDARY_rec->start_x = 110;
-    ui_g_Ungroup_BOUNDARY_rec->start_y = 614;
+    ui_g_Ungroup_BOUNDARY_rec->start_x = 106;
+    ui_g_Ungroup_BOUNDARY_rec->start_y = 607;
     ui_g_Ungroup_BOUNDARY_rec->color = 1;
     ui_g_Ungroup_BOUNDARY_rec->width = 1;
-    ui_g_Ungroup_BOUNDARY_rec->end_x = 444;
-    ui_g_Ungroup_BOUNDARY_rec->end_y = 870;
-
-    ui_g_Ungroup_BOUNDARY1->figure_tpye = 4;
-    ui_g_Ungroup_BOUNDARY1->layer = 0;
-    ui_g_Ungroup_BOUNDARY1->rx = 163;
-    ui_g_Ungroup_BOUNDARY1->ry = 130;
-    ui_g_Ungroup_BOUNDARY1->start_x = 278;
-    ui_g_Ungroup_BOUNDARY1->start_y = 733;
-    ui_g_Ungroup_BOUNDARY1->color = 2;
-    ui_g_Ungroup_BOUNDARY1->width = 1;
-    ui_g_Ungroup_BOUNDARY1->start_angle = 90;
-    ui_g_Ungroup_BOUNDARY1->end_angle = 270;
-
-    ui_g_Ungroup_BOUNDARY2->figure_tpye = 4;
-    ui_g_Ungroup_BOUNDARY2->layer = 0;
-    ui_g_Ungroup_BOUNDARY2->rx = 74;
-    ui_g_Ungroup_BOUNDARY2->ry = 51;
-    ui_g_Ungroup_BOUNDARY2->start_x = 366;
-    ui_g_Ungroup_BOUNDARY2->start_y = 745;
-    ui_g_Ungroup_BOUNDARY2->color = 2;
-    ui_g_Ungroup_BOUNDARY2->width = 1;
-    ui_g_Ungroup_BOUNDARY2->start_angle = 0;
-    ui_g_Ungroup_BOUNDARY2->end_angle = 90;
-
-    ui_g_Ungroup_BOUNDARY3->figure_tpye = 4;
-    ui_g_Ungroup_BOUNDARY3->layer = 0;
-    ui_g_Ungroup_BOUNDARY3->rx = 50;
-    ui_g_Ungroup_BOUNDARY3->ry = 108;
-    ui_g_Ungroup_BOUNDARY3->start_x = 165;
-    ui_g_Ungroup_BOUNDARY3->start_y = 734;
-    ui_g_Ungroup_BOUNDARY3->color = 2;
-    ui_g_Ungroup_BOUNDARY3->width = 1;
-    ui_g_Ungroup_BOUNDARY3->start_angle = 270;
-    ui_g_Ungroup_BOUNDARY3->end_angle = 0;
+    ui_g_Ungroup_BOUNDARY_rec->end_x = 466;
+    ui_g_Ungroup_BOUNDARY_rec->end_y = 863;
 
     ui_g_Ungroup_rxy_index->figure_tpye = 2;
     ui_g_Ungroup_rxy_index->layer = 0;
     ui_g_Ungroup_rxy_index->r = 7;
-    ui_g_Ungroup_rxy_index->start_x = 273;
+    ui_g_Ungroup_rxy_index->start_x = 286;
     ui_g_Ungroup_rxy_index->start_y = 622;
     ui_g_Ungroup_rxy_index->color = 6;
     ui_g_Ungroup_rxy_index->width = 10;
