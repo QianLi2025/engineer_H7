@@ -1602,13 +1602,13 @@ void normally_chassis_control(void)
 			
 			
         //平移缓启动
-        if (((d_flag && (!a_flag)))|| custom_cmd.vx>30 ) {
+        if (((d_flag && (!a_flag)))|| custom_cmd.vx<-30 ) {
             Chassis_CMD_data.vx += 17 * speed_scale;
         }
-        if (((a_flag && (!d_flag)))|| custom_cmd.vx<30 ) {
+        if (((a_flag && (!d_flag)))|| custom_cmd.vx>30 ) {
             Chassis_CMD_data.vx -= 17 * speed_scale;//10
         }
-        if (((!a_flag) && (!d_flag))||abs(custom_cmd.vx)<30) {
+        if (((!a_flag) && (!d_flag))&&abs(custom_cmd.vx)<30) {
             Chassis_CMD_data.vx = 0;
         }
         if (Chassis_CMD_data.vx > 2000 * speed_scale) {
@@ -1619,13 +1619,13 @@ void normally_chassis_control(void)
         }
 				
         //前进缓启动
-        if ((w_flag && (!s_flag))) {
+        if (((w_flag && (!s_flag)))||custom_cmd.vy>30) {
             target_forward += 0.5 * speed_scale;//6
         }
-        if ((s_flag && (!w_flag))) {
+        if (((s_flag && (!w_flag)))||custom_cmd.vy<-30) {
             target_forward -= 0.5 * speed_scale;
         }
-        if ((!s_flag) && (!w_flag))  {
+        if (((!s_flag) && (!w_flag))&&abs(custom_cmd.vy)<30)  {
             target_forward = 0;
         }
         Chassis_CMD_data.vy = target_forward * target_forward * target_forward;//多项式吗 有意思
