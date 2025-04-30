@@ -163,6 +163,11 @@ void ROBOT_CMD_INIT(void)
 	
 	  PID_init(&y_vision_ctrl_pid,PID_POSITION,1,0,0,1000,100);
 	  PID_init(&x_vision_ctrl_pid,PID_POSITION,1,0,0,1000,100);
+	  minipc.minipc2mcu.max_angle_ctrl=1.328;
+minipc.minipc2mcu.min_angle_ctrl=-2.450;
+	minipc.minipc2mcu.finesse_angle_ctrl=1.163;
+	minipc.minipc2mcu.pitch_angle_ctrl=0;
+	
 }
 
 //使用图传链路还是遥控呢
@@ -177,7 +182,13 @@ void ROBOT_CMD_TASK(void)
 
 //	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
 
-	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 25);//专门针对自定义控制器解码
+	memcpy(&custom_cmd, &video_cmd.custom_robot_data, 19);//专门针对自定义控制器解码
+	
+	    custom_cmd.vx = (video_cmd.custom_robot_data.data[20] << 8) | video_cmd.custom_robot_data.data[19]; // data[0] 是低字节，data[1] 是高字节
+    custom_cmd.vy = (video_cmd.custom_robot_data.data[22] << 8) | video_cmd.custom_robot_data.data[21]; // data[2] 是低字节，data[3] 是高字节
+    custom_cmd.vw = (video_cmd.custom_robot_data.data[24] << 8) | video_cmd.custom_robot_data.data[23]; // data[4] 是低字节，data[5] 是高字节
+	
+	
 	
 	remote_cmd_choose();
 	
@@ -205,7 +216,8 @@ void ROBOT_CMD_TASK(void)
 		auto_mode_select_centre();
 		
 		//判断遥控器拨杆,如果在下面就用自定义控制
-		if((rc_ctrl.rc.s[0]==2)&&rc_cm.state==DEVICE_OK)
+////		if((rc_ctrl.rc.s[0]==2)&&rc_cm.state==DEVICE_OK)
+		if(c_counter->shift_press_count%2==1)
 		{
 			costum_ctrl_arm();
 			ROBOT_STATE=CUSTOM;
@@ -265,6 +277,7 @@ void ROBOT_CMD_TASK(void)
 				//判断是否有w轴			
 				//没有欧米伽就是纯横移
 
+
 			   normally_chassis_control();
 
 			 
@@ -298,14 +311,33 @@ void ROBOT_CMD_TASK(void)
 		
 		
 	/***********************视觉*************************/
-	if(v_counter->ctrl_press_count%2==1)
+	if(v_counter->ctrl_press_count%2==0)
 	{
-		chassis_vision_ctrl_adjust(&Chassis_CMD_data,&minipc);
+//		chassis_vision_ctrl_adjust(&Chassis_CMD_data,&minipc);
 		arm_vision_ctrl_adjust(&ARM_CMD_data, &minipc);
-		minipc_send(&minipc);	
+		
 	}
+	minipc_send(&minipc);	
 	
 	
+	static float last_target_angle1;
+	
+	if(target_angle1==NAN)
+	{
+		
+		target_angle1=last_target_angle1;
+	}
+	last_target_angle1=target_angle1;
+	
+	
+	static float last_target_angle3;
+	if(target_angle3==NAN)
+	{
+		
+		target_angle3=last_target_angle3;
+	}
+		last_target_angle3=target_angle3;
+
 //	limit_all_angle_lift();//限幅
 		if(target_lift_speed>10&&height>=580)
 		{target_lift_speed=-10;}
@@ -468,6 +500,8 @@ void arm_vision_ctrl(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//视觉控制 需
 void minipc_send(minipc_t* pc)
 {
 	pc->mcu2minipc.max_realangle=(float)max_motor.para.pos;
+//	pc->mcu2minipc.max_realangle=10;
+
 	pc->mcu2minipc.min_realangle=(float)min_motor.para.pos;
 	pc->mcu2minipc.finesse_realangle=(float)finesse_motor.para.pos;
 	pc->mcu2minipc.pitch_realangle=(float)pitch_motor.para.pos;
@@ -493,12 +527,12 @@ void costum_ctrl_arm(void)
 	if(custom_cmd.roll_cmd_direction==1)
 	{
 		 ARM_CMD_data.roll_mode = ROLL_ANGLE_MODE;//角度模式 增量控制
-		 ARM_CMD_data.roll_angle = 1 + roll_real;//增量式控制
+		 ARM_CMD_data.roll_angle = -0.7 + roll_real;//增量式控制
 	}
 	if(custom_cmd.roll_cmd_direction==2)
 	{
 		 ARM_CMD_data.roll_mode = ROLL_ANGLE_MODE;//角度模式 增量控制
-		 ARM_CMD_data.roll_angle = -1 + roll_real;//增量式控制
+		 ARM_CMD_data.roll_angle = 0.7 + roll_real;//增量式控制
 	}
   if(custom_cmd.roll_cmd_direction==0)
 	{
@@ -1602,13 +1636,13 @@ void normally_chassis_control(void)
 			
 			
         //平移缓启动
-        if (((d_flag && (!a_flag)))|| custom_cmd.vx<-30 ) {
+        if (((d_flag && (!a_flag)))|| custom_cmd.vx>1000 ) {
             Chassis_CMD_data.vx += 17 * speed_scale;
         }
-        if (((a_flag && (!d_flag)))|| custom_cmd.vx>30 ) {
+        if (((a_flag && (!d_flag)))|| custom_cmd.vx<-1000 ) {
             Chassis_CMD_data.vx -= 17 * speed_scale;//10
         }
-        if (((!a_flag) && (!d_flag))&&abs(custom_cmd.vx)<30) {
+        if (((!a_flag) && (!d_flag))&&abs(custom_cmd.vx)<1000) {
             Chassis_CMD_data.vx = 0;
         }
         if (Chassis_CMD_data.vx > 2000 * speed_scale) {
@@ -1618,14 +1652,25 @@ void normally_chassis_control(void)
             Chassis_CMD_data.vx = -2000 * speed_scale;
         }
 				
+				if(use_custom_flag==1)
+				{
+			  if (Chassis_CMD_data.vx > 800 * speed_scale) {
+            Chassis_CMD_data.vx = 800 * speed_scale;
+        }
+        if (Chassis_CMD_data.vx < -800 * speed_scale) {
+            Chassis_CMD_data.vx = -800 * speed_scale;
+        }
+				}
+				
+				
         //前进缓启动
-        if (((w_flag && (!s_flag)))||custom_cmd.vy>30) {
+        if (((w_flag && (!s_flag)))||custom_cmd.vy>1000) {
             target_forward += 0.5 * speed_scale;//6
         }
-        if (((s_flag && (!w_flag)))||custom_cmd.vy<-30) {
+        if (((s_flag && (!w_flag)))||custom_cmd.vy<-1000) {
             target_forward -= 0.5 * speed_scale;
         }
-        if (((!s_flag) && (!w_flag))&&abs(custom_cmd.vy)<30)  {
+        if (((!s_flag) && (!w_flag))&&abs(custom_cmd.vy)<1000)  {
             target_forward = 0;
         }
         Chassis_CMD_data.vy = target_forward * target_forward * target_forward;//多项式吗 有意思
@@ -1645,6 +1690,15 @@ void normally_chassis_control(void)
         if (Chassis_CMD_data.vy < -2000 * speed_scale) {
             Chassis_CMD_data.vy = -2000 * speed_scale;
         }
+				if(use_custom_flag==1)
+				{
+			  if (Chassis_CMD_data.vy > 500 * speed_scale) {
+            Chassis_CMD_data.vy = 500 * speed_scale;
+        }
+        if (Chassis_CMD_data.vy < -500 * speed_scale) {
+            Chassis_CMD_data.vy = -500 * speed_scale;
+        }
+				}
 				
 				
         if (press_right && press_left) {
@@ -1656,7 +1710,8 @@ void normally_chassis_control(void)
         } 
 				else
 				{
-					  Chassis_CMD_data.vw = custom_cmd.vw;
+					if(abs(custom_cmd.vw)>800)
+					  Chassis_CMD_data.vw = -custom_cmd.vw*0.06;
 					
 				}
 				//打算改成自动化的那种
@@ -1680,6 +1735,9 @@ void chassis_vision_ctrl_adjust(Chassis_CMD_data_t *chassis_cmd,minipc_t *minipc
 {
 	chassis_cmd->vx=PID_calc(&x_vision_ctrl_pid,minipc->minipc2mcu.x_erro,0);
   chassis_cmd->vy=PID_calc(&y_vision_ctrl_pid,minipc->minipc2mcu.y_erro,0);
+	
+	
+	
 }
 
 void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后的视觉控制

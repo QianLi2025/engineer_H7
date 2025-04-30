@@ -1,6 +1,6 @@
 Dependencies for Project 'dm_h7_demo', Target 'dm_h7_demo': (DO NOT MODIFY !)
 F (startup_stm32h723xx.s)(0x6809FAEF)(--cpu Cortex-M7.fp.dp -g --apcs=interwork -I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "STM32H723xx SETA 1"--list startup_stm32h723xx.lst --xref -o dm_h7_demo\startup_stm32h723xx.o --depend dm_h7_demo\startup_stm32h723xx.d)
-F (../Core/Src/main.c)(0x680BD758)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\main.o --omf_browse dm_h7_demo\main.crf --depend dm_h7_demo\main.d)
+F (../Core/Src/main.c)(0x680E102C)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\main.o --omf_browse dm_h7_demo\main.crf --depend dm_h7_demo\main.d)
 I (../Core/Inc/main.h)(0x67FF8999)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x67F1582D)
 I (../Core/Inc/stm32h7xx_hal_conf.h)(0x67FF8999)
@@ -64,14 +64,14 @@ I (../deivce/DamiaoMotors/DamiaoMotors.h)(0x68009FBB)
 I (../Bsp/bsp_fdcan.h)(0x68009ED7)
 I (../application/chassis.h)(0x68009D25)
 I (../deivce/M3508/M3508motors.h)(0x67FF899B)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
 I (../deivce/referee_system/referee.h)(0x680DA743)
 I (../algorithm/CRC8_CRC16.h)(0x6809B7A9)
 I (../deivce/M2006/M2006motors.h)(0x67FF899B)
 I (../application/robot_cmd.h)(0x680D9E03)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (../algorithm/scara_kinematics.h)(0x680B3151)
 I (../deivce/cm_device.h)(0x68020133)
 I (../USB_DEVICE/App/usbd_cdc_if.h)(0x680353F5)
@@ -446,14 +446,14 @@ I (../algorithm/CRC8_CRC16.h)(0x6809B7A9)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (../Core/Inc/usart.h)(0x67FF8E1E)
 I (../Core/Inc/dma.h)(0x67FF8999)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (../deivce/cm_device.h)(0x68020133)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (../application/video.h)(0x68064888)
 I (../application/robot_cmd.h)(0x680D9E03)
 I (../algorithm/pid.h)(0x67FF899B)
 I (../algorithm/kf_imu.h)(0x67FF899B)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (../application/arm.h)(0x68009FBB)
 I (../Core/Inc/fdcan.h)(0x67FF8999)
 I (../deivce/DamiaoMotors/DamiaoMotors.h)(0x68009FBB)
@@ -680,7 +680,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x67F1582D)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x67F1582D)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (../algorithm/CRC8_CRC16.h)(0x6809B7A9)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 F (../USB_DEVICE/Target/usbd_conf.c)(0x67FF899B)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\usbd_conf.o --omf_browse dm_h7_demo\usbd_conf.crf --depend dm_h7_demo\usbd_conf.d)
@@ -2169,7 +2169,7 @@ I (../deivce/DamiaoMotors/DamiaoMotors.h)(0x68009FBB)
 I (../Bsp/bsp_fdcan.h)(0x68009ED7)
 I (../deivce/M2006/M2006motors.h)(0x67FF899B)
 I (../deivce/M3508/M3508motors.h)(0x67FF899B)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
@@ -2569,7 +2569,7 @@ I (../algorithm/pid.h)(0x67FF899B)
 I (../deivce/DamiaoMotors/DamiaoMotors.h)(0x68009FBB)
 I (../deivce/M2006/M2006motors.h)(0x67FF899B)
 I (../deivce/M3508/M3508motors.h)(0x67FF899B)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
@@ -2633,7 +2633,7 @@ I (../algorithm/CRC8_CRC16.h)(0x6809B7A9)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (../Core/Inc/usart.h)(0x67FF8E1E)
 I (../Core/Inc/dma.h)(0x67FF8999)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 F (..\deivce\referee_system\referee.c)(0x6809FC80)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\referee.o --omf_browse dm_h7_demo\referee.crf --depend dm_h7_demo\referee.d)
 I (..\deivce\referee_system\referee.h)(0x680DA743)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
@@ -2683,7 +2683,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
 I (../Core/Inc/dma.h)(0x67FF8999)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 F (..\deivce\serial_plot\serialplot.c)(0x67FF899B)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\serialplot.o --omf_browse dm_h7_demo\serialplot.crf --depend dm_h7_demo\serialplot.d)
 I (..\deivce\serial_plot\serialplot.h)(0x67FF899B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
@@ -2791,7 +2791,7 @@ I (../application/chassis.h)(0x68009D25)
 I (../algorithm/kf_imu.h)(0x67FF899B)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (../deivce/M3508/M3508motors.h)(0x67FF899B)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
 I (../deivce/referee_system/referee.h)(0x680DA743)
@@ -2848,7 +2848,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
 I (../deivce/M3508/M3508motors.h)(0x67FF899B)
 I (../algorithm/pid.h)(0x67FF899B)
-I (..\application\robot_def.h)(0x680DA0B2)
+I (..\application\robot_def.h)(0x680E396B)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
 I (../deivce/referee_system/referee.h)(0x680DA743)
@@ -2862,10 +2862,10 @@ I (../application/arm.h)(0x68009FBB)
 I (../deivce/DamiaoMotors/DamiaoMotors.h)(0x68009FBB)
 I (../deivce/M2006/M2006motors.h)(0x67FF899B)
 I (../application/chassis.h)(0x68009D25)
-F (..\application\robot_def.h)(0x680DA0B2)()
-F (..\application\robot_cmd.c)(0x680DA98E)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\robot_cmd.o --omf_browse dm_h7_demo\robot_cmd.crf --depend dm_h7_demo\robot_cmd.d)
+F (..\application\robot_def.h)(0x680E396B)()
+F (..\application\robot_cmd.c)(0x6811010B)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\robot_cmd.o --omf_browse dm_h7_demo\robot_cmd.crf --depend dm_h7_demo\robot_cmd.d)
 I (..\application\robot_cmd.h)(0x680D9E03)
-I (..\application\robot_def.h)(0x680DA0B2)
+I (..\application\robot_def.h)(0x680E396B)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (../Core/Inc/main.h)(0x67FF8999)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x67F1582D)
@@ -2917,7 +2917,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (../Core/Inc/dma.h)(0x67FF8999)
 I (../algorithm/pid.h)(0x67FF899B)
 I (../algorithm/kf_imu.h)(0x67FF899B)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (..\application\arm.h)(0x68009FBB)
 I (../Core/Inc/fdcan.h)(0x67FF8999)
@@ -2943,7 +2943,7 @@ I (..\deivce\UI\ui_g.h)(0x680D9A82)
 I (..\deivce\UI\ui_interface.h)(0x680BD6A7)
 I (..\deivce\UI\ui_types.h)(0x6809B578)
 I (../Bsp/bsp_uart.h)(0x67F26276)
-F (..\application\UI_task.c)(0x680D9E21)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\ui_task.o --omf_browse dm_h7_demo\ui_task.crf --depend dm_h7_demo\ui_task.d)
+F (..\application\UI_task.c)(0x680E15A6)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\ui_task.o --omf_browse dm_h7_demo\ui_task.crf --depend dm_h7_demo\ui_task.d)
 I (..\application\UI_task.h)(0x680A2484)
 I (../deivce/referee_system/referee.h)(0x680DA743)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
@@ -2993,12 +2993,12 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
 I (../Core/Inc/dma.h)(0x67FF8999)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (..\application\robot_cmd.h)(0x680D9E03)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../algorithm/pid.h)(0x67FF899B)
 I (../algorithm/kf_imu.h)(0x67FF899B)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (..\application\arm.h)(0x68009FBB)
 I (../Core/Inc/fdcan.h)(0x67FF8999)
@@ -3023,9 +3023,9 @@ I (..\deivce\UI\ui_g.h)(0x680D9A82)
 I (..\deivce\UI\ui_interface.h)(0x680BD6A7)
 I (..\deivce\UI\ui_types.h)(0x6809B578)
 I (../Bsp/bsp_uart.h)(0x67F26276)
-F (..\application\sucker.c)(0x6804FEC9)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\sucker.o --omf_browse dm_h7_demo\sucker.crf --depend dm_h7_demo\sucker.d)
+F (..\application\sucker.c)(0x6811D92D)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\sucker.o --omf_browse dm_h7_demo\sucker.crf --depend dm_h7_demo\sucker.d)
 I (..\application\sucker.h)(0x6801ED4D)
-I (..\application\robot_def.h)(0x680DA0B2)
+I (..\application\robot_def.h)(0x680E396B)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (../Core/Inc/usart.h)(0x67FF8E1E)
 I (../Core/Inc/main.h)(0x67FF8999)
@@ -3079,7 +3079,7 @@ I (../algorithm/pid.h)(0x67FF899B)
 I (../algorithm/kf_imu.h)(0x67FF899B)
 I (../Core/Inc/tim.h)(0x67FF8999)
 I (..\application\robot_cmd.h)(0x680D9E03)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (..\application\arm.h)(0x68009FBB)
 I (../Core/Inc/fdcan.h)(0x67FF8999)
@@ -3150,7 +3150,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
-I (..\application\robot_def.h)(0x680DA0B2)
+I (..\application\robot_def.h)(0x680E396B)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
@@ -3161,7 +3161,7 @@ I (../Core/Inc/dma.h)(0x67FF8999)
 I (..\application\robot_cmd.h)(0x680D9E03)
 I (../algorithm/pid.h)(0x67FF899B)
 I (../algorithm/kf_imu.h)(0x67FF899B)
-I (../deivce/minipc/minipc_protocol.h)(0x680372A8)
+I (../deivce/minipc/minipc_protocol.h)(0x680DF788)
 I (..\application\arm.h)(0x68009FBB)
 I (../Core/Inc/fdcan.h)(0x67FF8999)
 I (../deivce/DamiaoMotors/DamiaoMotors.h)(0x68009FBB)
@@ -3232,7 +3232,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (../Bsp/bsp_dwt.h)(0x67FF8999)
 I (../deivce/RC_remote/RC_protocol.h)(0x6801EF62)
 I (../deivce/RC_remote/struct_typedef.h)(0x67FF899B)
@@ -3241,7 +3241,7 @@ I (../algorithm/CRC8_CRC16.h)(0x6809B7A9)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (../Core/Inc/dma.h)(0x67FF8999)
 F (..\deivce\minipc\minipc_protocol.c)(0x680372A8)(--c99 --gnu -c --cpu Cortex-M7.fp.dp -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../deivce -I ../algorithm -I ../Bsp -I ../matrix_tool -I ../deivce/DamiaoMotors -I ../deivce/GM6020 -I ../deivce/LKmotors -I ../deivce/WS2812/inc -I ../deivce/serial_plot -I ../deivce/referee_system -I ../deivce/RC_remote -I ../deivce/M3508 -I ../deivce/M2006 -I ../deivce/BMI088/inc -I ../application -I ../deivce/video_decode -I ../deivce/minipc -I ..\deivce\UI-I.\RTE\_dm_h7_demo-IC:\Users\huawei\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32H723xx -DUSE_HAL_DRIVER -DSTM32H723xx-o dm_h7_demo\minipc_protocol.o --omf_browse dm_h7_demo\minipc_protocol.crf --depend dm_h7_demo\minipc_protocol.d)
-I (..\deivce\minipc\minipc_protocol.h)(0x680372A8)
+I (..\deivce\minipc\minipc_protocol.h)(0x680DF788)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (../algorithm/CRC8_CRC16.h)(0x6809B7A9)
@@ -3431,7 +3431,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h)(0x67F1582D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h)(0x67F1582D)
 I (../Core/Inc/dma.h)(0x67FF8999)
-I (../application/robot_def.h)(0x680DA0B2)
+I (../application/robot_def.h)(0x680E396B)
 I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (..\deivce\UI\ui_interface.h)(0x680BD6A7)
 I (..\deivce\UI\ui_types.h)(0x6809B578)

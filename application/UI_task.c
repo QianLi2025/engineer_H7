@@ -64,8 +64,8 @@ void UI_UPLOAD(void)//ÉÏ´«
 		
 	
 	
-	  ui_g_Ungroup_rxy_index->start_x = (uint32_t)(105+ rc_mode_xy_after_check[1]*(463-113)/(-228-400));
-    ui_g_Ungroup_rxy_index->start_y = (uint32_t)(610+ rc_mode_xy_after_check[0]*(860-610)/(500-0));
+	  ui_g_Ungroup_rxy_index->start_x = (uint32_t)(330+ rc_mode_xy_after_check[1]*(463-113)/(-228-400));
+    ui_g_Ungroup_rxy_index->start_y = (uint32_t)(590+ rc_mode_xy_after_check[0]*(800-610)/(500-150));
 	
 
 }

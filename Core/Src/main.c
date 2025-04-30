@@ -166,9 +166,12 @@ int main(void)
 //				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
 //        NVIC_SystemReset();//软件复位
 				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+//				save_pos_zero(&hfdcan2, 1, MIT_MODE);
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
         enable_motor_mode(&hfdcan3, 2, POS_MODE);
+				
+				
 				
 //				clear_err(&hfdcan2,  1,  MIT_MODE);
 //				clear_err(&hfdcan2,  2,  POS_MODE);

@@ -35,8 +35,8 @@
 #define SPEED_UP_RATE 200                       // 速度放大倍率,用于调节速度大小
 #define SPEED_DOWN_RATE 300                     // 速度缩小倍率,用于调节速度大小
 
-#define MAXARM_MIN    -0.24f
-#define MAXARM_MAX    2.3f
+#define MAXARM_MIN    -0.05f
+#define MAXARM_MAX    2.2f
 #define MINARM_MIN    -2.45f
 #define MINARM_MAX    3.1f//2.4
 #define FINE_MIN      -1.3f // -1.16

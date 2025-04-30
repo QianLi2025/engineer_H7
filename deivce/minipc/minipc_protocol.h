@@ -48,12 +48,9 @@ typedef struct
 			  float roll_angle_ctrl;
 			  Ctrl_mode_e z_mode;//0为绝对 1为增量
 			  float z_ctrl;
-			  
-
 			  float y_erro;//y轴差距
 			  float x_erro;//x轴差距
-			  
-			
+	
         uint16_t checksum; // = 0;
     } minipc2mcu;
     uint32_t minipc_count;      //用于记时

@@ -9,6 +9,7 @@ void SUCKER_INIT(void)
 //    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
 //    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, 1000);
 //    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+	ARM_CMD_data.sucker_mode=SUCKER_ON;
 }
 	
 void SUCKER_TASK(void)
