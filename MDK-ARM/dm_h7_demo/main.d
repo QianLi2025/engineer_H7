@@ -83,10 +83,10 @@ dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_iore
 dm_h7_demo\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 dm_h7_demo\main.o: ../application/UI_task.h
 dm_h7_demo\main.o: ../application/robot_cmd.h
-dm_h7_demo\main.o: ..\deivce\UI\ui_g.h
-dm_h7_demo\main.o: ..\deivce\UI\ui_interface.h
-dm_h7_demo\main.o: ..\deivce\UI\ui_types.h
+dm_h7_demo\main.o: ../deivce/UI/ui_g.h
+dm_h7_demo\main.o: ../deivce/UI/ui_interface.h
+dm_h7_demo\main.o: ../deivce/UI/ui_types.h
 dm_h7_demo\main.o: ../Bsp/bsp_uart.h
 dm_h7_demo\main.o: ../application/video.h
 dm_h7_demo\main.o: ../application/sucker.h
-dm_h7_demo\main.o: ..\deivce\UI\ui.h
+dm_h7_demo\main.o: ../deivce/UI/ui.h

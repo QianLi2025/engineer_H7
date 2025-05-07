@@ -78,7 +78,7 @@ dm_h7_demo\ui_task.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_c
 dm_h7_demo\ui_task.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 dm_h7_demo\ui_task.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 dm_h7_demo\ui_task.o: ..\application\UI_task.h
-dm_h7_demo\ui_task.o: ..\deivce\UI\ui_g.h
-dm_h7_demo\ui_task.o: ..\deivce\UI\ui_interface.h
-dm_h7_demo\ui_task.o: ..\deivce\UI\ui_types.h
+dm_h7_demo\ui_task.o: ../deivce/UI/ui_g.h
+dm_h7_demo\ui_task.o: ../deivce/UI/ui_interface.h
+dm_h7_demo\ui_task.o: ../deivce/UI/ui_types.h
 dm_h7_demo\ui_task.o: ../Bsp/bsp_uart.h

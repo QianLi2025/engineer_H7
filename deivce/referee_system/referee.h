@@ -778,8 +778,7 @@ typedef struct
 	  int16_t vy;
 	  int16_t vw;
 	
-	  
-	  
+	  uint8_t push_flag; 
 	
 }custom_cmd_t;
 void rf_ui_upgrade(referee_t *rf);

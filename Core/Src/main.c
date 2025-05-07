@@ -156,7 +156,11 @@ int main(void)
 		/*tasks begin*/
     kf_imu_upgrade();
 		/*tasks end*/
+				 if(time_count%10==0)//100hz浠诲姟
+    {
+			minipc_send(&minipc);	
 		
+		}
 		 if(time_count%10==0)//100hz浠诲姟
     {
 			
@@ -165,8 +169,11 @@ int main(void)
 			{
 //				__set_FAULTMASK(1);//禁止所有的可屏蔽中断
 //        NVIC_SystemReset();//软件复位
-				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+			
+				
 //				save_pos_zero(&hfdcan2, 1, MIT_MODE);
+				
+				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
         enable_motor_mode(&hfdcan3, 2, POS_MODE);
@@ -187,6 +194,20 @@ int main(void)
         NVIC_SystemReset();//软件复位
 	
 			}
+			if(ctrl_flag==1&&shift_flag==1&&g_flag==1)
+			{
+				 __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 19999);//重启电机
+				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+        enable_motor_mode(&hfdcan2, 2, POS_MODE);
+        enable_motor_mode(&hfdcan3, 1, POS_MODE);
+        enable_motor_mode(&hfdcan3, 2, POS_MODE);
+
+			}
+			else
+			{
+				 __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 0); 
+			}
+			
     }
  
     if(time_count%5==0)//200hz浠诲姟

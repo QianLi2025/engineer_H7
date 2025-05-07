@@ -17,6 +17,20 @@
 #include "usbd_cdc_if.h"
 #include "UI_task.h"
 
+ typedef struct {
+	 float total_distance_x;
+	 float total_distance_y;
+	 uint8_t start_count_flag;//开启计数标志
+	 
+	 
+	 
+ 
+}distance_t;
+ 
+ 
+ 
+ 
+ 
 // uint16_t 类型的按键标志
 
 
@@ -31,7 +45,7 @@ void ROBOT_CMD_INIT(void);
 
 void ROBOT_CMD_TASK(void);
 
-
+void minipc_send(minipc_t* pc);
 extern float rc_mode_xy_after_check[2];
 
 #endif // CMD_H

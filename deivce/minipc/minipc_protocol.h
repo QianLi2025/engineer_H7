@@ -35,6 +35,7 @@ typedef struct
         float pitch_realangle; //
         float roll_realangle;
         float z_realheight;
+			 uint8_t if_chassis_move;//底盘是否移动
         uint16_t checksum; // = 0; // c!
     } mcu2minipc;
     __packed struct
@@ -48,8 +49,10 @@ typedef struct
 			  float roll_angle_ctrl;
 			  Ctrl_mode_e z_mode;//0为绝对 1为增量
 			  float z_ctrl;
+				float x_erro;//x轴差距
 			  float y_erro;//y轴差距
-			  float x_erro;//x轴差距
+			  
+
 	
         uint16_t checksum; // = 0;
     } minipc2mcu;

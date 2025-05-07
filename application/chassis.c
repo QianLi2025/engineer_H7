@@ -63,6 +63,7 @@ void CHASSIS_INIT(void)
 
 void CHASSIS_TASK(void)
 {
+	
     if(rec_id1==motor_lf.id)
     M3508_fbkdata(&motor_lf,rx_data1);
     if(rec_id1==motor_lb.id)

@@ -147,6 +147,8 @@ static void control_roll_speed(double roll_ref);//这里是把目标值变换了
  float fdcan3_count;
  static unsigned int task_count = 0;
 void offline_check(void);
+
+float test=-0.12;
 void ARM_INIT(void)
 {
 
@@ -479,7 +481,7 @@ static void get_arm_cmd(void)
 static void control_all_arm(double max_ref,double min_ref,double finesse_ref,double pitch_ref)
 {
     	
-	  mit_ctrl(&hfdcan2,  1,  max_ref, 1 ,  12,  2.8,  0);//30 5
+	  mit_ctrl(&hfdcan2,  1,  max_ref+test, 1 ,  12,  2.8,  0);//30 5
     pos_speed_ctrl(&hfdcan2,  2,  min_ref, 4);//从min_arm开始
     pos_speed_ctrl(&hfdcan3,  1,  finesse_ref, 1.5);//finesse
     pos_speed_ctrl(&hfdcan3,  2,  pitch_ref, 3.5);//pitch

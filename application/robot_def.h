@@ -36,13 +36,13 @@
 #define SPEED_DOWN_RATE 300                     // 速度缩小倍率,用于调节速度大小
 
 #define MAXARM_MIN    -0.05f
-#define MAXARM_MAX    2.2f
+#define MAXARM_MAX    1.85f
 #define MINARM_MIN    -2.45f
 #define MINARM_MAX    3.1f//2.4
-#define FINE_MIN      -1.3f // -1.16
+#define FINE_MIN      -1.7f // -1.16
 #define FINE_MAX      1.7f
-#define FINE_MIN2     -1.3f
-#define FINE_MAX2     1.7f
+#define FINE_MIN2     -2.4f
+#define FINE_MAX2     2.4f
 #define PITCH_MIN     -1.69f
 #define PITCH_MAX     1.00f
 //#define HEIGHT_MIN    -550.f
@@ -204,6 +204,7 @@ typedef struct
     lift_mode_e last_lift_mode;         // 机械臂上升标志*(上一次)
     roll_mode_e roll_mode;         // 机械臂roll标志
     sucker_mode_e sucker_mode;     // 涵道风机状态
+	  sucker_mode_e last_sucker_mode;
     arm_mode_e arm_mode;           // 机械臂状态
     arm_mode_e arm_mode_last;      // 机械臂上一次状态
     arm_status_e arm_status;       // 机械臂控制状态(状态子模式)

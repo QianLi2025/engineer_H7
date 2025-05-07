@@ -21,8 +21,8 @@ void minipc_rec(minipc_t *pc, uint8_t pc_data_buf[])
 //    }
 //    else
 //    pc->rx_pack_state[0] = 2;
-//    pc->no_data_time = 0;
-//    DWT_GetDeltaT(&(pc->minipc_count)); //更新记时点
+    pc->no_data_time = 0;
+    DWT_GetDeltaT(&(pc->minipc_count)); //更新记时点
 }
 
 

@@ -80,8 +80,8 @@ dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/u
 dm_h7_demo\stm32h7xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 dm_h7_demo\stm32h7xx_it.o: ../application/UI_task.h
 dm_h7_demo\stm32h7xx_it.o: ../application/robot_cmd.h
-dm_h7_demo\stm32h7xx_it.o: ..\deivce\UI\ui_g.h
-dm_h7_demo\stm32h7xx_it.o: ..\deivce\UI\ui_interface.h
-dm_h7_demo\stm32h7xx_it.o: ..\deivce\UI\ui_types.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/UI/ui_g.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/UI/ui_interface.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/UI/ui_types.h
 dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_uart.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/tim.h
