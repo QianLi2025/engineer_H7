@@ -61,6 +61,7 @@
 "dm_h7_demo\damiaomotors.o"
 "dm_h7_demo\m2006motors.o"
 "dm_h7_demo\rc_protocol.o"
+"dm_h7_demo\new_remote.o"
 "dm_h7_demo\referee.o"
 "dm_h7_demo\serialplot.o"
 "dm_h7_demo\arm.o"

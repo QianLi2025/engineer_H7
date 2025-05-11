@@ -158,8 +158,8 @@ void ARM_INIT(void)
 	M3508_init(&lift_motor,1,0.3 * 187 / 3591);
 //    PID_init(&roll_pid_angle,PID_POSITION,20,0,1,10000,150);//6
 //	PID_init(&roll_pid_speed,PID_POSITION,12,0.1,0,10000,200);
-	PID_init(&roll_pid_angle,PID_POSITION,90,0,0,10000,150);//60
-	PID_init(&roll_pid_speed,PID_POSITION,120,0.1,0,1200,200);
+	PID_init(&roll_pid_angle,PID_POSITION,400,0,0,10000,150);//60
+	PID_init(&roll_pid_speed,PID_POSITION,120,0.1,0,2000,200);
 
 	PID_init(&lift_pid_angle,PID_POSITION,12,0,0,10000,15000);//5
 	

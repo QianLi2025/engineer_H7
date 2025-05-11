@@ -751,6 +751,11 @@
               <FileType>1</FileType>
               <FilePath>..\deivce\RC_remote\RC_protocol.c</FilePath>
             </File>
+            <File>
+              <FileName>new_remote.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\deivce\new_remote.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

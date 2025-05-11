@@ -605,12 +605,12 @@ void costum_ctrl_arm(void)
 	if(custom_cmd.roll_cmd_direction==1)
 	{
 		 ARM_CMD_data.roll_mode = ROLL_ANGLE_MODE;//角度模式 增量控制
-		 ARM_CMD_data.roll_angle = -0.45 + roll_real;//增量式控制
+		 ARM_CMD_data.roll_angle = -0.16 + roll_real;//增量式控制
 	}
 	if(custom_cmd.roll_cmd_direction==2)
 	{
 		 ARM_CMD_data.roll_mode = ROLL_ANGLE_MODE;//角度模式 增量控制
-		 ARM_CMD_data.roll_angle = 0.45 + roll_real;//增量式控制
+		 ARM_CMD_data.roll_angle = 0.16 + roll_real;//增量式控制
 	}
   if(custom_cmd.roll_cmd_direction==0)
 	{
@@ -694,8 +694,8 @@ void costum_ctrl_arm(void)
 //            float chassis_y   = 102;
 						float z_base_down = 0.27f;
             float z_base_up   = 0.59f;//59
-            float chassis_x   = 38;
-            float chassis_y   = 50;
+            float chassis_x   = 76;//38
+            float chassis_y   = 100;//50
 
             //如果碰到限位
             Chassis_CMD_data.vx = -chassis_y * push_y;///////////////////////////////////////////////////////////////////////////////////////
@@ -873,7 +873,7 @@ void real_handle_mode(void)//真手动模式
 				
 			
         if (rc_ctrl.rc.s[1]==2) {//左拨杆向下
-            target_lift_speed = -300;
+            target_lift_speed = -300;//300
         }
         if (rc_ctrl.rc.s[1]==1) {//左拨杆向上
             target_lift_speed = 300;
@@ -895,11 +895,11 @@ void real_handle_mode(void)//真手动模式
         }
 			}
 				
-        if (target_lift_speed > 400) {
-            target_lift_speed = 400;
+        if (target_lift_speed > 800) {
+            target_lift_speed = 800;
         }
-        if (target_lift_speed < -400) {
-            target_lift_speed = -400;
+        if (target_lift_speed < -800) {
+            target_lift_speed = -800;
         }
 				
 				
@@ -1851,25 +1851,25 @@ void normally_chassis_control(void)
             target_forward = -44;
         }
 				
-        if (Chassis_CMD_data.vy > 2000 * speed_scale) {
-            Chassis_CMD_data.vy = 2000 * speed_scale;
+        if (Chassis_CMD_data.vy > 4000 * speed_scale) {//2000
+            Chassis_CMD_data.vy = 4000 * speed_scale;
         }
         if (Chassis_CMD_data.vy < -2000 * speed_scale) {
             Chassis_CMD_data.vy = -2000 * speed_scale;
         }
 				if(use_custom_flag==1)
 				{
-			  if (Chassis_CMD_data.vy > 500 * speed_scale) {
-            Chassis_CMD_data.vy = 500 * speed_scale;
+			  if (Chassis_CMD_data.vy > 760 * speed_scale) {//900
+            Chassis_CMD_data.vy = 760 * speed_scale;
         }
-        if (Chassis_CMD_data.vy < -500 * speed_scale) {
-            Chassis_CMD_data.vy = -500 * speed_scale;
+        if (Chassis_CMD_data.vy < -760 * speed_scale) {
+            Chassis_CMD_data.vy = -760 * speed_scale;
         }
 				}
 				
 				
         if (press_right && press_left) {
-            Chassis_CMD_data.vw = -(float)rc_ctrl.mouse.x * 1 * (target_forward / 13 + 1);
+            Chassis_CMD_data.vw = -(float)rc_ctrl.mouse.x * 1.6 * (target_forward / 13 + 1);//1
         } 
 				else if(abs(custom_cmd.vw)<30)
 				{
@@ -2040,8 +2040,33 @@ void arm_vision_ctrl_adjust(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//调整后
 
 void arm_vision_ctrl_final(ARM_CMD_data_t *arm_cmd,minipc_t *minipc)//最后的视觉控制
 {
+	 target_angle1=minipc->minipc2mcu.max_angle_ctrl;
+   target_angle2=minipc->minipc2mcu.min_angle_ctrl;
+	
+	
 	 target_angle3=minipc->minipc2mcu.finesse_angle_ctrl;
 	 target_angle4=minipc->minipc2mcu.pitch_angle_ctrl;
+	
+	
+	//z轴配置
+	if(minipc->minipc2mcu.z_mode==ANGLE){
+//	  if(minipc->minipc2mcu.z_ctrl>=400)
+//		{minipc->minipc2mcu.z_ctrl=400;}
+//    if(minipc->minipc2mcu.z_ctrl<=-400)
+//		{minipc->minipc2mcu.z_ctrl=-400;}
+		
+	  lift_height_cmd(minipc->minipc2mcu.z_ctrl*z_vision_ratio, &target_lift_speed);
+	}//绝对式
+	
+	
+	if(minipc->minipc2mcu.z_mode==SPEED){
+		target=height;
+		target+=minipc->minipc2mcu.z_ctrl*ratio;
+//		float temp_target_height=height+minipc->minipc2mcu.z_ctrl;
+//		lift_height_cmd(temp_target_height, &target_lift_speed);
+		lift_height_cmd(target, &target_lift_speed);
+		
+	}//增量式 
 	
 }
 void limit_all_angle_lift(void)//设置限幅

@@ -29,21 +29,31 @@ void UI_INIT(void)
 	
 void UI_TASK(void)
 {
-//	if(temp_id==0)
-//	{
-//		UI_INIT();
-//	}
-//	else
-//	{
-	 rf_ui_write_string(&dianguan_cmd, "sd1", str1,  strlen(str1),  15,  5,  250,  250,  1,  temp_id);
-	 rf_ui_string_upgrade(&dianguan_cmd);
-//	}
+	if(temp_id==0)
+	{
+		UI_INIT();
+	}
+	else
+	{
+//	 rf_ui_write_string(&dianguan_cmd, "sd1", str1,  strlen(str1),  15,  5,  250,  250,  1,  temp_id);
+//	 rf_ui_string_upgrade(&dianguan_cmd);
+	}
 	
 }
 
 
 void UI_UPLOAD(void)//上传
 {
+	
+		if(temp_id==0)
+	{
+		UI_INIT();
+	}
+	
+	else{
+		
+	ui_self_id=temp_id;//成功初始化之后
+		
 	if(ROBOT_STATE==NORMAL){
 	strcpy(ui_g_Ungroup_ROBOT_STATE->string, "NORMAL");}
 	if(ROBOT_STATE==CUSTOM){
@@ -66,6 +76,6 @@ void UI_UPLOAD(void)//上传
 	
 	  ui_g_Ungroup_rxy_index->start_x = (uint32_t)(330+ rc_mode_xy_after_check[1]*(463-113)/(-228-400));
     ui_g_Ungroup_rxy_index->start_y = (uint32_t)(590+ rc_mode_xy_after_check[0]*(800-610)/(500-150));
-	
+  }
 
 }
