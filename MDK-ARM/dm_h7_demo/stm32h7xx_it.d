@@ -84,4 +84,6 @@ dm_h7_demo\stm32h7xx_it.o: ../deivce/UI/ui_g.h
 dm_h7_demo\stm32h7xx_it.o: ../deivce/UI/ui_interface.h
 dm_h7_demo\stm32h7xx_it.o: ../deivce/UI/ui_types.h
 dm_h7_demo\stm32h7xx_it.o: ../Bsp/bsp_uart.h
+dm_h7_demo\stm32h7xx_it.o: ../application/video.h
+dm_h7_demo\stm32h7xx_it.o: ../deivce/new_remote.h
 dm_h7_demo\stm32h7xx_it.o: ../Core/Inc/tim.h

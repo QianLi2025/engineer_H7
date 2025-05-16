@@ -4,7 +4,7 @@ ROBOT_STATE_e ROBOT_STATE;//机器人状态
 
 char str1[]="hello";
 
-uint8_t temp_id=2;
+uint8_t temp_id;
 
 uint8_t is_inited;
 
@@ -77,5 +77,26 @@ void UI_UPLOAD(void)//上传
 	  ui_g_Ungroup_rxy_index->start_x = (uint32_t)(330+ rc_mode_xy_after_check[1]*(463-113)/(-228-400));
     ui_g_Ungroup_rxy_index->start_y = (uint32_t)(590+ rc_mode_xy_after_check[0]*(800-610)/(500-150));
   }
+	
+	if(AUTO_STATE==GET_SILVER)
+	{
+	  strcpy(ui_g_Ungroup_AUTO_STATE_TEXT->string, "SILVER");
+	}
+	if(AUTO_STATE==AUTO_PUT)
+	{
+		strcpy(ui_g_Ungroup_AUTO_STATE_TEXT->string, "PUT   ");
+	}
+	if(AUTO_STATE==AUTO_GET)
+	{
+		strcpy(ui_g_Ungroup_AUTO_STATE_TEXT->string, "GET   ");
+	}
+	if(AUTO_STATE==LOCK_ARM)	
+	{
+		strcpy(ui_g_Ungroup_AUTO_STATE_TEXT->string, "LOCK  ");
+	}
+	if(AUTO_STATE==HANDLE)
+	{
+		strcpy(ui_g_Ungroup_AUTO_STATE_TEXT->string, "HANDLE");
+	}
 
 }

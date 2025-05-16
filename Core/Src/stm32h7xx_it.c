@@ -29,7 +29,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+#include "new_remote.h"
 #include "referee.h"
 extern uint8_t uart5_rx_buff[REMOTE_BUFF_SIZE];
 extern uint8_t uart7_rx_buff[RE_RX_BUFFER_SIZE];
@@ -476,16 +476,12 @@ void UART7_IRQHandler(void)
 
   /* USER CODE END UART7_IRQn 0 */
   HAL_UART_IRQHandler(&huart7);
-  /* USER CODE BEGIN UART7_IRQn 1 */
+  /* USER CODE BEGIN UART7_IRQn 1 */	
+	
+		referee_fbkdata(&dianguan_cmd,uart7_rx_buff,255);
+	
+		HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
 
-
-	
-	
-	
-	referee_fbkdata(&dianguan_cmd,uart7_rx_buff);
-	 
-	
-	HAL_UARTEx_ReceiveToIdle_IT(&huart7,uart7_rx_buff, sizeof(uart7_rx_buff));
 
   /* USER CODE END UART7_IRQn 1 */
 }
@@ -500,11 +496,14 @@ void USART10_IRQHandler(void)
   /* USER CODE END USART10_IRQn 0 */
   HAL_UART_IRQHandler(&huart10);
   /* USER CODE BEGIN USART10_IRQn 1 */
-		referee_fbkdata(&video_cmd,uart10_rx_buff);
-	HAL_UARTEx_ReceiveToIdle_IT(&huart10,uart10_rx_buff, sizeof(uart10_rx_buff));
 	
-	device_fbk(&video_cm);//更新离线时间
+	referee_fbkdata_simple(&video_cmd,uart10_rx_buff);
 
+	device_fbk(&video_cm);//更新离线时间
+	
+	decode_remote_data(uart10_rx_buff,&NEW_Remote0);
+	
+	HAL_UARTEx_ReceiveToIdle_IT(&huart10,uart10_rx_buff, sizeof(uart10_rx_buff));
 
   /* USER CODE END USART10_IRQn 1 */
 }

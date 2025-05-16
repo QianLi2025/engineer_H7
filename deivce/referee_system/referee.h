@@ -792,7 +792,10 @@ extern referee_t video_cmd;
 //自定义控制器
 extern custom_cmd_t custom_cmd;
 
-void referee_fbkdata(referee_t *rf, uint8_t buf[]);
+void referee_fbkdata(referee_t *rf,  uint8_t buf[], int max_data_len);
+//void referee_fbkdata(referee_t *rf,  uint8_t buf[]);
+extern void referee_fbkdata_simple(referee_t *rf, uint8_t buf[]);
+
 void rf_ui_string_upgrade(referee_t *rf);
 
 

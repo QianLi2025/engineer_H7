@@ -16,7 +16,8 @@
 #include "cm_device.h"
 #include "usbd_cdc_if.h"
 #include "UI_task.h"
-
+#include "video.h"
+#include "new_remote.h"
  typedef struct {
 	 float total_distance_x;
 	 float total_distance_y;
@@ -27,8 +28,9 @@
  
 }distance_t;
  
- 
- 
+ extern auto_mode_e AUTO_STATE;
+
+
  
  
 // uint16_t 类型的按键标志

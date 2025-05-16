@@ -4,54 +4,32 @@
 #include "main.h"
 
 #define NEW_LENGTH 21
-typedef __packed struct
-{
-	
-	
-	uint8_t frame_header1;
-	uint8_t frame_header2;
-	
-	 __packed struct
-	{
-		int16_t right_level:11;
-		int16_t rigth_vertical:11;
-		int16_t left_level:11;
-		int16_t left_vertical:11;
-	
-	}channel;
-	
-	__packed struct
-	{
-		uint8_t dangwei:2;
-		uint8_t halt:1;
-		uint8_t custom_left:1;
-		uint8_t custom_right:1;
 
-	}trigger;
-	
-	int16_t dail:11;
-	
-	uint8_t boom:1;
-	
-	__packed struct
-	{
-	int16_t mouse_x;
-	int16_t mouse_y;
-	int16_t mouse_z;
-		uint8_t left:2;
-		uint8_t right:2;
-		uint8_t middle:2;
-		
-	}mouse;
-	
-	uint16_t key_code;
+typedef struct {
+    uint8_t frame_header1;
+    uint8_t frame_header2;
+    int16_t right_level;
+    int16_t right_vertical;
+    int16_t left_level;
+    int16_t left_vertical;
+    uint8_t dangwei;
+    uint8_t halt;
+    uint8_t custom_left;
+    uint8_t custom_right;
+    int16_t dail;
+    uint8_t boom;
+    int16_t mouse_x;
+    int16_t mouse_y;
+    int16_t mouse_z;
+    uint8_t mouse_left;
+    uint8_t mouse_right;
+    uint8_t mouse_middle;
+    uint16_t key_code;
+    uint16_t check_sum;
+} DecodedRemote_t;
 
-	uint16_t check_sum;
-	
-}NEW_remote;
+extern DecodedRemote_t NEW_Remote0;
 
 
-
-
-
+void decode_remote_data(uint8_t *data, DecodedRemote_t *remote);
 

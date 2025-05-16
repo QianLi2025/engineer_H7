@@ -82,3 +82,6 @@ dm_h7_demo\robot_cmd.o: ../deivce/UI/ui_g.h
 dm_h7_demo\robot_cmd.o: ../deivce/UI/ui_interface.h
 dm_h7_demo\robot_cmd.o: ../deivce/UI/ui_types.h
 dm_h7_demo\robot_cmd.o: ../Bsp/bsp_uart.h
+dm_h7_demo\robot_cmd.o: ..\application\video.h
+dm_h7_demo\robot_cmd.o: ../Core/Inc/tim.h
+dm_h7_demo\robot_cmd.o: ../deivce/new_remote.h

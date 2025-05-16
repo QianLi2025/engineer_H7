@@ -1,6 +1,9 @@
 #include "robot_cmd.h"
 
 
+
+auto_mode_e AUTO_STATE;
+
 // 当前使用的指针（总指针）
 KeyComboCounter_t *v_counter = &rc_v_counter;
 KeyComboCounter_t *b_counter = &rc_b_counter;
@@ -178,9 +181,11 @@ void ROBOT_CMD_INIT(void)
 	  PID_init(&y_vision_ctrl_pid,PID_POSITION,0.8,0,0,1000,100);
 	  PID_init(&x_vision_ctrl_pid,PID_POSITION,0.8,0,0,1000,100);
 	  minipc.minipc2mcu.max_angle_ctrl=1.328;
-minipc.minipc2mcu.min_angle_ctrl=-2.450;
+  minipc.minipc2mcu.min_angle_ctrl=-2.450;
 	minipc.minipc2mcu.finesse_angle_ctrl=1.163;
 	minipc.minipc2mcu.pitch_angle_ctrl=0;
+	
+	
 		r_counter->single_press_count = 1;
 
 	
@@ -192,6 +197,9 @@ void	remote_cmd_choose(void);
 //roll和loft直接由此控制
 void ROBOT_CMD_TASK(void)
 {
+//	referee_fbkdata(&video_cmd,uart10_rx_buff,255);//莫名其妙的解码
+
+	
 	ROBOT_STATE=NORMAL;
 	
 	
@@ -415,7 +423,7 @@ void ROBOT_CMD_TASK(void)
 		last_target_angle3=target_angle3;
 
 //	limit_all_angle_lift();//限幅
-		if(target_lift_speed>10&&height>=590)
+		if(target_lift_speed>10&&height>=700)
 		{target_lift_speed=-10;}
 		
 		VAL_LIMIT(target_angle1, MAXARM_MIN, MAXARM_MAX);
@@ -778,6 +786,7 @@ void auto_mode_select_centre(void)
 
 void real_handle_mode(void)//真手动模式
 {
+	AUTO_STATE=HANDLE;
 	 /******************手动部分********************/
         // xy命令获取
         //鼠标控
@@ -795,6 +804,15 @@ void real_handle_mode(void)//真手动模式
             rc_mode_xy[0] += rc_ctrl.mouse.y / 30;
         }
 				#endif
+				
+				
+				if(rc_ctrl.mouse.z<-80)
+				{
+					  rc_mode_xy[0] = 150;
+					  rc_mode_xy[1] = 0;
+            target_angle4 = 0;
+            yaw_absolute  = 0;
+				}
 				
         //遥控器控
         if (rc_ctrl.rc.ch[0] > 100) {//上下
@@ -872,15 +890,18 @@ void real_handle_mode(void)//真手动模式
 		{
 				
 			
-        if (rc_ctrl.rc.s[1]==2) {//左拨杆向下
+        if (NEW_Remote0.custom_left) {//左拨杆向下
             target_lift_speed = -300;//300
         }
-        if (rc_ctrl.rc.s[1]==1) {//左拨杆向上
+        if (NEW_Remote0.custom_right) {//左拨杆向上
             target_lift_speed = 300;
         }
-				if (rc_ctrl.rc.s[1]==3) {//左拨杆中间
+				if ((NEW_Remote0.custom_right)&&(NEW_Remote0.custom_right)){//左拨杆中间
             target_lift_speed = 0;
         }
+				
+				
+				
 			}
 				
 		//抬升
@@ -897,7 +918,7 @@ void real_handle_mode(void)//真手动模式
 				
         if (target_lift_speed > 800) {
             target_lift_speed = 800;
-        }
+        }  
         if (target_lift_speed < -800) {
             target_lift_speed = -800;
         }
@@ -1006,13 +1027,16 @@ void yaw_absolute_ctrl(void)
 }
 
 void lock_arm(void)
+	
 {
+
 		/**********************取金矿模式锁机械臂***********************************/
         if (z_counter->shift_press_count % 3 == 0) {//真正决定会不会进入此模式
             count_for_modeShift= 0;
             c_counter->ctrl_press_count = 0; //伸直机械臂命令清零
         }
         if (z_counter->shift_press_count % 3 == 1) {
+					  	AUTO_STATE=LOCK_ARM;
             lift_height_cmd(80, &target_lift_speed);
             rc_mode_xy[0]       = 330;
             rc_mode_xy[1]       = 0;
@@ -1021,6 +1045,7 @@ void lock_arm(void)
             count_for_modeShift = 0;
             //伸直机械臂
             if (c_counter->ctrl_press_count % 2 == 1) {
+							
                 target_angle1 = 0;
                 target_angle2 = 0;
                 yaw_absolute  = 0.18;
@@ -1029,6 +1054,7 @@ void lock_arm(void)
             }
         }
         if (z_counter->shift_press_count % 3 == 2) { //这个模式不会长时间持续
+						AUTO_STATE=LOCK_ARM;
             lift_height_cmd(120, &target_lift_speed);
             rc_mode_xy[0]     = 330;
             rc_mode_xy[1]     = 0;
@@ -1045,6 +1071,8 @@ void lock_arm(void)
 
 void auto_get_silver(void)
 {
+	
+	AUTO_STATE=GET_SILVER;
 	 //开吸盘
         ARM_CMD_data.sucker_mode = SUCKER_ON;
         //其他模式清零
@@ -1584,6 +1612,7 @@ void push_block(void)
 
 void auto_fetch_block(void)
 {      
+	      AUTO_STATE=AUTO_GET;
            //其他模式清零
         z_counter->shift_press_count = 0;
         //识别自动模式是否关闭,并清空倒计时的自动标志位
@@ -1664,7 +1693,7 @@ void auto_fetch_block(void)
                                                                 use_absolute_flag=1;
                 float temp_xy[2]  = {0, 0};
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
-                if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {
+                if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 60) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 60)) {
                     //回到手动控制模式
                     g_counter->shift_press_count = 0;
                     ARM_CMD_data.sucker_mode= SUCKER_ON;
@@ -1679,6 +1708,7 @@ void auto_fetch_block(void)
 
 void auto_put_block(void)//自动放东西
 {
+	      AUTO_STATE=AUTO_PUT;
 //其他模式清零
         z_counter->shift_press_count = 0;
         //识别自动模式是否关闭,并清空倒计时的自动标志位
@@ -1776,7 +1806,7 @@ void auto_put_block(void)//自动放东西
 
                 float temp_xy[2]  = {0, 0};
                 scara_forward_kinematics(max_motor.para.pos, min_motor.para.pos, ARMLENGHT1, ARMLENGHT2, temp_xy);
-                if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 40) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 40)) {//坐标差小于一定程度
+                if ((fabs(rc_mode_xy[0] - temp_xy[0]) < 60) && (fabs(rc_mode_xy[1] - temp_xy[1]) < 60)) {//坐标差小于一定程度
                     //回到手动控制模式
                     b_counter->shift_press_count = 0;
                     backback_step                                        = 0; //步进标志位清零
@@ -1803,13 +1833,13 @@ void normally_chassis_control(void)
 			
 			
         //平移缓启动
-        if (((d_flag && (!a_flag)))|| custom_cmd.vx>1000 ) {
+        if (((d_flag && (!a_flag)))|| custom_cmd.vx>1000||NEW_Remote0.left_level>150) {
             Chassis_CMD_data.vx += 17 * speed_scale;
         }
-        if (((a_flag && (!d_flag)))|| custom_cmd.vx<-1000 ) {
+        if (((a_flag && (!d_flag)))|| custom_cmd.vx<-1000||NEW_Remote0.left_level<-150 ) {
             Chassis_CMD_data.vx -= 17 * speed_scale;//10
         }
-        if (((!a_flag) && (!d_flag))&&abs(custom_cmd.vx)<1000) {
+        if (((!a_flag) && (!d_flag))&&abs(custom_cmd.vx)<1000&&abs(NEW_Remote0.left_level)<150) {
             Chassis_CMD_data.vx = 0;
         }
         if (Chassis_CMD_data.vx > 2000 * speed_scale) {
@@ -1831,13 +1861,13 @@ void normally_chassis_control(void)
 				
 				
         //前进缓启动
-        if (((w_flag && (!s_flag)))||custom_cmd.vy>1000) {
+        if (((w_flag && (!s_flag)))||custom_cmd.vy>1000||NEW_Remote0.left_vertical>150) {
             target_forward += 0.5 * speed_scale;//6
         }
-        if (((s_flag && (!w_flag)))||custom_cmd.vy<-1000) {
+        if (((s_flag && (!w_flag)))||custom_cmd.vy<-1000||NEW_Remote0.left_vertical<-150) {
             target_forward -= 0.5 * speed_scale;
         }
-        if (((!s_flag) && (!w_flag))&&abs(custom_cmd.vy)<1000)  {
+        if (((!s_flag) && (!w_flag))&&abs(custom_cmd.vy)<1000&&abs(NEW_Remote0.left_vertical)<150)  {
             target_forward = 0;
         }
         Chassis_CMD_data.vy = target_forward * target_forward * target_forward;//多项式吗 有意思
@@ -1868,19 +1898,23 @@ void normally_chassis_control(void)
 				}
 				
 				
-        if (press_right && press_left) {
+        if( press_right && press_left) {
             Chassis_CMD_data.vw = -(float)rc_ctrl.mouse.x * 1.6 * (target_forward / 13 + 1);//1
         } 
-				else if(abs(custom_cmd.vw)<30)
+				else if((abs(custom_cmd.vw)<300)&&(abs(NEW_Remote0.dail)<100))//30
 				{
             Chassis_CMD_data.vw = 0;
         } 
 				else
 				{
-					if(abs(custom_cmd.vw)>800)
+					if(abs(custom_cmd.vw)>300)
 					  Chassis_CMD_data.vw = -custom_cmd.vw*0.03;
-					
+					if(abs(NEW_Remote0.dail)>100&&abs(custom_cmd.vw)<300)
+						Chassis_CMD_data.vw = -NEW_Remote0.dail*0.3;
 				}
+				
+
+				
 				//打算改成自动化的那种
 //        switch(f_counter.shift_press_count%3){
 //					case 0:
