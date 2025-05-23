@@ -158,7 +158,72 @@
           <Name>-U-O142 -O2254 -SF10000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP (ARM Core") -D00(6BA02477) -L00(0) -TO131090 -TC10000000 -TT10000000 -TP21 -TDS8000 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32H72x-73x_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32H723VGTx$CMSIS\Flash\STM32H72x-73x_1024.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>257</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134302590</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Core/Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dm_h7_demo\../Core/Src/main.c\257</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>253</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134302556</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Core/Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dm_h7_demo\../Core/Src/main.c\253</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>244</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134302510</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Core/Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dm_h7_demo\../Core/Src/main.c\244</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>256</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134302582</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Core/Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\dm_h7_demo\../Core/Src/main.c\256</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -1154,6 +1219,36 @@
           <count>198</count>
           <WinNumber>1</WinNumber>
           <ItemText>finesse_motor,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>199</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\dm_h7_demo\../deivce/DamiaoMotors/DamiaoMotors.c\max_motor.para.id</ItemText>
+        </Ww>
+        <Ww>
+          <count>200</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ui_self_id</ItemText>
+        </Ww>
+        <Ww>
+          <count>201</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>finesse_motor</ItemText>
+        </Ww>
+        <Ww>
+          <count>202</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rx_data3</ItemText>
+        </Ww>
+        <Ww>
+          <count>203</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>lift_pid_speed</ItemText>
+        </Ww>
+        <Ww>
+          <count>204</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>lift_pid_angle</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

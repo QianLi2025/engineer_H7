@@ -78,6 +78,38 @@ void UI_UPLOAD(void)//上传
     ui_g_Ungroup_rxy_index->start_y = (uint32_t)(590+ rc_mode_xy_after_check[0]*(800-610)/(500-150));
   }
 	
+	
+	
+//	
+//		ui_self_id=BLUE_2;//成功初始化之后
+//		
+//	if(ROBOT_STATE==NORMAL){
+//	strcpy(ui_g_Ungroup_ROBOT_STATE->string, "NORMAL");}
+//	if(ROBOT_STATE==CUSTOM){
+//	strcpy(ui_g_Ungroup_ROBOT_STATE->string, "CUSTOM");}
+//	
+//	
+//	ui_g_Ungroup_REAL_HEIGHT->number =height;//高度真实
+//	
+//	
+//	ui_g_Ungroup_heigth_index->start_y =(uint32_t)(430+ height*(826-430)/(MAX_HEIGHT-0));//高度索引
+//	
+//	
+//	
+//	if(ARM_CMD_data.sucker_mode==SUCKER_OFF){
+//	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "OFF");}
+//		if(ARM_CMD_data.sucker_mode==SUCKER_ON){
+//	strcpy(ui_g_Ungroup_SUCKER_STATE->string, "ON ");}
+//		
+//	
+//	
+//	  ui_g_Ungroup_rxy_index->start_x = (uint32_t)(330+ rc_mode_xy_after_check[1]*(463-113)/(-228-400));
+//    ui_g_Ungroup_rxy_index->start_y = (uint32_t)(590+ rc_mode_xy_after_check[0]*(800-610)/(500-150));
+//	
+//	
+	
+	
+	
 	if(AUTO_STATE==GET_SILVER)
 	{
 	  strcpy(ui_g_Ungroup_AUTO_STATE_TEXT->string, "SILVER");

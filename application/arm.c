@@ -165,7 +165,7 @@ void ARM_INIT(void)
 	
     PID_init(&trans_pid_speed,PID_POSITION,5,0,0,10000,1500);
 	
-    PID_init(&lift_pid_speed,PID_POSITION,10,20,0,10000,1700);//3
+    PID_init(&lift_pid_speed,PID_POSITION,10,20,0,10000,1400);//3
     PID_init(&pid_lift_height,PID_POSITION,5,0.1, 0, 45000, 100);//不要积分也许也可以？
 
     enable_allmotor();

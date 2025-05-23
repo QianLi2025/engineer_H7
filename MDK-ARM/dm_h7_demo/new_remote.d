@@ -44,3 +44,4 @@ dm_h7_demo\new_remote.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_
 dm_h7_demo\new_remote.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h
 dm_h7_demo\new_remote.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h
 dm_h7_demo\new_remote.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
+dm_h7_demo\new_remote.o: ../algorithm/CRC8_CRC16.h

@@ -156,7 +156,7 @@ int main(void)
 		/*tasks begin*/
     kf_imu_upgrade();
 		/*tasks end*/
-				 if(time_count%10==0)//100hz任务
+		if(time_count%10==0)//100hz任务
     {
 			minipc_send(&minipc);	
 		
@@ -173,6 +173,13 @@ int main(void)
 //				save_pos_zero(&hfdcan2, 2, POS_MODE);
 //				save_pos_zero(&hfdcan3, 1, POS_MODE);
 				
+//				if(max_motor.para.state!=0)
+				clear_err(&hfdcan2,  1,  MIT_MODE);
+				clear_err(&hfdcan2,  2,  POS_MODE);
+				clear_err(&hfdcan3,  1,  POS_MODE);
+				clear_err(&hfdcan3,  2,  POS_MODE);
+				DWT_Delay(0.002);
+				
 				enable_motor_mode(&hfdcan2, 1, MIT_MODE);
         enable_motor_mode(&hfdcan2, 2, POS_MODE);
         enable_motor_mode(&hfdcan3, 1, POS_MODE);
@@ -180,10 +187,7 @@ int main(void)
 				
 				
 				
-//				clear_err(&hfdcan2,  1,  MIT_MODE);
-//				clear_err(&hfdcan2,  2,  POS_MODE);
-//				clear_err(&hfdcan3,  1,  POS_MODE);
-//				clear_err(&hfdcan3,  2,  POS_MODE);
+
 				
 				
 			}
@@ -228,6 +232,39 @@ int main(void)
 		ARM_TASK();
 		VIDEO_TASK();
 		SUCKER_TASK();
+		
+		
+		if(ctrl_flag&&shift_flag&&g_flag){
+		if(max_motor.para.state!=0&&max_motor.para.state!=1)
+		{
+		 clear_err(&hfdcan2,  1,  MIT_MODE);
+		DWT_Delay(0.002);
+		 enable_motor_mode(&hfdcan2, 1, MIT_MODE);
+		}
+		if(min_motor.para.state!=0&&min_motor.para.state!=1)	
+		{
+		 clear_err(&hfdcan2,  2,  POS_MODE);
+		DWT_Delay(0.002);
+		 enable_motor_mode(&hfdcan2, 2, POS_MODE);
+			
+		}
+		
+		
+	  if(finesse_motor.para.state!=0&&finesse_motor.para.state!=1)
+		{
+		 clear_err(&hfdcan3,  1,  POS_MODE);
+		DWT_Delay(0.002);
+		 enable_motor_mode(&hfdcan3, 1, POS_MODE);
+		}
+		if(pitch_motor.para.state!=0&&pitch_motor.para.state!=1)	
+		{
+		 clear_err(&hfdcan3,  2,  POS_MODE);
+		DWT_Delay(0.002);
+		 enable_motor_mode(&hfdcan3, 2, POS_MODE);
+			
+		}
+	}
+			
 		
 #endif
 		

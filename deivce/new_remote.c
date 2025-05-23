@@ -10,7 +10,10 @@ void decode_remote_data(uint8_t *data, DecodedRemote_t *remote)
     remote->frame_header1 = data[0];
     remote->frame_header2 = data[1];
 	
-	  if(remote->frame_header1==0xa9){
+	  if(remote->frame_header1==0xa9&&remote->frame_header2==0x53){
+		
+		if (Verify_CRC16_Check_Sum(data, 21))
+  {
 
     uint64_t temp_channel = 0;
 
@@ -58,5 +61,6 @@ void decode_remote_data(uint8_t *data, DecodedRemote_t *remote)
     // keys
     remote->key_code = (uint16_t)(data[16] | (data[17] << 8));
     remote->check_sum = (uint16_t)(data[18] | (data[19] << 8));
+	 }
 	}
 }

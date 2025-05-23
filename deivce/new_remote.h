@@ -2,6 +2,7 @@
 
 #include "struct_typedef.h"
 #include "main.h"
+#include "CRC8_CRC16.h"
 
 #define NEW_LENGTH 21
 
